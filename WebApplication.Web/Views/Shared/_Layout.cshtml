@@ -13,22 +13,31 @@
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lora|Montserrat" rel="stylesheet">
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top" id="navigation">
-        <div class="container">
-            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Tech Fitness Pal</a>
-            <ul class="nav navbar-nav justify-content-end">
-                <li class="nav-item"><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                <li class="nav-item"><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
-                <li class="nav-item"><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
-            </ul>
-        </div>
+    <nav>
+        <ul class="nav nav-pills">
+            <li class="nav-item" id="home"><a asp-area="" asp-controller="Home" asp-action="Index">Tech Fitness Pal</a></li>
+            <li class="nav-item pull-right"><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+            <li class="nav-item pull-right"><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
+            <li class="nav-item pull-right"><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
+        </ul>
     </nav>
 
     <partial name="_CookieConsentPartial" />
+
+    <div class="wrapper">
+        <header>
+            <h1>Tech Fitness Pal</h1>
+        </header>
+
+        <h3 class="subheading" id="subheading">Experience Active Living</h3>
+
+        <a asp-controller="Account" asp-action="Login" id="homeLogin">Login</a>
+        <a asp-controller="Account" asp-action="Register" id="homeRegister">Register</a>
+    </div>
 
     <div class="container body-content">
         @RenderBody()

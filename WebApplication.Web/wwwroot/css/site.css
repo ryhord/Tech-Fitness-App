@@ -15,12 +15,17 @@ h1 {
 /*****************/
 /** Home Styles **/
 /*****************/
-.navbar-inverse .navbar-brand {
-    color: white;
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    font-size: 3.2rem;
+    padding: 1rem 0;
+    color: #fff;
 }
 
-.navbar-inverse .navbar-nav > li > a {
-    color: white;
+nav ul li a {
+        color: white;
 }
 
 #navigation {
@@ -39,15 +44,10 @@ h1 {
         color: #fff;
     }
 
-#flexbox li a {
-    color: white;
-}
 
- {
-    color: white;
-}
 
 #home {
+    color: #fff;
     font-family: 'Lora';
     font-size: 3.5rem;
     padding-right: 8rem;
@@ -59,11 +59,11 @@ div.wrapper {
     margin: 18rem;
     display: grid;
     /* Define the number of columns */
-    grid-template-columns: 2fr 1fr 2fr;
+    grid-template-columns: 2fr 1fr 1fr 2fr;
     grid-template-areas: 
-        'header header header' 
-        'subheading subheading subheading' 
-        '. login .'
+        'header header header header' 
+        'subheading subheading subheading subheading' 
+        '. homeLogin homeRegister .'
 }
 
 header {
@@ -76,8 +76,14 @@ h3#subheading {
     padding: 2rem;
 }
 
-a#login {
-    grid-area: login;
+a#homeLogin {
+    grid-area: homeLogin;
+    font-size: 2rem;
+    padding: 1rem;
+}
+
+a#homeRegister {
+    grid-area: homeRegister;
     font-size: 2rem;
     padding: 1rem;
 }
