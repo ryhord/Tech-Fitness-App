@@ -1,8 +1,8 @@
 ﻿
-INSERT INTO users (userName, [password], userFirstName, userLastName, birthday, userAge, userHeight, userCurrentWeight, userDesiredWeight, recommendedDailyCaloricIntake, mealStreak, meal1, meal2, meal3, meal4, meal5, mealOrder)
-	VALUES ('jdean', 'iLoveFood', 'James', 'Dean', '19280810', 90, 72, 200, 180, 1500, 4, 1, 2, 3, 0, 0, '1,2,3');
-INSERT INTO users (userName, [password], userFirstName, userLastName, birthday, userAge, userHeight, userCurrentWeight, userDesiredWeight, recommendedDailyCaloricIntake, mealStreak, meal1, meal2, meal3, meal4, meal5, mealOrder)
-	VALUES ('revans', 'iLoveBreakfast', 'Robert', 'Evans', '19580707', 60, 65, 190, 170, 1600, 3, 1, 2, 0, 0, 0, '1,2');
+INSERT INTO users (userName, [password], email, salt, userFirstName, userLastName, birthday, userAge, userHeight, userCurrentWeight, userDesiredWeight, recommendedDailyCaloricIntake, mealStreak, meal1, meal2, meal3, meal4, meal5, mealOrder)
+	VALUES ('jdean', 'iLoveFood','XXYZ', 'jdean@hotmail.com', 'James', 'Dean', '19280810', 90, 72, 200, 180, 1500, 4, 1, 2, 3, 0, 0, '1,2,3');
+INSERT INTO users (userName, [password], email, salt, userFirstName, userLastName, birthday, userAge, userHeight, userCurrentWeight, userDesiredWeight, recommendedDailyCaloricIntake, mealStreak, meal1, meal2, meal3, meal4, meal5, mealOrder)
+	VALUES ('revans', 'iLoveBreakfast', 'revans@hotmail.com', 'XXYZ', 'Robert', 'Evans', '19580707', 60, 65, 190, 170, 1600, 3, 1, 2, 0, 0, 0, '1,2');
 
 INSERT INTO foods (foodName, servingSize, calories, foodGroup) VALUES ('egg', 1, 78, 'protein');
 INSERT INTO foods (foodName, servingSize, calories, foodGroup) VALUES ('bacon', 1, 43, 'protein');

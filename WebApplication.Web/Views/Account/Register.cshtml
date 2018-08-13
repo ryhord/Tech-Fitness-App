@@ -1,4 +1,4 @@
-﻿@model RegisterViewModel
+﻿@model User
 
 @{
     ViewData["Title"] = "Register";
@@ -12,8 +12,8 @@
     <label asp-for="Password"></label>
     <input type="text" asp-for="Password" />
 
-    <label asp-for="ConfirmPassword"></label>
-    <input type="text" asp-for="ConfirmPassword" />
+   <!-- <label asp-for="ConfirmPassword"></label>
+    <input type="text" asp-for="ConfirmPassword" /> -->
 
     <button value="submit" type="submit">Register</button>
 </form>

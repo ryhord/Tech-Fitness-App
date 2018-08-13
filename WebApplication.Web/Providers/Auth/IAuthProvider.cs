@@ -43,11 +43,11 @@ namespace WebApplication.Web.Providers.Auth
         /// <summary>
         /// Creates a new user in the system.
         /// </summary>
-        /// <param name="username"></param>
+        /// <param name="email"></param>
         /// <param name="password"></param>
         /// <param name="role"></param>
         /// <returns></returns>
-        void Register(string username, string password, string role);
+        void Register(string email, string password, string role);
 
         /// <summary>
         /// Checks to see if a user has a given role.
