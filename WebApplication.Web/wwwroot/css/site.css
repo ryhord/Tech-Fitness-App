@@ -73,3 +73,14 @@ a#login {
     font-size: 2rem;
     padding: 1rem;
 }
+
+index body {
+    background: url("../images/home.jpg");
+}
+
+footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    position: fixed;
+}
