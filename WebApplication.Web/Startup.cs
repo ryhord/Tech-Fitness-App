@@ -38,7 +38,7 @@ namespace WebApplication.Web
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
-                // Sets session expiration to 20 minuates
+                // Sets session expiration to 20 minutes
                 options.IdleTimeout = TimeSpan.FromMinutes(20);
                 options.Cookie.HttpOnly = true;
             });
