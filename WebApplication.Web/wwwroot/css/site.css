@@ -16,12 +16,11 @@ h1 {
 /** Home Styles **/
 /*****************/
 nav ul {
-    list-style: none;
+    background-color: #5bc0de;
     display: flex;
     justify-content: space-between;
-    font-size: 3.2rem;
     padding: 1rem 0;
-    color: #fff;
+    font-size: 3.2rem;
 }
 
 nav ul li a {
@@ -63,7 +62,8 @@ div.wrapper {
     grid-template-areas: 
         'header header header header' 
         'subheading subheading subheading subheading' 
-        '. homeLogin homeRegister .'
+        '. homeLogin homeRegister .';
+        gap: 2rem;
 }
 
 header {
@@ -78,13 +78,13 @@ h3#subheading {
 
 a#homeLogin {
     grid-area: homeLogin;
-    font-size: 2rem;
+    font-size: 2.5rem;
     padding: 1rem;
 }
 
 a#homeRegister {
     grid-area: homeRegister;
-    font-size: 2rem;
+    font-size: 2.5rem;
     padding: 1rem;
 }
 
