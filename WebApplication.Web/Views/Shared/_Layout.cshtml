@@ -19,15 +19,12 @@
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top" id="navigation">
         <div class="container">
-            <div class="navbar-header">
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">WebApplication.Web</a>
-            </div>
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
-                    <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
-                </ul>
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Tech Fitness Pal</a>
+            <ul class="nav navbar-nav justify-content-end">
+                <li class="nav-item"><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                <li class="nav-item"><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
+                <li class="nav-item"><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
+            </ul>
         </div>
     </nav>
 

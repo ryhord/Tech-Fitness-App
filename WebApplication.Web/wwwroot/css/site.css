@@ -15,7 +15,15 @@ h1 {
 /*****************/
 /** Home Styles **/
 /*****************/
-nav#navigation {
+.navbar-inverse .navbar-brand {
+    color: white;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
+}
+
+#navigation {
     background-color: #5bc0de;
     font-size: 2.8rem;
     color: #fff;
