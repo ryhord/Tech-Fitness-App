@@ -12,9 +12,18 @@ h1 {
     font-size: 6rem;
 }
 
-/*****************/
-/** Home Styles **/
-/*****************/
+/*******************/
+/** Mobile Styles **/
+/*******************/
+
+
+/*************************/
+/** Desktop Home Styles **/
+/*************************/
+nav {
+    grid-area: nav;
+}
+
 nav ul {
     background-color: #5bc0de;
     display: flex;
@@ -27,11 +36,12 @@ nav ul li a {
         color: white;
 }
 
-#navigation {
+ul#TEST > li > a:focus {
     background-color: #5bc0de;
-    font-size: 2.8rem;
-    color: #fff;
-    border: none;
+}
+
+ul#TEST > li > a:hover {
+    background-color: #5bc0de;
 }
 
 #flexbox {
@@ -60,6 +70,7 @@ div.wrapper {
     /* Define the number of columns */
     grid-template-columns: 2fr 1fr 1fr 2fr;
     grid-template-areas: 
+        'nav nav nav nav'
         'header header header header' 
         'subheading subheading subheading subheading' 
         '. homeLogin homeRegister .';
@@ -97,6 +108,8 @@ index body {
 }
 
 footer {
+    text-align: right;
+    padding-right: 2rem;
     left: 0;
     bottom: 0;
     width: 100%;
