@@ -49,6 +49,7 @@ namespace WebApplication.Web.Models.Account
 		/// The user's birth date.
 		/// </summary>
 		[Required]
+		[DataType(DataType.Date)]
 		public DateTime BirthDate { get; set; }
 
 	}
