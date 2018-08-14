@@ -1,14 +1,24 @@
-﻿
+﻿@model User
 @{
     ViewData["Title"] = "Login";
 }
 <head>
+    <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/login.css" />
 </head>
 <h2>Login</h2>
 
-<form>
-@*enter username*@
-@*enter email*@
-@*submit takes you to dashbord*@
+<form asp-action="Login" asp-controller="Account" method="post">
+    <div>
+        <label asp-for="Username"></label>
+        <input asp-for="Username" />
+        <span asp-validation-for="Username"></span>
+    </div>
+    <div>
+        <label asp-for="Password"></label>
+        <input asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    @*submit takes you to dashboard*@
+    <button type="submit" class="btn">Login</button>
 </form>
