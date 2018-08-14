@@ -16,6 +16,7 @@ namespace WebApplication.Web.Models
         /// <summary>
         /// The user's username.
         /// </summary>
+		[Required]
         [MaxLength(50)]
         public string Username { get; set; }
 

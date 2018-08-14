@@ -13,11 +13,9 @@ namespace WebApplication.Web.Controllers
     public class AccountController : Controller
     {
         private readonly IAuthProvider authProvider;
-		private readonly IUserDAL dal;
-        public AccountController(IAuthProvider authProvider, IUserDAL dal)
+        public AccountController(IAuthProvider authProvider)
         {
             this.authProvider = authProvider;
-			this.dal = dal;
         }
         
         [HttpGet]
@@ -64,21 +62,18 @@ namespace WebApplication.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Register(User user)
+        public IActionResult Register(RegisterViewModel rvm)
         {
             if (ModelState.IsValid)
             {
-				// NEED FIXING
                 // Register them as a new user (and set default role)
-                //authProvider.Register(user.Email, user.Password, "Role");
-
-				dal.CreateUser(user);
+                authProvider.Register(rvm);
 
                 // Redirect the user where you want them to go after registering
                 return RedirectToAction("Index", "Home");
             }
 
-            return View(user);
+            return View(rvm);
         }
     }
 }
