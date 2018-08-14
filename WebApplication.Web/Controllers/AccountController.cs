@@ -75,5 +75,11 @@ namespace WebApplication.Web.Controllers
 
             return View(rvm);
         }
+
+		public IActionResult ViewProfile()
+		{
+			User user = authProvider.GetCurrentUser();
+			return View(user);
+		}
     }
 }

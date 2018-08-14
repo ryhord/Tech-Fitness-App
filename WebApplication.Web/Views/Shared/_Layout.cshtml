@@ -34,7 +34,7 @@
         <li class="nav-item pull-right">
             <asp:DropDownList id="userDropdown"
                               runat="server">
-                <asp:ListItem Value="Profile"> Profile </asp:ListItem>
+                <asp:ListItem Value="Profile"><a asp-action="ViewProfile" asp-controller="Account"> Profile </a></asp:ListItem>
                 <asp:ListItem Value="Settings"> Settings </asp:ListItem>
                 <asp:ListItem Value="LogOut"> Logout </asp:ListItem>
             </asp:DropDownList>
