@@ -170,6 +170,7 @@ namespace WebApplication.Tests.Providers
         {
             // Arrange
             var provider = new SessionAuthProvider(mockAccessor.Object, mockUserDal.Object);
+
 			RegisterViewModel registerViewModel = new RegisterViewModel();
 			registerViewModel.Username = "test";
 			registerViewModel.Email = "test@test.com";
