@@ -1,9 +1,11 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
 for details on configuring this project to bundle and minify static web assets. */
 body {
-    font-family: 'Montserrat'; 
+    font-family: 'Montserrat';
     background: url("../images/home.jpg");
     background-size: cover;
+    background-color: rgba(255, 255, 255, 0.4);
+    background-blend-mode: lighten;
 }
 
 h1 {
