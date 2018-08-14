@@ -36,11 +36,11 @@ nav ul li a {
         color: white;
 }
 
-ul#TEST > li > a:focus {
+ul#navigation > li > a:focus {
     background-color: #5bc0de;
 }
 
-ul#TEST > li > a:hover {
+ul#navigation > li > a:hover {
     background-color: #5bc0de;
 }
 
@@ -93,6 +93,30 @@ a#homeLogin {
     grid-area: homeLogin;
     font-size: 2.5rem;
     padding: 1.5rem;
+}
+
+a#homeLogin:focus {
+    text-decoration: none;
+    background-color: #4ca4bf;
+    color: #23527c;
+}
+
+a#homeLogin:hover {
+    text-decoration: none;
+    background-color: #4ca4bf;
+    color: #23527c;
+}
+
+a#homeRegister:focus {
+    text-decoration: none;
+    background-color: #4ca4bf;
+    color: #23527c;
+}
+
+a#homeRegister:hover {
+    text-decoration: none;
+    background-color: #4ca4bf;
+    color: #23527c;
 }
 
 a#homeRegister {
