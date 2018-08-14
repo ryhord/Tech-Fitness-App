@@ -28,11 +28,9 @@ namespace WebApplication.Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Login(LoginViewModel loginViewModel)
         {
-			System.Diagnostics.Debug.WriteLine("Controller touched");
             // Ensure the fields were filled out
             if (ModelState.IsValid)
             {
-				System.Diagnostics.Debug.WriteLine("Cnditional touched");
 				// Check that they provided correct credentials
 				bool validLogin = authProvider.SignIn(loginViewModel.Username, loginViewModel.Password);
                 if (validLogin)
