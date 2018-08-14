@@ -3,48 +3,46 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - My Fitness Pal</title>
+    <title>@ViewData["Title"] - Tech Fitness Pal</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
+        <link href="https://fonts.googleapis.com/css?family=Lora|Montserrat" rel="stylesheet">
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link href="https://fonts.googleapis.com/css?family=Lora|Montserrat" rel="stylesheet">
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">WebApplication.Web</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>
-            </div>
-        </div>
+    <nav>
+        <ul class="nav nav-pills">
+            <li class="nav-item" id="home"><a asp-area="" asp-controller="Home" asp-action="Index">Tech Fitness Pal</a></li>
+            <li class="nav-item pull-right"><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+            <li class="nav-item pull-right"><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
+            <li class="nav-item pull-right"><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
+        </ul>
     </nav>
 
     <partial name="_CookieConsentPartial" />
 
+    <div class="wrapper">
+        <header>
+            <h1>Tech Fitness Pal</h1>
+        </header>
+
+        <h3 class="subheading" id="subheading">Experience Active Living</h3>
+
+        <a asp-controller="Account" asp-action="Login" class="btn btn-info"id="homeLogin">Login</a>
+        <a asp-controller="Account" asp-action="Register" class="btn btn-info" id="homeRegister">Register</a>
+    </div>
+
     <div class="container body-content">
         @RenderBody()
-        <hr />
         <footer>
-            <p>&copy; 2018 - My Fitness Pal</p>
+            <p>&copy; 2018 - Tech Fitness Pal</p>
         </footer>
     </div>
 

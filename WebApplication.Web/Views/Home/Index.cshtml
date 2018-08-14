@@ -2,3 +2,18 @@
     ViewData["Title"] = "Home Page";
 }
 
+<head>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>Tech Fitness Pal</h1>
+        </header>
+
+        <h3 class="subheading" id="subheading">Experience Active Living</h3>
+
+        <a asp-controller="Account" asp-action="Login" id="homeLogin">Login</a>
+        <a asp-controller="Account" asp-action="Register" id="homeRegister">Register</a>
+    </div>
+</body>
