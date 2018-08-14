@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-tofit=no" />
     <title>@ViewData["Title"] - Tech Fitness Pal</title>
 
     <environment include="Development">
@@ -17,7 +17,7 @@
     </environment>
 </head>
 <body>
-    <nav>
+    <nav class="navbar-fixed-top">
         <ul class="nav nav-pills" id="navigation">
             <li class="nav-item" id="home"><a asp-area="" asp-controller="Home" asp-action="Index">Tech Fitness Pal</a></li>
             <li class="nav-item pull-right"><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>

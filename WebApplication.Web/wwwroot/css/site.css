@@ -2,7 +2,6 @@
 for details on configuring this project to bundle and minify static web assets. */
 body {
     font-family: 'Montserrat'; 
-    text-align: center;
     background: url("../images/home.jpg");
     background-size: cover;
 }
@@ -15,7 +14,31 @@ h1 {
 /*******************/
 /** Mobile Styles **/
 /*******************/
+@media only screen and (max-width: 767px) {
+    div.wrapper {
+        grid-template-columns: 1fr;
 
+        grid-template-areas:
+            'nav'
+            'header'
+            'subheading'
+            'homeLogin'
+            'homeRegister'
+    }
+
+    #home a {
+        color: #fff;
+        font-family: 'Lora';
+        font-size: 2rem;
+        padding-right: 0rem;
+        padding-left: 0rem;
+        margin-left: 0rem;
+    }
+
+    nav > ul > li > a {
+        font-size: 2rem;
+    }
+}
 
 /*************************/
 /** Desktop Home Styles **/
@@ -33,7 +56,7 @@ nav ul {
 }
 
 nav ul li a {
-        color: white;
+    color: white;
 }
 
 ul#navigation > li > a:focus {
@@ -43,15 +66,6 @@ ul#navigation > li > a:focus {
 ul#navigation > li > a:hover {
     background-color: #5bc0de;
 }
-
-#flexbox {
-        list-style: none;
-        display: flex;
-        justify-content: space-between;
-        font-size: 3.2rem;
-        padding: 1rem 0;
-        color: #fff;
-    }
 
 
 
@@ -70,11 +84,11 @@ div.wrapper {
     /* Define the number of columns */
     grid-template-columns: 2fr 1fr 1fr 2fr;
     grid-template-areas: 
-        'nav nav nav nav'
+        'nav nav nav nav' 
         'header header header header' 
         'subheading subheading subheading subheading' 
         '. homeLogin homeRegister .';
-        gap: 4rem;
+    gap: 4rem;
 }
 
 header {
@@ -95,17 +109,17 @@ a#homeLogin {
     padding: 1.5rem;
 }
 
-a#homeLogin:focus {
-    text-decoration: none;
-    background-color: #4ca4bf;
-    color: #23527c;
-}
+    a#homeLogin:focus {
+        text-decoration: none;
+        background-color: #4ca4bf;
+        color: #23527c;
+    }
 
-a#homeLogin:hover {
-    text-decoration: none;
-    background-color: #4ca4bf;
-    color: #23527c;
-}
+    a#homeLogin:hover {
+        text-decoration: none;
+        background-color: #4ca4bf;
+        color: #23527c;
+    }
 
 a#homeRegister:focus {
     text-decoration: none;
