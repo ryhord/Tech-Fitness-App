@@ -11,15 +11,40 @@ namespace WebApplication.Web.Models
         /// <summary>
         /// The user's id.
         /// </summary>
-        [Required]
         public int Id { get; set; }
 
         /// <summary>
         /// The user's username.
         /// </summary>
-        [Required]
         [MaxLength(50)]
         public string Username { get; set; }
+
+		/// <summary>
+		/// The user's email.
+		/// </summary>
+		[Required]
+		[MaxLength(50)]
+		public string Email { get; set; }
+
+		/// <summary>
+		/// The user's firt name.
+		/// </summary>
+		[Required]
+		[MaxLength(50)]
+		public string FirstName { get; set; }
+
+		/// <summary>
+		/// The user's last name.
+		/// </summary>
+		[Required]
+		[MaxLength(50)]
+		public string LastName { get; set; }
+
+		/// <summary>
+		/// The user's birth date.
+		/// </summary>
+		[Required]
+		public DateTime BirthDate { get; set; }
 
         /// <summary>
         /// The user's password.
@@ -30,7 +55,6 @@ namespace WebApplication.Web.Models
         /// <summary>
         /// The user's salt.
         /// </summary>
-        [Required]
         public string Salt { get; set; }
 
         /// <summary>
