@@ -4,6 +4,7 @@ using Moq;
 using System.Text;
 using WebApplication.Web.DAL;
 using WebApplication.Web.Models;
+using WebApplication.Web.Models.Account;
 using WebApplication.Web.Providers.Auth;
 
 namespace WebApplication.Tests.Providers
@@ -169,8 +170,9 @@ namespace WebApplication.Tests.Providers
             // Arrange
             var provider = new SessionAuthProvider(mockAccessor.Object, mockUserDal.Object);
 
-            // Act
-            provider.Register("test", "password123", "user");
+			// Act
+			//provider.Register("test", "password123", "user");
+			provider.Register(new RegisterViewModel() { Username = "test", Password = "password123" });
 
             // Assert
             mockUserDal.Verify(m => m.CreateUser(It.IsAny<User>()));
