@@ -17,6 +17,8 @@ header, #subheading {
         1px -1px 0 #fff, 
        -1px 1px 0 #fff, 
         1px 1px 0 #fff;
+
+    text-align: center;
 }
 
 /****************************/
@@ -91,8 +93,6 @@ ul#navigation {
     text-decoration-style: initial;
     position: relative;
 }
-
-
 
 #home {
     color: #fff;
