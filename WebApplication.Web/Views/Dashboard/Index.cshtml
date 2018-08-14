@@ -2,30 +2,78 @@
 @{
     ViewData["Title"] = "Index";
 }
+<style>
+
+    div.wrapper {
+        display: grid;
+    }
+
+    ul#dashboardControlPanel {
+        grid-area: sidebar;
+        background-color: #eeeeef;
+    }
+    div#userOverview {
+        grid-area: window;
+    }
+    div#mealManager {
+        grid-area: window;
+    }
+    div#userChat {
+        grid-area: window;
+    }
+    div#userReminders {
+        grid-area: window;
+    }
+    div#userFriends {
+        grid-area: window;
+    }
 
 
-<ul>
-    <li>Overview</li>
-    <li>Meal Manager</li>
-    <li>Chat</li>
-    <li>Set Reminders</li>
-    <li>View Friends</li>
-</ul>
-<div id="userOverview">
-    Find JS for user Overview
+
+    div.wrapper {
+        /*Define the number of columns */
+        grid-template-columns: 1fr 4fr;
+        /*create spacing between cells*/
+        grid-gap: 15px;
+        /*Define the number of columns */
+        grid-template-areas: 
+            'sidebar   window window window window' 
+            'sidebar   window window window window' 
+            'sidebar   window window window window' 
+            'sidebar   window window window window' 
+            'sidebar   window window window window';
+    }
+
+
+</style>
+
+<div class="wrapper">
+    <ul id="dashboardControlPanel">
+        <li>Overview</li>
+        <li>Meal Manager</li>
+        <li>Chat</li>
+        <li>Set Reminders</li>
+        <li>View Friends</li>
+    </ul>
+    <div>
+    
+    <div id="userOverview">
+        Find JS for user Overview
+    </div>
+    <div id="mealManager">
+        <div>Add A Food</div>
+        <div>Log Meals</div>
+        <div>Add A Meal</div>
+        <div>My Quick Meals</div>
+    </div>
+    <div id="userChat">
+        Find JS for user Chat
+    </div>
+    <div id="userReminders">
+        Twilio
+    </div>
+    <div id="userFriends">
+        I don't know how to do this yet
+    </div>
 </div>
-<div id="mealManager">
-    <div>Add A Food</div>
-    <div>Log Meals</div>
-    <div>Add A Meal</div>
-    <div>My Quick Meals</div>
-</div>
-<div id="userChat">
-    Find JS for user Chat
-</div>
-<div id="userReminders">
-    Twilio
-</div>
-<div id="userFriends">
-    I don't know how to do this yet
 </div>

@@ -18,30 +18,7 @@
 </head>
 <body>
     @await Component.InvokeAsync("Navbar")
-    <nav id="homeNav">
-        <ul class="nav nav-pills">
-            <li class="nav-item" id="home"><a asp-area="" asp-controller="Home" asp-action="Index">Tech Fitness Pal</a></li>
-            <li class="nav-item pull-right"><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-            <li class="nav-item pull-right"><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
-            <li class="nav-item pull-right"><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
-        </ul>
-    </nav>
-
-
-    <ul class="nav nav-pills" id="dashboard">
-        <li class="nav-item" id="home"><a asp-area="" asp-controller="Home" asp-action="Index">Tech Fitness Pal</a></li>
-        <li class="nav-item pull-right"><a asp-area="" asp-controller="Dashboard" asp-action="Index">Dropdown for user settings</a></li>
-        <li class="nav-item pull-right">
-            <asp:DropDownList id="userDropdown"
-                              runat="server">
-                <asp:ListItem Value="Profile"> Profile </asp:ListItem>
-                <asp:ListItem Value="Settings"> Settings </asp:ListItem>
-                <asp:ListItem Value="LogOut"> Logout </asp:ListItem>
-            </asp:DropDownList>
-        </li>
-    </ul>
-    </nav>
-
+  
     <partial name="_CookieConsentPartial" />
 
     <div class="container body-content">
