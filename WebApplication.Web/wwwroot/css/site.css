@@ -29,14 +29,26 @@ h1 {
     #home a {
         color: #fff;
         font-family: 'Lora';
-        font-size: 2rem;
+        font-size: 1.7rem;
         padding-right: 0rem;
         padding-left: 0rem;
         margin-left: 0rem;
     }
 
+    li#home a:focus {
+        text-decoration: none;
+        background-color: #4ca4bf;
+        color: #23527c;
+    }
+
+    li#home a:hover {
+        text-decoration: none;
+        background-color: #4ca4bf;
+        color: #23527c;
+    }
+
     nav > ul > li > a {
-        font-size: 2rem;
+        font-size: 1.7rem;
     }
 }
 
