@@ -135,11 +135,27 @@ namespace WebApplication.Web.DAL
 
         private User MapRowToUser (SqlDataReader reader)
         {
-			return new User()
+
+			User user = new User();
+			user.Id = Convert.ToInt32(reader["userId"]);
+			user.Username = Convert.ToString(reader["userName"]);
+			user.Email = Convert.ToString(reader["email"]);
+			user.Password = Convert.ToString(reader["password"]);
+			user.Salt = Convert.ToString(reader["salt"]);
+			user.Role = Convert.ToString(reader["role"]);
+
+			if (Convert.ToString(reader["userFirstName"]) != null)
 			{
-				Id = Convert.ToInt32(reader["userId"]),
-				Username = Convert.ToString(reader["userName"]),
-				Email = Convert.ToString(reader["email"]),
+				// user.FirstName = Convert.ToString(reader["userFirstName"]);
+			}
+
+			if (! DBNull.Value.Equals(reader["userAge"]))
+			{
+				user.Age = Convert.ToInt32(reader["userAge"]);
+			}
+
+
+			return user;
 				//FirstName = Convert.ToString(reader["userFirstName"]),
 				//LastName = Convert.ToString(reader["userLastName"]),
 				//BirthDate = Convert.ToDateTime(reader["birthday"]),
@@ -149,10 +165,7 @@ namespace WebApplication.Web.DAL
 				//DesiredWeight = Convert.ToInt32(reader["userDesiredWeight"]),
 				//RecommendedDailyCaloricIntake = Convert.ToInt32(reader["recommendedDailyCaloricIntake"]),
 				//MealStreak = Convert.ToInt32(reader["mealStreak"]),
-				Password = Convert.ToString(reader["password"]),
-				Salt = Convert.ToString(reader["salt"]),
-				Role = Convert.ToString(reader["role"])
-			};
+
         }
     }
 }
