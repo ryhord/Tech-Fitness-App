@@ -31,12 +31,12 @@ namespace WebApplication.Web.Controllers
             // Ensure the fields were filled out
             if (ModelState.IsValid)
             {
-                // Check that they provided correct credentials
-                bool validLogin = authProvider.SignIn(loginViewModel.Email, loginViewModel.Password);
+				// Check that they provided correct credentials
+				bool validLogin = authProvider.SignIn(loginViewModel.Username, loginViewModel.Password);
                 if (validLogin)
                 {
                     // Redirect the user where you want them to go after successful login
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Dashboard");
                 }
             }
 
