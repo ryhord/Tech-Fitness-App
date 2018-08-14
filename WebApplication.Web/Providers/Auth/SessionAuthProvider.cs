@@ -42,13 +42,11 @@ namespace WebApplication.Web.Providers.Auth
         /// <returns></returns>
         public bool SignIn(string username, string password)
         {
-			System.Diagnostics.Debug.WriteLine("Auth signIn touched");
 			var user = userDAL.GetUser(username);
             var hashProvider = new HashProvider();                        
             
             if (user != null && hashProvider.VerifyPasswordMatch(user.Password, password, user.Salt))
             {
-				System.Diagnostics.Debug.WriteLine("conditional hash touched");
 				Session.SetString(SessionKey, user.Username);
                 return true;
             }
