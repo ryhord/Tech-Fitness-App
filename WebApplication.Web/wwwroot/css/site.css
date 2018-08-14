@@ -12,6 +12,11 @@ h1 {
     font-size: 6rem;
 }
 
+#copyright {
+    text-align: right;
+    padding-right: 2rem;
+}
+
 /*****************/
 /** Home Styles **/
 /*****************/
