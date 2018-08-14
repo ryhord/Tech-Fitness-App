@@ -47,6 +47,36 @@ namespace WebApplication.Web.Models
 		[Required]
 		public DateTime BirthDate { get; set; }
 
+		/// <summary>
+		/// The user's age.
+		/// </summary>
+		public int Age { get; set; }
+
+		/// <summary>
+		/// The user's height (in inches).
+		/// </summary>
+		public int Height { get; set; }
+
+		/// <summary>
+		/// The user's current weight (in lbs.).
+		/// </summary>
+		public int CurrentWeight { get; set; }
+
+		/// <summary>
+		/// The user's target/desired weight (in lbs.).
+		/// </summary>
+		public int DesiredWeight { get; set; }
+
+		/// <summary>
+		/// The recommended number of calories the user should consume daily.
+		/// </summary>
+		public int RecommendedDailyCaloricIntake { get; set; }
+
+		/// <summary>
+		/// The number of consecutive meals that the user has logged.
+		/// </summary>
+		public int MealStreak { get; set; }
+
         /// <summary>
         /// The user's password.
         /// </summary>

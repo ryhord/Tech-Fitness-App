@@ -1,0 +1,59 @@
+﻿@model User
+@{
+    ViewData["Title"] = "ViewProfile";
+}
+
+<h2>ViewProfile</h2>
+
+<form asp-controller="Account" asp-action="Register" method="post">
+
+    <text>Username: </text>
+    <text>@Model.Username</text>
+
+    <br />
+
+    <text>Email: </text>
+    <text>@Model.Email</text>
+
+    <br />
+
+    <text>First Name: </text>
+    <text>@Model.FirstName</text>
+
+    <br />
+
+    <text>Last Name: </text>
+    <text>@Model.LastName</text>
+
+    <br />
+
+    <text>Date of Birth: </text>
+    <text>@Model.BirthDate.ToShortDateString()</text>
+
+    <br />
+
+    <text>Age: </text>
+    <text>@Model.Age</text>
+
+    <br />
+
+    <text>Height: </text>
+    <text>@Model.Height</text>
+
+    <br />
+
+    <text>Current Weight: </text>
+    <text>@Model.CurrentWeight</text>
+
+    <br />
+
+    <text>Desired Weight: </text>
+    <text>@Model.DesiredWeight</text>
+
+    <br />
+
+    <text>Recommended Daily Caloric Intake: </text>
+    <text>@Model.RecommendedDailyCaloricIntake</text>
+
+    <br />
+</form>

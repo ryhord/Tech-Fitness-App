@@ -133,16 +133,26 @@ namespace WebApplication.Web.DAL
             }
         }
 
-        private User MapRowToUser(SqlDataReader reader)
+        private User (SqlDataReader reader)
         {
-            return new User()
-            {
-                Id = Convert.ToInt32(reader["userId"]),
-                Username = Convert.ToString(reader["userName"]),
-                Password = Convert.ToString(reader["password"]),
-                Salt = Convert.ToString(reader["salt"]),
-                Role = Convert.ToString(reader["role"])
-            };
+			return new User()
+			{
+				Id = Convert.ToInt32(reader["userId"]),
+				Username = Convert.ToString(reader["userName"]),
+				Email = Convert.ToString(reader["email"]),
+				//FirstName = Convert.ToString(reader["userFirstName"]),
+				//LastName = Convert.ToString(reader["userLastName"]),
+				//BirthDate = Convert.ToDateTime(reader["birthday"]),
+				//Age = Convert.ToInt32(reader["userAge"]),
+				//Height = Convert.ToInt32(reader["userHeight"]),
+				//CurrentWeight = Convert.ToInt32(reader["userCurrentWeight"]),
+				//DesiredWeight = Convert.ToInt32(reader["userDesiredWeight"]),
+				//RecommendedDailyCaloricIntake = Convert.ToInt32(reader["recommendedDailyCaloricIntake"]),
+				//MealStreak = Convert.ToInt32(reader["mealStreak"]),
+				Password = Convert.ToString(reader["password"]),
+				Salt = Convert.ToString(reader["salt"]),
+				Role = Convert.ToString(reader["role"])
+			};
         }
     }
 }
