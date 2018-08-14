@@ -11,10 +11,18 @@ h1 {
     font-size: 6rem;
 }
 
-/*******************/
-/** Mobile Styles **/
-/*******************/
-@media only screen and (max-width: 767px) {
+header, #subheading {
+    text-shadow: 
+       -1px -1px 0 #fff, 
+        1px -1px 0 #fff, 
+       -1px 1px 0 #fff, 
+        1px 1px 0 #fff;
+}
+
+/****************************/
+/** Tablet / Mobile Styles **/
+/****************************/
+@media only screen and (max-width: 991px) {
     div.wrapper {
         grid-template-columns: 1fr;
 
@@ -26,7 +34,7 @@ h1 {
             'homeRegister'
     }
 
-    #home a {
+    li#home a {
         color: #fff;
         font-family: 'Lora';
         font-size: 1.7rem;
@@ -61,9 +69,6 @@ nav {
 
 nav ul {
     background-color: #5bc0de;
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 0;
     font-size: 3.2rem;
 }
 
@@ -77,6 +82,14 @@ ul#navigation > li > a:focus {
 
 ul#navigation > li > a:hover {
     background-color: #5bc0de;
+}
+
+ul#navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration-style: initial;
+    position: relative;
 }
 
 
