@@ -27,14 +27,14 @@ namespace WebApplication.Web.DAL
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand($"INSERT INTO users (userName, userFirstName, userLastname, birthday, email, password) VALUES (@username, @userFirstName, @userLastName, @birthday, @email, @password);", conn);
+                    SqlCommand cmd = new SqlCommand($"INSERT INTO users (userName, userFirstName, userLastname, birthday, email, password, salt) VALUES (@username, @userFirstName, @userLastName, @birthday, @email, @password, @salt);", conn);
 					cmd.Parameters.AddWithValue("@username", user.Username);
 					cmd.Parameters.AddWithValue("@userFirstName", user.FirstName);
 					cmd.Parameters.AddWithValue("@userLastName", user.LastName);
 					cmd.Parameters.AddWithValue("@birthday", user.BirthDate);
 					cmd.Parameters.AddWithValue("@email", user.Email);
                     cmd.Parameters.AddWithValue("@password", user.Password);
-                   // cmd.Parameters.AddWithValue("@salt", user.Salt);
+                    cmd.Parameters.AddWithValue("@salt", user.Salt);
                     //cmd.Parameters.AddWithValue("@role", user.Role);
 
                     cmd.ExecuteNonQuery();
@@ -137,8 +137,8 @@ namespace WebApplication.Web.DAL
         {
             return new User()
             {
-                Id = Convert.ToInt32(reader["id"]),
-                Username = Convert.ToString(reader["username"]),
+                Id = Convert.ToInt32(reader["userId"]),
+                Username = Convert.ToString(reader["userName"]),
                 Password = Convert.ToString(reader["password"]),
                 Salt = Convert.ToString(reader["salt"]),
                 Role = Convert.ToString(reader["role"])

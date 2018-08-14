@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System;
 using System.Text;
 using WebApplication.Web.DAL;
 using WebApplication.Web.Models;
@@ -170,9 +171,18 @@ namespace WebApplication.Tests.Providers
             // Arrange
             var provider = new SessionAuthProvider(mockAccessor.Object, mockUserDal.Object);
 
+			RegisterViewModel registerViewModel = new RegisterViewModel();
+			registerViewModel.Username = "test";
+			registerViewModel.Email = "test@test.com";
+			registerViewModel.Password = "password";
+			registerViewModel.ConfirmPassword = "password";
+			registerViewModel.FirstName = "testA";
+			registerViewModel.LastName = "testB";
+			registerViewModel.BirthDate = new DateTime(2002, 2, 2);
+
+
 			// Act
-			//provider.Register("test", "password123", "user");
-			provider.Register(new RegisterViewModel() { Username = "test", Password = "password123" });
+			provider.Register(registerViewModel);
 
             // Assert
             mockUserDal.Verify(m => m.CreateUser(It.IsAny<User>()));

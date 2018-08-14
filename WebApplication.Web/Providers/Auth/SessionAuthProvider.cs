@@ -42,12 +42,12 @@ namespace WebApplication.Web.Providers.Auth
         /// <returns></returns>
         public bool SignIn(string username, string password)
         {
-            var user = userDAL.GetUser(username);
+			var user = userDAL.GetUser(username);
             var hashProvider = new HashProvider();                        
             
             if (user != null && hashProvider.VerifyPasswordMatch(user.Password, password, user.Salt))
-            {                
-                Session.SetString(SessionKey, user.Username);
+            {
+				Session.SetString(SessionKey, user.Username);
                 return true;
             }
 

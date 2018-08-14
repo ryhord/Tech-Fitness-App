@@ -1,4 +1,4 @@
-﻿@model User
+﻿@model LoginViewModel
 @{
     ViewData["Title"] = "Login";
 }
@@ -19,6 +19,5 @@
         <input asp-for="Password" />
         <span asp-validation-for="Password"></span>
     </div>
-    @*submit takes you to dashboard*@
-    <button type="submit" class="btn">Login</button>
+    <button type="submit" value="submit" class="btn">Login</button>
 </form>
