@@ -64,21 +64,21 @@ namespace WebApplication.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Register(User user)
+        public IActionResult Register(RegisterViewModel rvm)
         {
             if (ModelState.IsValid)
             {
 				// NEED FIXING
                 // Register them as a new user (and set default role)
-                //authProvider.Register(user.Email, user.Password, "Role");
+                authProvider.Register(rvm);
 
-				dal.CreateUser(user);
+				//dal.CreateUser(user);
 
                 // Redirect the user where you want them to go after registering
                 return RedirectToAction("Index", "Home");
             }
 
-            return View(user);
+            return View(rvm);
         }
     }
 }

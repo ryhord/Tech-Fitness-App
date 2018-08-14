@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApplication.Web.Models;
+using WebApplication.Web.Models.Account;
 
 namespace WebApplication.Web.Providers.Auth
 {
@@ -47,7 +48,7 @@ namespace WebApplication.Web.Providers.Auth
         /// <param name="password"></param>
         /// <param name="role"></param>
         /// <returns></returns>
-        void Register(string email, string password, string role);
+        void Register(RegisterViewModel rvm);
 
         /// <summary>
         /// Checks to see if a user has a given role.

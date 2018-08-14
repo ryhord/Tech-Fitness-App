@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApplication.Web.DAL;
 using WebApplication.Web.Models;
+using WebApplication.Web.Models.Account;
 
 namespace WebApplication.Web.Providers.Auth
 {
@@ -112,17 +113,20 @@ namespace WebApplication.Web.Providers.Auth
         /// <param name="password"></param>
         /// <param name="role"></param>
         /// <returns></returns>
-        public void Register(string username, string password, string role)
+        public void Register(RegisterViewModel rvm)
         {
             var hashProvider = new HashProvider();
-            var passwordHash = hashProvider.HashPassword(password);
+            var passwordHash = hashProvider.HashPassword(rvm.Password);
 
             var user = new User
             {
-                Username = username,
+                Username = rvm.Username,
+				FirstName = rvm.FirstName,
+				LastName = rvm.LastName,
+				Email = rvm.Email,
                 Password = passwordHash.Password,
-                Salt = passwordHash.Salt,
-                Role = role
+				BirthDate = rvm.BirthDate,
+                Salt = passwordHash.Salt
             };
 
             userDAL.CreateUser(user);
