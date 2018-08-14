@@ -68,15 +68,10 @@ namespace WebApplication.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+				// NEED FIXING
                 // Register them as a new user (and set default role)
-                //authProvider.Register(registerViewModel.Email, registerViewModel.Password, "Role");
+                //authProvider.Register(user.Email, user.Password, "Role");
 
-				//IUSER DAL GETS USED HERE
-				//UserSqlDAL dal = new UserSqlDAL(userDAL);
-				// @"Data Source=.\SQLEXPRESS;Initial Catalog=HealthTrackDB;Integrated Security=True"
-				//User user = new User();
-				//user.Email = registerViewModel.Email;
-				//user.Password = registerViewModel.Password;
 				dal.CreateUser(user);
 
                 // Redirect the user where you want them to go after registering
