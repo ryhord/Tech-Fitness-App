@@ -13,9 +13,11 @@ namespace WebApplication.Web.Controllers
     public class AccountController : Controller
     {
         private readonly IAuthProvider authProvider;
-        public AccountController(IAuthProvider authProvider)
+		private readonly IUserDAL dal;
+        public AccountController(IAuthProvider authProvider, IUserDAL dal)
         {
             this.authProvider = authProvider;
+			this.dal = dal;
         }
         
         [HttpGet]
@@ -69,7 +71,9 @@ namespace WebApplication.Web.Controllers
                 // Register them as a new user (and set default role)
                 //authProvider.Register(registerViewModel.Email, registerViewModel.Password, "Role");
 
-				UserSqlDAL dal = new UserSqlDAL(@"Data Source=.\SQLEXPRESS;Initial Catalog=HealthTrackDB;Integrated Security=True");
+				//IUSER DAL GETS USED HERE
+				//UserSqlDAL dal = new UserSqlDAL(userDAL);
+				// @"Data Source=.\SQLEXPRESS;Initial Catalog=HealthTrackDB;Integrated Security=True"
 				//User user = new User();
 				//user.Email = registerViewModel.Email;
 				//user.Password = registerViewModel.Password;

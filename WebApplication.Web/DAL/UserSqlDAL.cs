@@ -27,8 +27,11 @@ namespace WebApplication.Web.DAL
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand($"INSERT INTO users (email, password) VALUES (@email, @password);", conn);
-                    cmd.Parameters.AddWithValue("@email", user.Email);
+                    SqlCommand cmd = new SqlCommand($"INSERT INTO users (userFirstName, userLastname, birthday, email, password) VALUES (@userFirstName, @userLastName, @birthday, @email, @password);", conn);
+					cmd.Parameters.AddWithValue("@userFirstName", user.FirstName);
+					cmd.Parameters.AddWithValue("@userLastName", user.LastName);
+					cmd.Parameters.AddWithValue("@birthday", user.BirthDate);
+					cmd.Parameters.AddWithValue("@email", user.Email);
                     cmd.Parameters.AddWithValue("@password", user.Password);
                    // cmd.Parameters.AddWithValue("@salt", user.Salt);
                     //cmd.Parameters.AddWithValue("@role", user.Role);

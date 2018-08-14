@@ -6,14 +6,24 @@
 
 <h2>Register</h2>
 <form asp-controller="Account" asp-action="Register" method="post">
+
+    <label asp-for="FirstName"></label>
+    <input type="text" asp-for="FirstName" />
+
+    <label asp-for="LastName"></label>
+    <input type="text" asp-for="LastName" />
+
+    <label asp-for="BirthDate"></label>
+    <input type="datetime" asp-for="BirthDate" />
+
     <label asp-for="Email"></label>
     <input type="text" asp-for="Email" />
 
     <label asp-for="Password"></label>
     <input type="text" asp-for="Password" />
 
-   <!-- <label asp-for="ConfirmPassword"></label>
-    <input type="text" asp-for="ConfirmPassword" /> -->
+    <!-- <label asp-for="ConfirmPassword"></label>
+     <input type="text" asp-for="ConfirmPassword" /> -->
 
     <button value="submit" type="submit">Register</button>
 </form>

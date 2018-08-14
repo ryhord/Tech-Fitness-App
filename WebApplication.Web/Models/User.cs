@@ -26,6 +26,26 @@ namespace WebApplication.Web.Models
 		[MaxLength(50)]
 		public string Email { get; set; }
 
+		/// <summary>
+		/// The user's firt name.
+		/// </summary>
+		[Required]
+		[MaxLength(50)]
+		public string FirstName { get; set; }
+
+		/// <summary>
+		/// The user's last name.
+		/// </summary>
+		[Required]
+		[MaxLength(50)]
+		public string LastName { get; set; }
+
+		/// <summary>
+		/// The user's birth date.
+		/// </summary>
+		[Required]
+		public DateTime BirthDate { get; set; }
+
         /// <summary>
         /// The user's password.
         /// </summary>
