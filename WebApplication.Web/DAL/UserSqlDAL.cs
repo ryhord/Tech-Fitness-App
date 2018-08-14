@@ -133,7 +133,7 @@ namespace WebApplication.Web.DAL
             }
         }
 
-        private User (SqlDataReader reader)
+        private User MapRowToUser (SqlDataReader reader)
         {
 			return new User()
 			{
