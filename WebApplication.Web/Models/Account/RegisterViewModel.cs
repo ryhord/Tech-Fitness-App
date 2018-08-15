@@ -49,8 +49,8 @@ namespace WebApplication.Web.Models.Account
 		/// The user's birth date.
 		/// </summary>
 		[Required]
-		[DataType(DataType.Date)]
-		public DateTime BirthDate { get; set; }
+        [DataType(DataType.DateTime, ErrorMessage = "A valid Date or Date and Time must be entered")]
+        public DateTime BirthDate { get; set; }
 
 	}
 }

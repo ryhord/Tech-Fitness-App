@@ -3,33 +3,46 @@
 @{
     ViewData["Title"] = "Register";
 }
+<link rel="stylesheet" href="~/css/register.css" />
+<div>
+    <div id="register-content">
+        <h2>Register</h2>
 
-<h2>Register</h2>
-<form asp-controller="Account" asp-action="Register" method="post">
-
-    <label asp-for="Username"></label>
-    <input type="text" asp-for="Username" />
-
-    <label asp-for="FirstName"></label>
-    <input type="text" asp-for="FirstName" />
-
-    <label asp-for="LastName"></label>
-    <input type="text" asp-for="LastName" />
-
-    <label asp-for="BirthDate"></label>
-    <input type="datetime" asp-for="BirthDate" />
-
-    <label asp-for="Email"></label>
-    <input type="text" asp-for="Email" />
-
-    <label asp-for="Password"></label>
-    <input type="text" asp-for="Password" />
-
-    <label asp-for="ConfirmPassword"></label>
-    <input type="text" asp-for="ConfirmPassword" />
-
-    <!-- <label asp-for="ConfirmPassword"></label>
-     <input type="text" asp-for="ConfirmPassword" /> -->
-
-    <button value="submit" type="submit">Register</button>
-</form>
+        <form asp-controller="Account" asp-action="Register" method="post">
+            <div class="register-field">
+                <label asp-for="Username"></label>
+                <input class="form-control" type="text" asp-for="Username" />
+            </div>
+            <div class="register-field">
+                <label asp-for="FirstName">First Name</label>
+                <input class="form-control" type="text" asp-for="FirstName" />
+            </div>
+            <div class="register-field">
+                <label asp-for="LastName">Last Name</label>
+                <input class="form-control" type="text" asp-for="LastName" />
+            </div>
+            <div class="register-field">
+                <label asp-for="BirthDate">Birthday</label>
+                <input class="form-control" type="datetime" asp-for="BirthDate" />
+                <span asp-validation-for="BirthDate"></span>
+            </div>
+            <div class="register-field">
+                <label asp-for="Email"></label>
+                <input class="form-control" type="text" asp-for="Email" />
+            </div>
+            <div class="register-field">
+                <label asp-for="Password"></label>
+                <input class="form-control" type="password" asp-for="Password" />
+                <span asp-validation-for="Password"></span>
+            </div>
+            <div class="register-field">
+                <label asp-for="ConfirmPassword"></label>
+                <input class="form-control" type="password" asp-for="ConfirmPassword" />
+                <span asp-validation-for="ConfirmPassword"></span>
+            </div>
+            <div class="register-field">
+                <button class="btn btn-info" value="submit" type="submit">Register</button>
+            </div>
+        </form>
+    </div>
+</div>
