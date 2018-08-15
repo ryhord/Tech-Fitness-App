@@ -1,16 +1,35 @@
-* {
-    border: 1px solid red;
-}
-/**
-label {
-    display: inline-block;
-    float: left;
-    clear: left;
-    width: 250px;
-    text-align: right;
+
+
+body {
+    background: url("../images/login_register.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: rgba(255, 255, 255, 0.4);
+    background-blend-mode: lighten;
 }
 
-input {
-    display: inline-block;
-    float: left;
+#register-content {
+    width: 40%;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 4rem;
+}
+
+.register-field {
+    margin-top: 2rem;
+}
+
+.field-validation-error {
+    color: red;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: right;
+    padding: 2rem;
 }
