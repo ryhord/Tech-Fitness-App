@@ -14,10 +14,12 @@ namespace WebApplication.Web.Controllers
     public class AccountController : Controller
     {
         private readonly IAuthProvider authProvider;
-        public AccountController(IAuthProvider authProvider)
+		private readonly IUserDAL dal;
+		public AccountController(IAuthProvider authProvider, IUserDAL dal)
         {
             this.authProvider = authProvider;
-        }
+			this.dal = dal;
+		}
         
         [HttpGet]
         public IActionResult Login()
@@ -87,5 +89,29 @@ namespace WebApplication.Web.Controllers
 			User user = authProvider.GetCurrentUser();
 			return View(user);
 		}
-    }
+
+		public IActionResult EditProfile()
+		{
+			User user = authProvider.GetCurrentUser();
+			return View(user);
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public IActionResult SaveChanges(User updatedUser)
+		{
+			User user = authProvider.GetCurrentUser();
+			user.FirstName = updatedUser.FirstName;
+			user.LastName = updatedUser.LastName;
+			user.BirthDate = updatedUser.BirthDate;
+			user.Age = updatedUser.Age;
+			user.Height = updatedUser.Height;
+			user.CurrentWeight = updatedUser.CurrentWeight;
+			user.DesiredWeight = updatedUser.DesiredWeight;
+			user.RecommendedDailyCaloricIntake = updatedUser.RecommendedDailyCaloricIntake;
+			dal.UpdateUser(user);
+
+			return RedirectToAction("ViewProfile", "Account");
+		}
+	}
 }

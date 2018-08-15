@@ -90,11 +90,11 @@ namespace WebApplication.Web.Providers.Auth
             return false;
         }
 
-        /// <summary>
-        /// Gets the user using the current username in session.
-        /// </summary>
-        /// <returns></returns>
-        public User GetCurrentUser()
+		/// <summary>
+		/// Gets the user using the current username in session.
+		/// </summary>
+		/// <returns></returns>
+		public User GetCurrentUser()
         {
             var username = Session.GetString(SessionKey);
 
