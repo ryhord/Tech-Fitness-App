@@ -1,0 +1,51 @@
+body {
+    font-family: 'Montserrat';
+}
+div.container{
+    
+}
+
+nav {
+    grid-area: nav;
+}
+
+    nav ul {
+        background-color: #5bc0de;
+        font-size: 3.2rem;
+        list-style: none;
+    }
+
+        nav ul li a {
+            color: white;
+        }
+
+        nav ul li div a {
+            color: darkslategrey;
+            padding-left: 1rem;
+
+        }
+
+ul#navigation > li > a:focus {
+    background-color: #5bc0de;
+}
+
+ul#navigation > li > a:hover {
+    background-color: #5bc0de;
+}
+
+ul#navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration-style: initial;
+    position: relative;
+}
+
+#home {
+    color: #fff;
+    font-family: 'Lora';
+    font-size: 3.5rem;
+    /*padding-right: 8rem;
+    padding-left: 3rem;
+    margin-left: 5rem;*/
+}

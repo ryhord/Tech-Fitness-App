@@ -1,5 +1,8 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
 for details on configuring this project to bundle and minify static web assets. */
+*{
+    border: solid 1px red;
+}
 body {
     font-family: 'Montserrat';
     background: url("../images/home.jpg");
@@ -26,7 +29,7 @@ header, #subheading {
 /****************************/
 /** Tablet / Mobile Styles **/
 /****************************/
-@media only screen and (max-width: 991px) {
+/*@media only screen and (max-width: 991px) {
     div.wrapper {
         grid-template-columns: 1fr;
 
@@ -36,73 +39,73 @@ header, #subheading {
             'subheading'
             'homeLogin'
             'homeRegister'
-    }
+    }*/
 
-    li#home a {
+    /*li#home a {
         color: #fff;
         font-family: 'Lora';
         font-size: 1.7rem;
         padding-right: 0rem;
         padding-left: 0rem;
         margin-left: 0rem;
-    }
+    }*/
 
-    li#home a:focus {
+    /*li#home a:focus {
         text-decoration: none;
         background-color: #4ca4bf;
         color: #23527c;
-    }
+    }*/
 
-    li#home a:hover {
+    /*li#home a:hover {
         text-decoration: none;
         background-color: #4ca4bf;
         color: #23527c;
-    }
+    }*/
 
-    nav > ul > li > a {
+    /*nav > ul > li > a {
         font-size: 1.7rem;
-    }
+    }*/
 }
 
 /*************************/
 /** Desktop Home Styles **/
 /*************************/
-nav {
+/*nav {
     grid-area: nav;
-}
+}*/
 
-nav ul {
+/*nav ul {
     background-color: #5bc0de;
     font-size: 3.2rem;
-}
+}*/
 
-nav ul li a {
+/*nav ul li a {
     color: white;
-}
+}*/
 
-ul#navigation > li > a:focus {
+/*ul#navigation > li > a:focus {
     background-color: #5bc0de;
-}
+}*/
 
-ul#navigation > li > a:hover {
+/*ul#navigation > li > a:hover {
     background-color: #5bc0de;
-}
+}*/
 
-ul#navigation {
+/*ul#navigation {
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration-style: initial;
     position: relative;
-}
+}*/
 
 #home {
     color: #fff;
     font-family: 'Lora';
     font-size: 3.5rem;
-    padding-right: 8rem;
+    /*padding-right: 8rem;
     padding-left: 3rem;
-    margin-left: -10rem;
+    margin-left: -10rem;*/
 }
 
 div.wrapper {
@@ -111,11 +114,11 @@ div.wrapper {
     /* Define the number of columns */
     grid-template-columns: 2fr 1fr 1fr 2fr;
     grid-template-areas: 
-        'nav nav nav nav' 
+        /*'nav nav nav nav'*/ 
         'header header header header' 
         'subheading subheading subheading subheading' 
         '. homeLogin homeRegister .';
-    gap: 4rem;
+    grid-gap: 4rem;
 }
 
 header {
