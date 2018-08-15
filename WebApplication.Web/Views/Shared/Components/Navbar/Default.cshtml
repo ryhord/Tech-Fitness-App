@@ -3,83 +3,45 @@
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
 <head>
-    @*<link rel="stylesheet" href="~/css/nav.css" />*@
-
+    <link rel="stylesheet" href="~/css/nav.css" />
 </head>
+
 <style>
-    * {
-        border: 1px solid red;
-    }
-
-    ul {
-        list-style: none;
-    
-    }
-
-    nav {
-        width: 100%;
-        font-family: 'Montserrat';
-    }
-    nav ul {
-        background-color: #5bc0de;
-        font-size: 3.2rem;
-        
-    }
-
-                /*nav ul li a {
-                    color: white;
-                }
-                /*text in the dropdown menu*/
-                /*nav ul li div a {
-                    color: grey;
-                    margin: 10px;
-                }*/
-
-    /*ul#homeNav > li > a:focus {
-        background-color: #5bc0de;
-    }
-
-    ul#navigation > li > a:hover {
-        background-color: #5bc0de;
-    }*/
-
-    /*ul#navigation {
-        display: flex;
-        /*justify-content: center;*/
-        /*align-items: center;*/
-        /*text-decoration-style: initial;
-        position: relative;
-    }*/
-
 </style>
+
+
 @if (Model == null)
 {
-    <nav class="navbar">
-        <ul class="navbar-nav" >
-            <li class="nav-item" id="home"><a asp-area="" asp-controller="Home" asp-action="Index">Tech Fitness Pal</a></li>
-            <li class="nav-item pull-right"><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-            <li class="nav-item pull-right"><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
-            <li class="nav-item pull-right"><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
-        </ul>
-    </nav>
+    @*<div class="container">*@
+        <nav class="navbar navbar-expand-lg">
+            <ul class="navbar-nav" id="navigation">
+                <li class="nav-item" id="home"><a asp-area="" asp-controller="Home" asp-action="Index">Tech Fitness Pal</a></li>
+                <li class="nav-item pull-right"><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                <li class="nav-item pull-right"><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
+                <li class="nav-item pull-right"><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
+            </ul>
 
+        </nav>
+    @*</div>*@
 }
 else
 {
-    <nav class="navbar" >
-        <ul class="navbar-nav">
-            <li class="nav-item"><a asp-area="" asp-controller="Home" asp-action="Index">Tech Fitness Pal</a></li>
-            <li class="nav-item dropdown ">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    Hello @Model.Username
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" asp-controller="Dashboard" asp-action="Index">Settings</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" asp-controller="Dashboard" asp-action="Index">Log Off</a>
-                </div>
-            </li>
-        </ul>
-    </nav>
+    @*<div class="container">*@
+        <nav class="navbar navbar-expand-lg">
+            <ul class="navbar-nav mr-auto" id="navigation">
+                <li class="nav-item" id="home"><a asp-area="" asp-controller="Home" asp-action="Index">Tech Fitness Pal</a></li>
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Hello @Model.Username
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" asp-controller="Dashboard" asp-action="Index">Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" asp-controller="Dashboard" asp-action="Index">Log Off</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    @*</div>*@
 }
 
