@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using WebApplication.Web.DAL;
 using WebApplication.Web.Models;
 using WebApplication.Web.Models.Account;
@@ -38,6 +39,11 @@ namespace WebApplication.Web.Controllers
                     // Redirect the user where you want them to go after successful login
                     return RedirectToAction("Index", "Dashboard");
                 }
+				else
+				{
+					ModelState.AddModelError("Password", "Invalid Credentials");
+					return View(loginViewModel);
+				}
             }
 
             return View(loginViewModel);
