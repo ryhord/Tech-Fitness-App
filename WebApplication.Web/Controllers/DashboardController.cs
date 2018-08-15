@@ -13,6 +13,10 @@ namespace WebApplication.Web.Controllers
             return View();
         }
 
+		public IActionResult AddFood()
+		{
+			return View();
+		}
 		
 
 
