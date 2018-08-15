@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Register";
 }
+<link href="https://fonts.googleapis.com/css?family=Lora|Montserrat" rel="stylesheet">
 <link rel="stylesheet" href="~/css/register.css" />
 <div>
     <div id="register-content">
@@ -14,15 +15,15 @@
                 <input class="form-control" type="text" asp-for="Username" />
             </div>
             <div class="register-field">
-                <label asp-for="FirstName"></label>
+                <label asp-for="FirstName">First Name</label>
                 <input class="form-control" type="text" asp-for="FirstName" />
             </div>
             <div class="register-field">
-                <label asp-for="LastName"></label>
+                <label asp-for="LastName">Last Name</label>
                 <input class="form-control" type="text" asp-for="LastName" />
             </div>
             <div class="register-field">
-                <label asp-for="BirthDate"></label>
+                <label asp-for="BirthDate">Birthday</label>
                 <input class="form-control" type="datetime" asp-for="BirthDate" />
                 <span asp-validation-for="BirthDate"></span>
             </div>
