@@ -1,0 +1,44 @@
+* {
+    border: 1px solid red;
+}
+    ul{
+    list-style: none;
+}
+
+nav {
+    grid-area: nav;
+    
+}
+
+    nav ul {
+        background-color: #5bc0de;
+        font-size: 3.2rem;
+        
+    }
+
+nav ul li a {
+    color: white;
+}
+/*text in the dropdown menu*/ 
+    nav ul li div a {
+        color: grey;
+        margin: 10px;
+    }
+
+/*ul#navigation > li > a:focus {
+    background-color: #5bc0de;
+}
+
+ul#navigation > li > a:hover {
+    background-color: #5bc0de;
+}
+
+ul#navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration-style: initial;
+    position: relative;
+}*/
+
+
