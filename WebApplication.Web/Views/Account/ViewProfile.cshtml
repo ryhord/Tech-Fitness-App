@@ -5,55 +5,56 @@
 
 <h2>ViewProfile</h2>
 
-<form asp-controller="Account" asp-action="Register" method="post">
+<text>Username: </text>
+<text>@Model.Username</text>
 
-    <text>Username: </text>
-    <text>@Model.Username</text>
+<br />
 
-    <br />
+<text>Email: </text>
+<text>@Model.Email</text>
 
-    <text>Email: </text>
-    <text>@Model.Email</text>
+<br />
 
-    <br />
+<text>First Name: </text>
+<text>@Model.FirstName</text>
 
-    <text>First Name: </text>
-    <text>@Model.FirstName</text>
+<br />
 
-    <br />
+<text>Last Name: </text>
+<text>@Model.LastName</text>
 
-    <text>Last Name: </text>
-    <text>@Model.LastName</text>
+<br />
 
-    <br />
+<text>Date of Birth: </text>
+<text>@Model.BirthDate.ToShortDateString()</text>
 
-    <text>Date of Birth: </text>
-    <text>@Model.BirthDate.ToShortDateString()</text>
+<br />
 
-    <br />
+<text>Age: </text>
+<text>@Model.Age</text>
 
-    <text>Age: </text>
-    <text>@Model.Age</text>
+<br />
 
-    <br />
+<text>Height (inches): </text>
+<text>@Model.Height</text>
 
-    <text>Height: </text>
-    <text>@Model.Height</text>
+<br />
 
-    <br />
+<text>Current Weight (lbs.): </text>
+<text>@Model.CurrentWeight</text>
 
-    <text>Current Weight: </text>
-    <text>@Model.CurrentWeight</text>
+<br />
 
-    <br />
+<text>Desired Weight (lbs.): </text>
+<text>@Model.DesiredWeight</text>
 
-    <text>Desired Weight: </text>
-    <text>@Model.DesiredWeight</text>
+<br />
 
-    <br />
+<text>Recommended Daily Caloric Intake: </text>
+<text>@Model.RecommendedDailyCaloricIntake</text>
 
-    <text>Recommended Daily Caloric Intake: </text>
-    <text>@Model.RecommendedDailyCaloricIntake</text>
+<br />
 
-    <br />
+<form asp-controller="Account" asp-action="EditProfile" method="get">
+    <button type="submit" value="submit" class="btn">Edit Profile</button>
 </form>

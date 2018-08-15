@@ -1,0 +1,62 @@
+﻿@model User
+@{
+    ViewData["Title"] = "EditProfile";
+}
+
+<h2>EditProfile</h2>
+<form asp-controller="Account" asp-action="SaveChanges" method="post">
+
+    <text>Username: </text>
+    <text>@Model.Username</text>
+
+    <br />
+
+    <text>Email: </text>
+    <text>@Model.Email</text>
+
+    <br />
+
+    <label asp-for="FirstName">First Name: </label>
+    <input type="text" asp-for="FirstName" placeholder="@Model.FirstName" />
+
+    <br />
+
+    <label asp-for="LastName">Last Name: </label>
+    <input type="text" asp-for="LastName" placeholder="@Model.LastName" />
+
+    <br />
+
+    <label asp-for="BirthDate">Date of Birth: </label>
+    <input type="text" asp-for="BirthDate" placeholder="@Model.BirthDate.ToShortDateString()" />
+
+    <br />
+
+    <label asp-for="Age">Age: </label>
+    <input type="text" asp-for="Age" placeholder="@Model.Age" />
+
+    <br />
+
+    <label asp-for="Height">Height (inches): </label>
+    <input type="text" asp-for="Height" placeholder="@Model.Height" />
+
+    <br />
+
+    <label asp-for="CurrentWeight">Current Weight (lbs.): </label>
+    <input type="text" asp-for="CurrentWeight" placeholder="@Model.CurrentWeight" />
+
+    <br />
+
+    <label asp-for="DesiredWeight">Desired Weight (lbs.): </label>
+    <input type="text" asp-for="DesiredWeight" placeholder="@Model.DesiredWeight" />
+
+    <br />
+
+    <label asp-for="RecommendedDailyCaloricIntake">Recommended Daily Caloric Intake: </label>
+    <input type="text" asp-for="RecommendedDailyCaloricIntake" placeholder="@Model.RecommendedDailyCaloricIntake" />
+
+    <br />
+
+    <button type="submit" value="submit" class="btn">
+        Save Changes
+    </button>
+</form>

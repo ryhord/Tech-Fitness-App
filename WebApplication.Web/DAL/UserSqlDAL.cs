@@ -116,13 +116,21 @@ namespace WebApplication.Web.DAL
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE users SET password = @password, salt = @salt, role = @role WHERE id = @id;", conn);                    
-                    cmd.Parameters.AddWithValue("@password", user.Password);
-                    cmd.Parameters.AddWithValue("@salt", user.Salt);
-                    cmd.Parameters.AddWithValue("@role", user.Role);
-                    cmd.Parameters.AddWithValue("@id", user.Id);
-
-                    cmd.ExecuteNonQuery();
+                    SqlCommand cmd = new SqlCommand("UPDATE users SET userName = @userName, userFirstName = @userFirstName, userLastName = @userLastName, birthday = @birthday, userAge = @userAge, userHeight = @userHeight, userCurrentWeight = @userCurrentWeight, userDesiredWeight = @userDesiredWeight, recommendedDailyCaloricIntake = @recommendedDailyCaloricIntake, password = @password, salt = @salt WHERE userId = @userId", conn);                    
+                    cmd.Parameters.AddWithValue("@userName", user.Username);
+                    cmd.Parameters.AddWithValue("@userFirstName", user.FirstName);
+					cmd.Parameters.AddWithValue("@userLastName", user.LastName);
+					cmd.Parameters.AddWithValue("@birthday", user.BirthDate);
+					cmd.Parameters.AddWithValue("@userAge", user.Age);
+					cmd.Parameters.AddWithValue("@userHeight", user.Height);
+					cmd.Parameters.AddWithValue("@userCurrentWeight", user.CurrentWeight);
+					cmd.Parameters.AddWithValue("@userDesiredWeight", user.DesiredWeight);
+					cmd.Parameters.AddWithValue("@recommendedDailyCaloricIntake", user.RecommendedDailyCaloricIntake);
+					cmd.Parameters.AddWithValue("@password", user.Password);
+					cmd.Parameters.AddWithValue("@salt", user.Salt);
+					cmd.Parameters.AddWithValue("@userId", user.Id);
+					
+					cmd.ExecuteNonQuery();
 
                     return;
                 }
@@ -139,33 +147,45 @@ namespace WebApplication.Web.DAL
 			User user = new User();
 			user.Id = Convert.ToInt32(reader["userId"]);
 			user.Username = Convert.ToString(reader["userName"]);
+			user.FirstName = Convert.ToString(reader["userFirstName"]);
+			user.LastName = Convert.ToString(reader["userLastName"]);
+			user.BirthDate = Convert.ToDateTime(reader["birthday"]);
 			user.Email = Convert.ToString(reader["email"]);
 			user.Password = Convert.ToString(reader["password"]);
 			user.Salt = Convert.ToString(reader["salt"]);
 			user.Role = Convert.ToString(reader["role"]);
-
-			if (Convert.ToString(reader["userFirstName"]) != null)
-			{
-				// user.FirstName = Convert.ToString(reader["userFirstName"]);
-			}
 
 			if (! DBNull.Value.Equals(reader["userAge"]))
 			{
 				user.Age = Convert.ToInt32(reader["userAge"]);
 			}
 
+			if (! DBNull.Value.Equals(reader["userHeight"]))
+			{
+				user.Height = Convert.ToInt32(reader["userHeight"]);
+			}
+
+			if (!DBNull.Value.Equals(reader["userCurrentWeight"]))
+			{
+				user.CurrentWeight = Convert.ToInt32(reader["userCurrentWeight"]);
+			}
+
+			if (!DBNull.Value.Equals(reader["userDesiredWeight"]))
+			{
+				user.DesiredWeight = Convert.ToInt32(reader["userDesiredWeight"]);
+			}
+
+			if (!DBNull.Value.Equals(reader["recommendedDailyCaloricIntake"]))
+			{
+				user.RecommendedDailyCaloricIntake = Convert.ToInt32(reader["recommendedDailyCaloricIntake"]);
+			}
+
+			if (!DBNull.Value.Equals(reader["mealStreak"]))
+			{
+				user.MealStreak = Convert.ToInt32(reader["mealStreak"]);
+			}
 
 			return user;
-				//FirstName = Convert.ToString(reader["userFirstName"]),
-				//LastName = Convert.ToString(reader["userLastName"]),
-				//BirthDate = Convert.ToDateTime(reader["birthday"]),
-				//Age = Convert.ToInt32(reader["userAge"]),
-				//Height = Convert.ToInt32(reader["userHeight"]),
-				//CurrentWeight = Convert.ToInt32(reader["userCurrentWeight"]),
-				//DesiredWeight = Convert.ToInt32(reader["userDesiredWeight"]),
-				//RecommendedDailyCaloricIntake = Convert.ToInt32(reader["recommendedDailyCaloricIntake"]),
-				//MealStreak = Convert.ToInt32(reader["mealStreak"]),
-
         }
     }
 }
