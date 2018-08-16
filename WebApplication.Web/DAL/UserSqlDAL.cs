@@ -153,7 +153,7 @@ namespace WebApplication.Web.DAL
 					cmd.Parameters.AddWithValue("@userFirstName", user.FirstName);
 					cmd.Parameters.AddWithValue("@userLastName", user.LastName);
 					cmd.Parameters.AddWithValue("@birthday", user.BirthDate);
-					cmd.Parameters.AddWithValue("@userAge", user.Age);
+					//cmd.Parameters.AddWithValue("@userAge", user.Age);
 					cmd.Parameters.AddWithValue("@userHeight", user.Height);
 					cmd.Parameters.AddWithValue("@userCurrentWeight", user.CurrentWeight);
 					cmd.Parameters.AddWithValue("@userDesiredWeight", user.DesiredWeight);
@@ -187,10 +187,10 @@ namespace WebApplication.Web.DAL
 			user.Salt = Convert.ToString(reader["salt"]);
 			user.Role = Convert.ToString(reader["role"]);
 
-			if (!DBNull.Value.Equals(reader["userAge"]))
-			{
-				user.Age = Convert.ToInt32(reader["userAge"]);
-			}
+			//if (!DBNull.Value.Equals(reader["userAge"]))
+			//{
+			//	user.Age = Convert.ToInt32(reader["userAge"]);
+			//}
 
 			if (!DBNull.Value.Equals(reader["userHeight"]))
 			{

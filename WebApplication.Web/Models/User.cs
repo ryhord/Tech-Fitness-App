@@ -50,12 +50,24 @@ namespace WebApplication.Web.Models
 		/// <summary>
 		/// The user's age.
 		/// </summary>
-		public int Age { get; set; }
+		public int Age
+		{
+			get
+			{
+				int age = 0;
+				age = DateTime.Now.Year - BirthDate.Year;
+				if (DateTime.Now.DayOfYear < BirthDate.DayOfYear)
+					age = age - 1;
 
-		/// <summary>
-		/// The user's height (in inches).
-		/// </summary>
-		public int Height { get; set; }
+				return age;
+			}
+		}
+
+
+	/// <summary>
+	/// The user's height (in inches).
+	/// </summary>
+	public int Height { get; set; }
 
 		/// <summary>
 		/// The user's current weight (in lbs.).
