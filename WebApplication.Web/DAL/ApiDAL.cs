@@ -36,6 +36,10 @@ namespace WebApplication.Web.DAL
 			HttpWebRequest request = (HttpWebRequest)WebRequest.Create(endpoint);
 
 			request.Method = httpMethod.ToString();
+			request.Headers["Content-Type"] = "application/json";
+			request.Headers["x-app-id"] = "fdc869f7";
+			request.Headers["x-app-key"] = "e5969a224b73d9ea0899bb2d6934badc";
+			
 
 			using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
 			{

@@ -24,18 +24,18 @@ namespace WebApplication.Web.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult FoodResults(Food food)
+		public IActionResult FoodResults(FoodPreview foodSearch)
 		{
 			ApiDAL api = new ApiDAL();
-			api.endpoint = "http://dry-cliffs-19849.herokuapp.com";
-			food.Name = api.makeRequest();
+			api.endpoint = "https://trackapi.nutritionix.com/v2/search/instant?query=" + foodSearch.Name;
+			foodSearch.Name = api.makeRequest();
 
-			return View(food);
+			SearchResults res = new SearchResults();
+			res.FoodSearchResults.Add(foodSearch);
+			int listLength = res.FoodSearchResults.Count;
+
+			return View(res);
 		}
-
-
-
-
 
 	}
 }
