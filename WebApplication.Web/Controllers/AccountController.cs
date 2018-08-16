@@ -90,26 +90,17 @@ namespace WebApplication.Web.Controllers
 				ModelState.AddModelError("email-taken", "An account is already registered to this email.");
 			}
 
-
 			if (ModelState.IsValid)
             {
-
-
                 // Register them as a new user (and set default role)
                 authProvider.Register(rvm);
 
                 // Redirect the user where you want them to go after registering
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Dashboard");
             }
 
             return View(rvm);
         }
-
-		//public JsonResult DoesUserExists(string userName)
-		//{
-		//	//check if any of the userName matches the UserName specified in the Parameter using the ANY extension method.
-		//	return Json(!HealthTrackDB.Users.Any(x => x.userName == userName), JsonRequestBehavior.AllowGet);
-		//}
 
 		public IActionResult ViewProfile()
 		{
