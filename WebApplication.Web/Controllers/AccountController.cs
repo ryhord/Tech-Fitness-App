@@ -110,6 +110,7 @@ namespace WebApplication.Web.Controllers
 
 		public IActionResult EditProfile()
 		{
+
 			User user = authProvider.GetCurrentUser();
 			return View(user);
 		}
@@ -122,7 +123,6 @@ namespace WebApplication.Web.Controllers
 			user.FirstName = updatedUser.FirstName;
 			user.LastName = updatedUser.LastName;
 			user.BirthDate = updatedUser.BirthDate;
-			//user.Age = updatedUser.Age;
 			user.Height = updatedUser.Height;
 			user.CurrentWeight = updatedUser.CurrentWeight;
 			user.DesiredWeight = updatedUser.DesiredWeight;

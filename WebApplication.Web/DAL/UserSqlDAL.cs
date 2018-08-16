@@ -187,11 +187,6 @@ namespace WebApplication.Web.DAL
 			user.Salt = Convert.ToString(reader["salt"]);
 			user.Role = Convert.ToString(reader["role"]);
 
-			//if (!DBNull.Value.Equals(reader["userAge"]))
-			//{
-			//	user.Age = Convert.ToInt32(reader["userAge"]);
-			//}
-
 			if (!DBNull.Value.Equals(reader["userHeight"]))
 			{
 				user.Height = Convert.ToInt32(reader["userHeight"]);

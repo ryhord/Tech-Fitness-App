@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace WebApplication.Web.Models
 {
-    public class User
-    {
-        /// <summary>
-        /// The user's id.
-        /// </summary>
-        public int Id { get; set; }
+	public class User
+	{
+		/// <summary>
+		/// The user's id.
+		/// </summary>
+		public int Id { get; set; }
 
-        /// <summary>
-        /// The user's username.
-        /// </summary>
+		/// <summary>
+		/// The user's username.
+		/// </summary>
 		[Required]
-        [MaxLength(50)]
-        public string Username { get; set; }
+		[MaxLength(50)]
+		public string Username { get; set; }
 
 		/// <summary>
 		/// The user's email.
@@ -63,11 +63,10 @@ namespace WebApplication.Web.Models
 			}
 		}
 
-
-	/// <summary>
-	/// The user's height (in inches).
-	/// </summary>
-	public int Height { get; set; }
+		/// <summary>
+		/// The user's height (in inches).
+		/// </summary>
+		public int Height { get; set; }
 
 		/// <summary>
 		/// The user's current weight (in lbs.).
