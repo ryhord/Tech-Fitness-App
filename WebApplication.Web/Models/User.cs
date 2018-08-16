@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace WebApplication.Web.Models
 {
-    public class User
-    {
-        /// <summary>
-        /// The user's id.
-        /// </summary>
-        public int Id { get; set; }
+	public class User
+	{
+		/// <summary>
+		/// The user's id.
+		/// </summary>
+		public int Id { get; set; }
 
-        /// <summary>
-        /// The user's username.
-        /// </summary>
+		/// <summary>
+		/// The user's username.
+		/// </summary>
 		[Required]
-        [MaxLength(50)]
-        public string Username { get; set; }
+		[MaxLength(50)]
+		public string Username { get; set; }
 
 		/// <summary>
 		/// The user's email.
@@ -50,7 +50,18 @@ namespace WebApplication.Web.Models
 		/// <summary>
 		/// The user's age.
 		/// </summary>
-		public int Age { get; set; }
+		public int Age
+		{
+			get
+			{
+				int age = 0;
+				age = DateTime.Now.Year - BirthDate.Year;
+				if (DateTime.Now.DayOfYear < BirthDate.DayOfYear)
+					age = age - 1;
+
+				return age;
+			}
+		}
 
 		/// <summary>
 		/// The user's height (in inches).

@@ -31,8 +31,14 @@ namespace WebApplication.Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Login(LoginViewModel loginViewModel)
         {
-            // Ensure the fields were filled out
-            if (ModelState.IsValid)
+            var existingUser = dal.GetUser(loginViewModel.Username);
+			if (existingUser == null)
+			{
+				ModelState.AddModelError("username-nonexistent", "An account is not registered to this username.");
+			}
+
+			// Ensure the fields were filled out
+			if (ModelState.IsValid)
             {
 				// Check that they provided correct credentials
 				bool validLogin = authProvider.SignIn(loginViewModel.Username, loginViewModel.Password);
@@ -72,13 +78,25 @@ namespace WebApplication.Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Register(RegisterViewModel rvm)
         {
-            if (ModelState.IsValid)
+			var existingUser = dal.GetUser(rvm.Username);
+			if (existingUser != null)
+			{
+				ModelState.AddModelError("username-taken", "An account is already registered to this username.");				
+			}
+
+			var existingEmail = dal.GetEmail(rvm.Email);
+			if (existingUser != null)
+			{
+				ModelState.AddModelError("email-taken", "An account is already registered to this email.");
+			}
+
+			if (ModelState.IsValid)
             {
                 // Register them as a new user (and set default role)
                 authProvider.Register(rvm);
 
                 // Redirect the user where you want them to go after registering
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Dashboard");
             }
 
             return View(rvm);
@@ -92,6 +110,7 @@ namespace WebApplication.Web.Controllers
 
 		public IActionResult EditProfile()
 		{
+
 			User user = authProvider.GetCurrentUser();
 			return View(user);
 		}
@@ -104,7 +123,6 @@ namespace WebApplication.Web.Controllers
 			user.FirstName = updatedUser.FirstName;
 			user.LastName = updatedUser.LastName;
 			user.BirthDate = updatedUser.BirthDate;
-			user.Age = updatedUser.Age;
 			user.Height = updatedUser.Height;
 			user.CurrentWeight = updatedUser.CurrentWeight;
 			user.DesiredWeight = updatedUser.DesiredWeight;
@@ -113,5 +131,7 @@ namespace WebApplication.Web.Controllers
 
 			return RedirectToAction("ViewProfile", "Account");
 		}
+
+
 	}
 }

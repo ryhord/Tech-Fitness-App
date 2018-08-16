@@ -7,121 +7,153 @@ using WebApplication.Web.Models;
 
 namespace WebApplication.Web.DAL
 {
-    public class UserSqlDAL : IUserDAL
-    {
-        private readonly string connectionString;
+	public class UserSqlDAL : IUserDAL
+	{
+		private readonly string connectionString;
 
-        public UserSqlDAL(string connectionString)
-        {
-            this.connectionString = connectionString;
-        }
+		public UserSqlDAL(string connectionString)
+		{
+			this.connectionString = connectionString;
+		}
 
-        /// <summary>
-        /// Saves the user to the database.
-        /// </summary>
-        /// <param name="user"></param>
-        public void CreateUser(User user)
-        {
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand($"INSERT INTO users (userName, userFirstName, userLastname, birthday, email, password, salt) VALUES (@username, @userFirstName, @userLastName, @birthday, @email, @password, @salt);", conn);
+		/// <summary>
+		/// Saves the user to the database.
+		/// </summary>
+		/// <param name="user"></param>
+		public void CreateUser(User user)
+		{
+			try
+			{
+				using (SqlConnection conn = new SqlConnection(connectionString))
+				{
+					conn.Open();
+					SqlCommand cmd = new SqlCommand($"INSERT INTO users (userName, userFirstName, userLastname, birthday, email, password, salt) VALUES (@username, @userFirstName, @userLastName, @birthday, @email, @password, @salt);", conn);
 					cmd.Parameters.AddWithValue("@username", user.Username);
 					cmd.Parameters.AddWithValue("@userFirstName", user.FirstName);
 					cmd.Parameters.AddWithValue("@userLastName", user.LastName);
 					cmd.Parameters.AddWithValue("@birthday", user.BirthDate);
 					cmd.Parameters.AddWithValue("@email", user.Email);
-                    cmd.Parameters.AddWithValue("@password", user.Password);
-                    cmd.Parameters.AddWithValue("@salt", user.Salt);
-                    //cmd.Parameters.AddWithValue("@role", user.Role);
+					cmd.Parameters.AddWithValue("@password", user.Password);
+					cmd.Parameters.AddWithValue("@salt", user.Salt);
+					//cmd.Parameters.AddWithValue("@role", user.Role);
 
-                    cmd.ExecuteNonQuery();
+					cmd.ExecuteNonQuery();
 
-                    return;
-                }
-            }
-            catch(SqlException ex)
-            {
-                throw ex;
-            }
-        }
+					return;
+				}
+			}
+			catch (SqlException ex)
+			{
+				throw ex;
+			}
+		}
 
-        /// <summary>
-        /// Deletes the user from the database.
-        /// </summary>
-        /// <param name="user"></param>
-        public void DeleteUser(User user)
-        {
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand("DELETE FROM users WHERE id = @id;", conn);
-                    cmd.Parameters.AddWithValue("@id", user.Id);                    
+		/// <summary>
+		/// Deletes the user from the database.
+		/// </summary>
+		/// <param name="user"></param>
+		public void DeleteUser(User user)
+		{
+			try
+			{
+				using (SqlConnection conn = new SqlConnection(connectionString))
+				{
+					conn.Open();
+					SqlCommand cmd = new SqlCommand("DELETE FROM users WHERE id = @id;", conn);
+					cmd.Parameters.AddWithValue("@id", user.Id);
 
-                    cmd.ExecuteNonQuery();
+					cmd.ExecuteNonQuery();
 
-                    return;
-                }
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }
-        }
+					return;
+				}
+			}
+			catch (SqlException ex)
+			{
+				throw ex;
+			}
+		}
 
-        /// <summary>
-        /// Gets the user from the database.
-        /// </summary>
-        /// <param name="username"></param>
-        /// <returns></returns>
-        public User GetUser(string username)
-        {
-            User user = null;
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM USERS WHERE username = @username;", conn);
-                    cmd.Parameters.AddWithValue("@username", username);
+		/// <summary>
+		/// Gets the user from the database.
+		/// </summary>
+		/// <param name="username"></param>
+		/// <returns></returns>
+		public User GetUser(string username)
+		{
+			User user = null;
+			try
+			{
+				using (SqlConnection conn = new SqlConnection(connectionString))
+				{
+					conn.Open();
+					SqlCommand cmd = new SqlCommand("SELECT * FROM USERS WHERE username = @username;", conn);
+					cmd.Parameters.AddWithValue("@username", username);
 
-                    SqlDataReader reader = cmd.ExecuteReader();
+					SqlDataReader reader = cmd.ExecuteReader();
 
-                    if (reader.Read())
-                    {
-                        user = MapRowToUser(reader);
-                    }
-                }
+					if (reader.Read())
+					{
+						user = MapRowToUser(reader);
+					}
+				}
 
-                return user;
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }            
-        }
+				return user;
+			}
+			catch (SqlException ex)
+			{
+				throw ex;
+			}
+		}
 
-        /// <summary>
-        /// Updates the user in the database.
-        /// </summary>
-        /// <param name="user"></param>
-        public void UpdateUser(User user)
-        {
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE users SET userName = @userName, userFirstName = @userFirstName, userLastName = @userLastName, birthday = @birthday, userAge = @userAge, userHeight = @userHeight, userCurrentWeight = @userCurrentWeight, userDesiredWeight = @userDesiredWeight, recommendedDailyCaloricIntake = @recommendedDailyCaloricIntake, password = @password, salt = @salt WHERE userId = @userId", conn);                    
-                    cmd.Parameters.AddWithValue("@userName", user.Username);
-                    cmd.Parameters.AddWithValue("@userFirstName", user.FirstName);
+		/// <summary>
+		/// Gets the user from the database.
+		/// </summary>
+		/// <param name="email"></param>
+		/// <returns></returns>
+		public User GetEmail(string email)
+		{
+			User user = null;
+			try
+			{
+				using (SqlConnection conn = new SqlConnection(connectionString))
+				{
+					conn.Open();
+					SqlCommand cmd = new SqlCommand("SELECT * FROM USERS WHERE email = @email;", conn);
+					cmd.Parameters.AddWithValue("@email", email);
+
+					SqlDataReader reader = cmd.ExecuteReader();
+
+					if (reader.Read())
+					{
+						user = MapRowToUser(reader);
+					}
+				}
+
+				return user;
+			}
+			catch (SqlException ex)
+			{
+				throw ex;
+			}
+		}
+
+		/// <summary>
+		/// Updates the user in the database.
+		/// </summary>
+		/// <param name="user"></param>
+		public void UpdateUser(User user)
+		{
+			try
+			{
+				using (SqlConnection conn = new SqlConnection(connectionString))
+				{
+					conn.Open();
+					SqlCommand cmd = new SqlCommand("UPDATE users SET userName = @userName, userFirstName = @userFirstName, userLastName = @userLastName, birthday = @birthday, userAge = @userAge, userHeight = @userHeight, userCurrentWeight = @userCurrentWeight, userDesiredWeight = @userDesiredWeight, recommendedDailyCaloricIntake = @recommendedDailyCaloricIntake, password = @password, salt = @salt WHERE userId = @userId", conn);
+					cmd.Parameters.AddWithValue("@userName", user.Username);
+					cmd.Parameters.AddWithValue("@userFirstName", user.FirstName);
 					cmd.Parameters.AddWithValue("@userLastName", user.LastName);
 					cmd.Parameters.AddWithValue("@birthday", user.BirthDate);
-					cmd.Parameters.AddWithValue("@userAge", user.Age);
+					//cmd.Parameters.AddWithValue("@userAge", user.Age);
 					cmd.Parameters.AddWithValue("@userHeight", user.Height);
 					cmd.Parameters.AddWithValue("@userCurrentWeight", user.CurrentWeight);
 					cmd.Parameters.AddWithValue("@userDesiredWeight", user.DesiredWeight);
@@ -129,20 +161,20 @@ namespace WebApplication.Web.DAL
 					cmd.Parameters.AddWithValue("@password", user.Password);
 					cmd.Parameters.AddWithValue("@salt", user.Salt);
 					cmd.Parameters.AddWithValue("@userId", user.Id);
-					
+
 					cmd.ExecuteNonQuery();
 
-                    return;
-                }
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }
-        }
+					return;
+				}
+			}
+			catch (SqlException ex)
+			{
+				throw ex;
+			}
+		}
 
-        private User MapRowToUser (SqlDataReader reader)
-        {
+		private User MapRowToUser(SqlDataReader reader)
+		{
 
 			User user = new User();
 			user.Id = Convert.ToInt32(reader["userId"]);
@@ -155,12 +187,7 @@ namespace WebApplication.Web.DAL
 			user.Salt = Convert.ToString(reader["salt"]);
 			user.Role = Convert.ToString(reader["role"]);
 
-			if (! DBNull.Value.Equals(reader["userAge"]))
-			{
-				user.Age = Convert.ToInt32(reader["userAge"]);
-			}
-
-			if (! DBNull.Value.Equals(reader["userHeight"]))
+			if (!DBNull.Value.Equals(reader["userHeight"]))
 			{
 				user.Height = Convert.ToInt32(reader["userHeight"]);
 			}
@@ -186,6 +213,6 @@ namespace WebApplication.Web.DAL
 			}
 
 			return user;
-        }
-    }
+		}
+	}
 }

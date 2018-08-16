@@ -26,8 +26,8 @@
 
     <br />
 
-    <label asp-for="BirthDate">Date of Birth: </label>
-    <input type="text" asp-for="BirthDate" placeholder="@Model.BirthDate.ToShortDateString()" />
+    <text>Date of Birth: </text>
+    <text>@Model.BirthDate.ToShortDateString()</text>
 
     <br />
 
@@ -37,22 +37,22 @@
     <br />
 
     <label asp-for="Height">Height (inches): </label>
-    <input type="text" asp-for="Height" placeholder="@Model.Height" />
+    <input type="number" asp-for="Height" placeholder="@Model.Height" />
 
     <br />
 
     <label asp-for="CurrentWeight">Current Weight (lbs.): </label>
-    <input type="text" asp-for="CurrentWeight" placeholder="@Model.CurrentWeight" />
+    <input type="number" asp-for="CurrentWeight" placeholder="@Model.CurrentWeight" />
 
     <br />
 
     <label asp-for="DesiredWeight">Desired Weight (lbs.): </label>
-    <input type="text" asp-for="DesiredWeight" placeholder="@Model.DesiredWeight" />
+    <input type="number" asp-for="DesiredWeight" placeholder="@Model.DesiredWeight" />
 
     <br />
 
     <label asp-for="RecommendedDailyCaloricIntake">Recommended Daily Caloric Intake: </label>
-    <input type="text" asp-for="RecommendedDailyCaloricIntake" placeholder="@Model.RecommendedDailyCaloricIntake" />
+    <input type="number" asp-for="RecommendedDailyCaloricIntake" placeholder="@Model.RecommendedDailyCaloricIntake" />
 
     <br />
 
