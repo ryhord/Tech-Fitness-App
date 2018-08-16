@@ -72,8 +72,23 @@ namespace WebApplication.Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Register(RegisterViewModel rvm)
         {
-            if (ModelState.IsValid)
+			var existingUser = dal.GetUser(rvm.Username);
+			if (existingUser != null)
+			{
+				ModelState.AddModelError("username-taken", "An account is already registered to this username.");				
+			}
+
+			var existingEmail = dal.GetEmail(rvm.Email);
+			if (existingUser != null)
+			{
+				ModelState.AddModelError("email-taken", "An account is already registered to this email.");
+			}
+
+
+			if (ModelState.IsValid)
             {
+
+
                 // Register them as a new user (and set default role)
                 authProvider.Register(rvm);
 
@@ -83,6 +98,12 @@ namespace WebApplication.Web.Controllers
 
             return View(rvm);
         }
+
+		//public JsonResult DoesUserExists(string userName)
+		//{
+		//	//check if any of the userName matches the UserName specified in the Parameter using the ANY extension method.
+		//	return Json(!HealthTrackDB.Users.Any(x => x.userName == userName), JsonRequestBehavior.AllowGet);
+		//}
 
 		public IActionResult ViewProfile()
 		{
@@ -113,5 +134,7 @@ namespace WebApplication.Web.Controllers
 
 			return RedirectToAction("ViewProfile", "Account");
 		}
+
+
 	}
 }

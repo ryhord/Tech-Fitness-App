@@ -13,6 +13,7 @@
             <div class="register-field">
                 <label asp-for="Username"></label>
                 <input class="form-control" type="text" asp-for="Username" />
+                @Html.ValidationMessage("username-taken")
             </div>
             <div class="register-field">
                 <label asp-for="FirstName">First Name</label>
@@ -30,6 +31,8 @@
             <div class="register-field">
                 <label asp-for="Email"></label>
                 <input class="form-control" type="text" asp-for="Email" />
+                @Html.ValidationMessage("email-taken")
+
             </div>
             <div class="register-field">
                 <label asp-for="Password"></label>

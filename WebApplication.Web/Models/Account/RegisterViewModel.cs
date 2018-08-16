@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApplication.Web.DAL;
 
 namespace WebApplication.Web.Models.Account
 {
     public class RegisterViewModel
     {
+
 		/// <summary>
 		/// The user's username.
 		/// </summary>
@@ -51,6 +53,5 @@ namespace WebApplication.Web.Models.Account
 		[Required]
         [DataType(DataType.DateTime, ErrorMessage = "A valid Date or Date and Time must be entered")]
         public DateTime BirthDate { get; set; }
-
 	}
 }
