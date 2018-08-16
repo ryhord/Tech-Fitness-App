@@ -17,11 +17,26 @@
 }
 else
 {
-    <nav>
+
+<nav>
     <ul class="nav nav-pills" id="dashboard">
         <li class="nav-item" id="home"><a asp-area="" asp-controller="Home" asp-action="Index">Tech Fitness Pal</a></li>
-        <li class="nav-item pull-right"><a asp-area="" asp-controller="Account" asp-action="LogOff">Log Out</a></li>
-        <li class="nav-item pull-right"></li>
+        <li class="nav-item dropdown pull-right">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Hello @Model.Username
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" asp-controller="Account" asp-action="ViewProfile">View Profile</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" asp-controller="Account" asp-action="EditProfile">Edit Profile</a>
+                <div class="dropdown-divider"></div>
+                <form asp-controller="Account" asp-action="LogOff" method="post">
+                    <button class="dropdown-item" value="submit" type="submit">Log Off</button>
+                </form>
+            </div>
+        </li>
     </ul>
-    </nav>
+</nav>
 }
