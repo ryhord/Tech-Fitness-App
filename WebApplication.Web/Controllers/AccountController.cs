@@ -31,8 +31,14 @@ namespace WebApplication.Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Login(LoginViewModel loginViewModel)
         {
-            // Ensure the fields were filled out
-            if (ModelState.IsValid)
+            var existingUser = dal.GetUser(loginViewModel.Username);
+			if (existingUser == null)
+			{
+				ModelState.AddModelError("username-nonexistent", "An account is not registered to this username.");
+			}
+
+			// Ensure the fields were filled out
+			if (ModelState.IsValid)
             {
 				// Check that they provided correct credentials
 				bool validLogin = authProvider.SignIn(loginViewModel.Username, loginViewModel.Password);
