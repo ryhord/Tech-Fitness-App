@@ -12,13 +12,13 @@
     <form asp-action="Login" asp-controller="Account" method="post">
         <div class="form-field">
             <label asp-for="Username"></label>
-            <input asp-for="Username" class="form-control" />
+            <input asp-for="Username" class="form-control" autocomplete="off"/>
             <span asp-validation-for="Username" class="error-msg"></span>
             @Html.ValidationMessage("username-nonexistent")
         </div>
         <div class="form-field">
             <label asp-for="Password"></label>
-            <input asp-for="Password" class="form-control" />
+            <input asp-for="Password" class="form-control" autocomplete="off"/>
             <span asp-validation-for="Password" class="error-msg"></span>
         </div>
         <button type="submit" value="submit" class="btn form-field" id="login-btn">Login</button>

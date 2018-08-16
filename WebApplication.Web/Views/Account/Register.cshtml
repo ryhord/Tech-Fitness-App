@@ -12,36 +12,36 @@
         <form asp-controller="Account" asp-action="Register" method="post">
             <div class="register-field">
                 <label asp-for="Username"></label>
-                <input class="form-control" type="text" asp-for="Username" />
+                <input class="form-control" type="text" asp-for="Username" autocomplete="off"/>
                 @Html.ValidationMessage("username-taken")
             </div>
             <div class="register-field">
                 <label asp-for="FirstName">First Name</label>
-                <input class="form-control" type="text" asp-for="FirstName" />
+                <input class="form-control" type="text" asp-for="FirstName" autocomplete="off"/>
             </div>
             <div class="register-field">
                 <label asp-for="LastName">Last Name</label>
-                <input class="form-control" type="text" asp-for="LastName" />
+                <input class="form-control" type="text" asp-for="LastName" autocomplete="off"/>
             </div>
             <div class="register-field">
                 <label asp-for="BirthDate">Birthday</label>
-                <input class="form-control" type="datetime" asp-for="BirthDate" />
+                <input class="form-control" type="datetime" asp-for="BirthDate" placeholder="DD/MM/YYYY" autocomplete="off"/>
                 <span asp-validation-for="BirthDate"></span>
             </div>
             <div class="register-field">
                 <label asp-for="Email"></label>
-                <input class="form-control" type="text" asp-for="Email" />
+                <input class="form-control" type="text" asp-for="Email" autocomplete="off"/>
                 @Html.ValidationMessage("email-taken")
 
             </div>
             <div class="register-field">
                 <label asp-for="Password"></label>
-                <input class="form-control" type="password" asp-for="Password" />
+                <input class="form-control" type="password" asp-for="Password" autocomplete="off"/>
                 <span asp-validation-for="Password"></span>
             </div>
             <div class="register-field">
                 <label asp-for="ConfirmPassword"></label>
-                <input class="form-control" type="password" asp-for="ConfirmPassword" />
+                <input class="form-control" type="password" asp-for="ConfirmPassword" autocomplete="off"/>
                 <span asp-validation-for="ConfirmPassword"></span>
             </div>
             <div class="register-field">
