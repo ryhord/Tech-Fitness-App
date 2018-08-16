@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApplication.Web.Models.Dashboard
+namespace WebApplication.Web.DAL
 {
     interface IApiDAL
     {
@@ -14,5 +14,5 @@ namespace WebApplication.Web.Models.Dashboard
 
 		// UPDATE
 		// DELETE
-    }
+	}
 }
