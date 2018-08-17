@@ -8,11 +8,11 @@ using WebApplication.Web.Providers.Auth;
 
 namespace WebApplication.Web.ViewComponents
 {
-    public class MealManagerViewComponent : ViewComponent
+    public class AddFoodViewComponent : ViewComponent
     {
 		private readonly IAuthProvider authProvider;
 
-		public MealManagerViewComponent(IAuthProvider authProvider)
+		public AddFoodViewComponent(IAuthProvider authProvider)
 		{
 			this.authProvider = authProvider;
 		}

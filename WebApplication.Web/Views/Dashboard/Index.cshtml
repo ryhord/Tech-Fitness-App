@@ -8,21 +8,28 @@
         display: grid;
     }
 
-    ul#dashboardControlPanel {
+    div#dashboardControlPanel {
         grid-area: sidebar;
         background-color: #eeeeef;
     }
 
-div#userOverview {
+    div#userOverview {
         grid-area: window;
         display: block;
-  
     }
 
-div#mealManager {
+    div#addFood {
         grid-area: window;
-        display:none;
+        display: none;
+    }
+    div#recentFood {
+        grid-area: window;
+        display: none;
+    }
 
+    div#quickMeals {
+        grid-area: window;
+        display: none;
     }
 
 
@@ -34,35 +41,52 @@ div#mealManager {
         /*Define the number of columns */
         grid-template-areas: 'sidebar  window window window window'
     }
+
+    .panel {
+        padding: 0 18px;
+        display: none;
+        background-color: white;
+        overflow: hidden;
+    }
 </style>
 
 <div class="wrapper">
-    <ul id="dashboardControlPanel">
+    <div id="dashboardControlPanel">
 
-        <li>
+        <div>
             <button id="overview-button" type="submit">
                 Overview
             </button>
-        </li>
-
-        <li>
-            <button id="mealManager-button" type="submit">
-                Meal Manager
+        </div>
+        <div>
+            <button id="addFood-button" type="submit">
+                Seach and Add A Food
             </button>
-        </li>
-        <li><a>Chat</a></li>
-        <li><a>Set Reminders</a></li>
-        <li><a>View Friends</a></li>
-    </ul>
+        </div>
+        <div>
+            <button id="recentFood-button" type="submit">
+                See Recent Foods
+            </button>
+        </div>
+        <div>
+            <button id="quickMeals-button" type="submit">
+                See Quick Meals
+            </button>
+        </div>
+    </div>
 
     <div>
         <div id="userOverview">
-            <h1>I work!</h1>
             @await Component.InvokeAsync("Overview")
         </div>
-        <div id="mealManager">
-            <h1>I work too.</h1>
-            @await Component.InvokeAsync("MealManager")
+        <div id="addFood">
+            @await Component.InvokeAsync("AddFood")
+        </div>
+        <div id="recentFood">
+            <h1>See Recent Foods</h1>
+        </div>
+        <div id="quickMeals">
+            <h1>See Quick Meals</h1>
         </div>
     </div>
 </div>
@@ -70,19 +94,45 @@ div#mealManager {
 
 <script>
     document.getElementById("overview-button").addEventListener("click", displayOverview);
-    document.getElementById("mealManager-button").addEventListener("click", displayMealManager);
+    document.getElementById("addFood-button").addEventListener("click", displayAddFood);
+    document.getElementById("recentFood-button").addEventListener("click", displayRecentFood);
+    document.getElementById("quickMeals-button").addEventListener("click", displayQuickMeals);
 
     function displayOverview(event) {
         document.getElementById("userOverview").style.display = "block";
-        document.getElementById("mealManager").style.display = "none";
+        document.getElementById("addFood").style.display = "none";
+        document.getElementById("recentFood").style.display = "none";
+        document.getElementById("quickMeals").style.display = "none";
         event.preventDefault();
     }
 
-    function displayMealManager(event) {
-        document.getElementById("mealManager").style.display = "block";
+    function displayAddFood(event) {
+        
         document.getElementById("userOverview").style.display = "none";
+        document.getElementById("addFood").style.display = "block";
+        document.getElementById("recentFood").style.display = "none";
+        document.getElementById("quickMeals").style.display = "none";
         event.preventDefault();
     }
+
+    function displayRecentFood(event) {
+        
+        document.getElementById("userOverview").style.display = "none";
+        document.getElementById("addFood").style.display = "none";
+        document.getElementById("recentFood").style.display = "block";
+        document.getElementById("quickMeals").style.display = "none";
+        event.preventDefault();
+    }
+
+    function displayQuickMeals(event) {
+        document.getElementById("userOverview").style.display = "none";
+        document.getElementById("addFood").style.display = "none";
+        document.getElementById("recentFood").style.display = "none";
+        document.getElementById("quickMeals").style.display = "block";
+        event.preventDefault();
+    }
+
+
 </script>
 
 
