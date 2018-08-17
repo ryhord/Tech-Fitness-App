@@ -37,7 +37,7 @@ namespace WebApplication.Web.Controllers
 			return View();
 		}
 
-		[HttpPost]
+		[HttpGet]
 		public IActionResult FoodResults(FoodPreview foodSearch)
 		{
 			ApiDAL api = new ApiDAL();
@@ -70,6 +70,18 @@ namespace WebApplication.Web.Controllers
 			}
 
 			return View(res);
+		}
+
+		[HttpGet]
+		public IActionResult ViewFoodDetail(string name, string imgurl)
+		{
+			FoodPreview foodPreview = new FoodPreview();
+			foodPreview.Name = name;
+			foodPreview.PhotoUrl = imgurl;
+			//ApiDAL api = new ApiDAL();
+			//api.endpoint = "https://trackapi.nutritionix.com/v2/natural/nutrients/" + foodSearch.Name;
+			//string jsonRes = api.makeRequest();
+			return View(foodPreview);
 		}
 	}	
 }

@@ -16,10 +16,22 @@ else
         <div>
             <img src="@item.PhotoUrl" />
             <p>@item.Name</p>
-            <form>
-
+            @*<a asp-controller="Dashboard" asp-action="ViewFoodDetail" asp-route-name="@item.Name">View Details</a>*@
+            <form asp-controller="Dashboard" asp-action="ViewFoodDetail" method="get">
+                <input type="hidden" name="name" value="@item.Name" />
+                <input type="hidden" name="imgurl" value="@item.PhotoUrl" />
+                <button type="submit">View Details</button>
             </form>
         </div>
     }
+
+
+
+
+    @*<label asp-for="Name"></label>
+    <input type="text" asp-for="Name" />*@
+
+    @*<button type="submit" value="Submit">Search</button>*@
+
 }
 
