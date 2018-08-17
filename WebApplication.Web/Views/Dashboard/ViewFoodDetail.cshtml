@@ -1,7 +1,8 @@
-﻿@model FoodPreview
+﻿@model FoodItem
 @{
     ViewData["Title"] = "ViewFoodDetail";
 }
 
-<h2>Nutrition Details for @Model.Name</h2>
-<img src="@Model.PhotoUrl" />
+<h2>Nutrition Details for @Model.foods[0].Name</h2>
+<img src="@Model.foods[0].Imgurl" />
+@*<img src="@Model.PhotoUrl" />*@

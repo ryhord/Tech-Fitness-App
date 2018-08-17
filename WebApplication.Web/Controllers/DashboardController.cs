@@ -75,13 +75,15 @@ namespace WebApplication.Web.Controllers
 		[HttpGet]
 		public IActionResult ViewFoodDetail(string name, string imgurl)
 		{
-			FoodPreview foodPreview = new FoodPreview();
-			foodPreview.Name = name;
-			foodPreview.PhotoUrl = imgurl;
-			//ApiDAL api = new ApiDAL();
-			//api.endpoint = "https://trackapi.nutritionix.com/v2/natural/nutrients/" + foodSearch.Name;
-			//string jsonRes = api.makeRequest();
-			return View(foodPreview);
+			//FoodPreview foodPreview = new FoodPreview();
+			
+			ApiDAL api = new ApiDAL();
+			api.endpoint = "https://trackapi.nutritionix.com/v2/natural/nutrients/";
+			string jsonNutrition = api.getNutritionInfo(name);
+			FoodItem foodItem = JsonConvert.DeserializeObject<FoodItem>(jsonNutrition);
+			foodItem.foods[0].Name = name;
+			foodItem.foods[0].Imgurl = imgurl;
+			return View(foodItem);
 		}
 	}	
 }

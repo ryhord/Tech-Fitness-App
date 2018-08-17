@@ -8,24 +8,24 @@ namespace WebApplication.Web.Models
 	public class FoodItem
 	{
 
-		public FoodItem[] foods { get; set; }
+		public Food[] foods { get; set; }
 
 		public class Food
 		{
 			public string food_name { get; set; }
 			public object brand_name { get; set; }
-			public int serving_qty { get; set; }
+			public float serving_qty { get; set; }
 			public string serving_unit { get; set; }
-			public int serving_weight_grams { get; set; }
-			public int nf_calories { get; set; }
-			public int nf_total_fat { get; set; }
-			public int nf_saturated_fat { get; set; }
-			public int nf_cholesterol { get; set; }
-			public int nf_sodium { get; set; }
-			public int nf_total_carbohydrate { get; set; }
-			public int nf_dietary_fiber { get; set; }
-			public int nf_sugars { get; set; }
-			public int nf_protein { get; set; }
+			public float serving_weight_grams { get; set; }
+			public float nf_calories { get; set; }
+			public float nf_total_fat { get; set; }
+			public float nf_saturated_fat { get; set; }
+			public float nf_cholesterol { get; set; }
+			public float nf_sodium { get; set; }
+			public float nf_total_carbohydrate { get; set; }
+			public float nf_dietary_fiber { get; set; }
+			public float nf_sugars { get; set; }
+			public float nf_protein { get; set; }
 			public object nf_potassium { get; set; }
 			public object nf_p { get; set; }
 			public Full_Nutrients[] full_nutrients { get; set; }
@@ -45,6 +45,8 @@ namespace WebApplication.Web.Models
 			public int meal_type { get; set; }
 			public Photo photo { get; set; }
 			public object sub_recipe { get; set; }
+			public string Name { get; set; }
+			public string Imgurl { get; set; }
 		}
 
 		public class Metadata
