@@ -5,11 +5,21 @@
 
 <h2>Food Results</h2>
 
-@foreach (var item in Model.FoodSearchResults)
-{ 
-    <div>
-        <img src="@item.PhotoUrl" />
-        <p>@item.Name</p>
-        <form></form>
-    </div>
+@if (Model.FoodSearchResults.Count == 0)
+{
+    <p>No foods found</p>
 }
+else
+{
+    @foreach (var item in Model.FoodSearchResults)
+    {
+        <div>
+            <img src="@item.PhotoUrl" />
+            <p>@item.Name</p>
+            <form>
+
+            </form>
+        </div>
+    }
+}
+

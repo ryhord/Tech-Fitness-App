@@ -9,8 +9,8 @@ namespace WebApplication.Web.Models
 	{
 
 
-			public Branded[] branded { get; set; }
-			public Common[] common { get; set; }
+		public Branded[] branded { get; set; }
+		public Common[] common { get; set; }
 
 		public class Branded
 		{
@@ -18,7 +18,7 @@ namespace WebApplication.Web.Models
 			public string serving_unit { get; set; }
 			public string nix_brand_id { get; set; }
 			public string brand_name_item_name { get; set; }
-			public int serving_qty { get; set; }
+			public float serving_qty { get; set; }
 			public float nf_calories { get; set; }
 			public Photo photo { get; set; }
 			public string brand_name { get; set; }
@@ -39,7 +39,7 @@ namespace WebApplication.Web.Models
 		{
 			public string food_name { get; set; }
 			public string serving_unit { get; set; }
-			public int serving_qty { get; set; }
+			public float serving_qty { get; set; }
 			public Photo1 photo { get; set; }
 			public string tag_id { get; set; }
 			public string locale { get; set; }
