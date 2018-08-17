@@ -30,6 +30,9 @@ namespace WebApplication.Web.Controllers
 			api.endpoint = "https://trackapi.nutritionix.com/v2/search/instant?query=" + foodSearch.Name;
 			foodSearch.Name = api.makeRequest();
 
+			string jsonResponse = api.makeRequest();
+			deserializedProduct = JsonConvert.DeserializeObject<Product>(output);
+
 			SearchResults res = new SearchResults();
 			res.FoodSearchResults.Add(foodSearch);
 			int listLength = res.FoodSearchResults.Count;
