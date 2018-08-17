@@ -5,6 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication.Web.DAL;
 using WebApplication.Web.Models;
+using System.IO;
+using System.Text;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace WebApplication.Web.Controllers
 {
@@ -28,16 +32,59 @@ namespace WebApplication.Web.Controllers
 		{
 			ApiDAL api = new ApiDAL();
 			api.endpoint = "https://trackapi.nutritionix.com/v2/search/instant?query=" + foodSearch.Name;
-			foodSearch.Name = api.makeRequest();
+			string jsonRes = api.makeRequest();
 
-			string jsonResponse = api.makeRequest();
-			deserializedProduct = JsonConvert.DeserializeObject<Product>(output);
+
+			JsonResponseModel jobj = JsonConvert.DeserializeObject<JsonResponseModel>(jsonRes);
+
+			var brandedResults = jobj.branded;
+			var commonResults = jobj.common;
 
 			SearchResults res = new SearchResults();
-			res.FoodSearchResults.Add(foodSearch);
-			int listLength = res.FoodSearchResults.Count;
+			
+
+			foreach (var i in brandedResults)
+			{
+				FoodPreview preview = new FoodPreview();
+				preview.Name = i.food_name;
+				preview.PhotoUrl = i.photo.thumb;
+				res.FoodSearchResults.Add(preview);
+			}
+
+			foreach (var i in commonResults)
+			{
+				FoodPreview preview = new FoodPreview();
+				preview.Name = i.food_name;
+				preview.PhotoUrl = i.photo.thumb;
+				res.FoodSearchResults.Add(preview);
+			}
 
 			return View(res);
+		}
+
+		public List<string> GetJsonItems(string stringText)
+		{
+			int BracketCount = 0;
+			//string ExampleJSON = new StreamReader(stringText).ReadToEnd();
+			List<string> JsonItems = new List<string>();
+			StringBuilder Json = new StringBuilder();
+
+			foreach (char c in stringText)
+			{
+				if (c == '{')
+					++BracketCount;
+				else if (c == '}')
+					--BracketCount;
+				Json.Append(c);
+
+				if (BracketCount == 1 && c != ' ')
+				{
+					JsonItems.Add(Json.ToString());
+					Json = new StringBuilder();
+
+				}
+			}
+			return JsonItems;
 		}
 
 	}

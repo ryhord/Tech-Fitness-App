@@ -7,6 +7,9 @@
 
 @foreach (var item in Model.FoodSearchResults)
 { 
-    @*<img href="@item.PhotoUrl" />*@
-    <p>@item.Name</p>
+    <div>
+        <img src="@item.PhotoUrl" />
+        <p>@item.Name</p>
+        <form></form>
+    </div>
 }
