@@ -148,11 +148,11 @@ namespace WebApplication.Web.DAL
 				using (SqlConnection conn = new SqlConnection(connectionString))
 				{
 					conn.Open();
-					SqlCommand cmd = new SqlCommand("UPDATE users SET userName = @userName, userFirstName = @userFirstName, userLastName = @userLastName, birthday = @birthday, userAge = @userAge, userHeight = @userHeight, userCurrentWeight = @userCurrentWeight, userDesiredWeight = @userDesiredWeight, recommendedDailyCaloricIntake = @recommendedDailyCaloricIntake, password = @password, salt = @salt WHERE userId = @userId", conn);
+					SqlCommand cmd = new SqlCommand("UPDATE users SET userName = @userName, userFirstName = @userFirstName, userLastName = @userLastName, userHeight = @userHeight, userCurrentWeight = @userCurrentWeight, userDesiredWeight = @userDesiredWeight, recommendedDailyCaloricIntake = @recommendedDailyCaloricIntake, password = @password, salt = @salt WHERE userId = @userId", conn);
 					cmd.Parameters.AddWithValue("@userName", user.Username);
 					cmd.Parameters.AddWithValue("@userFirstName", user.FirstName);
 					cmd.Parameters.AddWithValue("@userLastName", user.LastName);
-					cmd.Parameters.AddWithValue("@birthday", user.BirthDate);
+					//cmd.Parameters.AddWithValue("@birthday", user.BirthDate);
 					//cmd.Parameters.AddWithValue("@userAge", user.Age);
 					cmd.Parameters.AddWithValue("@userHeight", user.Height);
 					cmd.Parameters.AddWithValue("@userCurrentWeight", user.CurrentWeight);
