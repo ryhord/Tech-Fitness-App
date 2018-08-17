@@ -42,7 +42,7 @@ namespace WebApplication.Web.Controllers
 		{
 			ApiDAL api = new ApiDAL();
 			api.endpoint = "https://trackapi.nutritionix.com/v2/search/instant?query=" + foodSearch.Name;
-			string jsonRes = api.makeRequest();
+			string jsonRes = api.searchForFood();
 
 
 			JsonResponseModel jobj = JsonConvert.DeserializeObject<JsonResponseModel>(jsonRes);
