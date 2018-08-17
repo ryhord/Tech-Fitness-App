@@ -12,22 +12,18 @@
         grid-area: sidebar;
         background-color: #eeeeef;
     }
-    div#userOverview {
+
+div#userOverview {
         grid-area: window;
-    }
-    div#mealManager {
-        grid-area: window;
-    }
-    div#userChat {
-        grid-area: window;
-    }
-    div#userReminders {
-        grid-area: window;
-    }
-    div#userFriends {
-        grid-area: window;
+        display: block;
+  
     }
 
+div#mealManager {
+        grid-area: window;
+        display:none;
+
+    }
 
 
     div.wrapper {
@@ -36,44 +32,57 @@
         /*create spacing between cells*/
         grid-gap: 15px;
         /*Define the number of columns */
-        grid-template-areas: 
-            'sidebar   window window window window' 
-            'sidebar   window window window window' 
-            'sidebar   window window window window' 
-            'sidebar   window window window window' 
-            'sidebar   window window window window';
+        grid-template-areas: 'sidebar  window window window window'
     }
-
-
 </style>
 
 <div class="wrapper">
     <ul id="dashboardControlPanel">
-        <li>Overview</li>
-        <li>Meal Manager</li>
-        <li>Chat</li>
-        <li>Set Reminders</li>
-        <li>View Friends</li>
+
+        <li>
+            <button id="overview-button" type="submit">
+                Overview
+            </button>
+        </li>
+
+        <li>
+            <button id="mealManager-button" type="submit">
+                Meal Manager
+            </button>
+        </li>
+        <li><a>Chat</a></li>
+        <li><a>Set Reminders</a></li>
+        <li><a>View Friends</a></li>
     </ul>
+
     <div>
-    
-    <div id="userOverview">
-        Find JS for user Overview
-    </div>
-    <div id="mealManager">
-        <div>Add A Food</div>
-        <div>Log Meals</div>
-        <div>Add A Meal</div>
-        <div>My Quick Meals</div>
-    </div>
-    <div id="userChat">
-        Find JS for user Chat
-    </div>
-    <div id="userReminders">
-        Twilio
-    </div>
-    <div id="userFriends">
-        I don't know how to do this yet
+        <div id="userOverview">
+            <h1>I work!</h1>
+            @await Component.InvokeAsync("Overview")
+        </div>
+        <div id="mealManager">
+            <h1>I work too.</h1>
+            @await Component.InvokeAsync("MealManager")
+        </div>
     </div>
 </div>
-</div>
+
+
+<script>
+    document.getElementById("overview-button").addEventListener("click", displayOverview);
+    document.getElementById("mealManager-button").addEventListener("click", displayMealManager);
+
+    function displayOverview(event) {
+        document.getElementById("userOverview").style.display = "block";
+        document.getElementById("mealManager").style.display = "none";
+        event.preventDefault();
+    }
+
+    function displayMealManager(event) {
+        document.getElementById("mealManager").style.display = "block";
+        document.getElementById("userOverview").style.display = "none";
+        event.preventDefault();
+    }
+</script>
+
+
