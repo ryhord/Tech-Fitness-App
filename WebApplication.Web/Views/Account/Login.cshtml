@@ -15,6 +15,7 @@
             <input asp-for="Username" class="form-control" autocomplete="off"/>
             <span asp-validation-for="Username" class="error-msg"></span>
             @Html.ValidationMessage("username-nonexistent")
+            @Html.ValidationMessage("username-blank")
         </div>
         <div class="form-field">
             <label asp-for="Password"></label>

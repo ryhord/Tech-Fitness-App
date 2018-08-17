@@ -31,11 +31,19 @@ namespace WebApplication.Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Login(LoginViewModel loginViewModel)
         {
-            var existingUser = dal.GetUser(loginViewModel.Username);
-			if (existingUser == null)
+			if(loginViewModel.Username == null)
 			{
-				ModelState.AddModelError("username-nonexistent", "An account is not registered to this username.");
+				ModelState.AddModelError("username-blank", " ");
 			}
+			else
+			{
+				var existingUser = dal.GetUser(loginViewModel.Username);
+				if (existingUser == null)
+				{
+					ModelState.AddModelError("username-nonexistent", "An account is not registered to this username.");
+				}
+			}
+            
 
 			// Ensure the fields were filled out
 			if (ModelState.IsValid)
@@ -79,26 +87,27 @@ namespace WebApplication.Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Register(RegisterViewModel rvm)
         {
-			var existingUser = dal.GetUser(rvm.Username);
-			if (existingUser != null)
-			{
-				ModelState.AddModelError("username-taken", "An account is already registered to this username.");				
-			}
-
-			var existingEmail = dal.GetEmail(rvm.Email);
-			if (existingEmail != null)
-			{
-				ModelState.AddModelError("email-taken", "An account is already registered to this email.");
-			}
-
 			if (ModelState.IsValid)
             {
-                // Register them as a new user (and set default role)
-                authProvider.Register(rvm);
+				var existingUser = dal.GetUser(rvm.Username);
+				if (existingUser != null)
+				{
+					ModelState.AddModelError("username-taken", "An account is already registered to this username.");
+				}
 
-                // Redirect the user where you want them to go after registering
-                return RedirectToAction("Index", "Dashboard");
-            }
+				var existingEmail = dal.GetEmail(rvm.Email);
+				if (existingEmail != null)
+				{
+					ModelState.AddModelError("email-taken", "An account is already registered to this email.");
+				}
+				if (ModelState.IsValid) {
+					// Register them as a new user (and set default role)
+					authProvider.Register(rvm);
+
+					// Redirect the user where you want them to go after registering
+					return RedirectToAction("Index", "Dashboard");
+				}
+			}
 
             return View(rvm);
         }

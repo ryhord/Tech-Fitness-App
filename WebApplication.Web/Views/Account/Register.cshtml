@@ -12,16 +12,19 @@
         <form asp-controller="Account" asp-action="Register" method="post">
             <div class="register-field">
                 <label asp-for="Username"></label>
-                <input class="form-control" type="text" asp-for="Username" autocomplete="off"/>
+                <input class="form-control" type="text" asp-for="Username" autocomplete="off" />
+                <span asp-validation-for="Username"></span>
                 @Html.ValidationMessage("username-taken")
             </div>
             <div class="register-field">
                 <label asp-for="FirstName">First Name</label>
-                <input class="form-control" type="text" asp-for="FirstName" autocomplete="off"/>
+                <input class="form-control" type="text" asp-for="FirstName" autocomplete="off" />
+                <span asp-validation-for="FirstName"></span>
             </div>
             <div class="register-field">
                 <label asp-for="LastName">Last Name</label>
-                <input class="form-control" type="text" asp-for="LastName" autocomplete="off"/>
+                <input class="form-control" type="text" asp-for="LastName" autocomplete="off" />
+                <span asp-validation-for="LastName"></span>
             </div>
             <div class="register-field">
                 <label asp-for="BirthDate">Birthday</label>
@@ -30,7 +33,8 @@
             </div>
             <div class="register-field">
                 <label asp-for="Email"></label>
-                <input class="form-control" type="text" asp-for="Email" autocomplete="off"/>
+                <input class="form-control" type="text" asp-for="Email" autocomplete="off" />
+                <span asp-validation-for="Email"></span>
                 @Html.ValidationMessage("email-taken")
 
             </div>
