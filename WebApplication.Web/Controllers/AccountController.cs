@@ -86,7 +86,7 @@ namespace WebApplication.Web.Controllers
 			}
 
 			var existingEmail = dal.GetEmail(rvm.Email);
-			if (existingUser != null)
+			if (existingEmail != null)
 			{
 				ModelState.AddModelError("email-taken", "An account is already registered to this email.");
 			}
