@@ -69,7 +69,7 @@ namespace WebApplication.Web.DAL
 
 		}
 
-		public string getNutritionInfo()
+		public string getNutritionInfo(string foodName)
 		{
 			string strResponseValue = string.Empty;
 			httpMethod = httpVerb.POST;
@@ -80,7 +80,7 @@ namespace WebApplication.Web.DAL
 			request.Headers["x-app-id"] = "fdc869f7";
 			request.Headers["x-app-key"] = "e5969a224b73d9ea0899bb2d6934badc";
 
-			string body = "{\"query\": \"lettuce\", \"num_servings\": 1,\"aggregate\": \"string\",\"line_delimited\": false,\"use_raw_foods\": false,\"include_subrecipe\": false,\"timezone\": \"US/Eastern\",\"consumed_at\": null,\"lat\": null,\"lng\": null,\"meal_type\": 0,\"use_branded_foods\": false,\"locale\": \"en_US\"}";
+			string body = "{\"query\": \"" + foodName + "\", \"num_servings\": 1,\"aggregate\": \"string\",\"line_delimited\": false,\"use_raw_foods\": false,\"include_subrecipe\": false,\"timezone\": \"US/Eastern\",\"consumed_at\": null,\"lat\": null,\"lng\": null,\"meal_type\": 0,\"use_branded_foods\": false,\"locale\": \"en_US\"}";
 			NutritionInfoRequestModel reqbody = JsonConvert.DeserializeObject<NutritionInfoRequestModel>(body);
 			byte[] byteArray = Encoding.UTF8.GetBytes(body);
 
