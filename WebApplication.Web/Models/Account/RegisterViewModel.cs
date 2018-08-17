@@ -14,6 +14,7 @@ namespace WebApplication.Web.Models.Account
 		/// The user's username.
 		/// </summary>
 		[Required]
+		[MinLength(2, ErrorMessage = "The username must be at least 2 characters long.")]
 		[MaxLength(50)]
 		public string Username { get; set; }
 

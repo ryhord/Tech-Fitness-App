@@ -11,7 +11,8 @@ namespace WebApplication.Web.Models.Account
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Username")]
+		[MinLength(2, ErrorMessage = "The username must be at least 2 characters long.")]
+		[Display(Name = "Username")]
         public string Username { get; set; }
 
         [Required]

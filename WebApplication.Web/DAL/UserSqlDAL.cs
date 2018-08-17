@@ -152,8 +152,6 @@ namespace WebApplication.Web.DAL
 					cmd.Parameters.AddWithValue("@userName", user.Username);
 					cmd.Parameters.AddWithValue("@userFirstName", user.FirstName);
 					cmd.Parameters.AddWithValue("@userLastName", user.LastName);
-					//cmd.Parameters.AddWithValue("@birthday", user.BirthDate);
-					//cmd.Parameters.AddWithValue("@userAge", user.Age);
 					cmd.Parameters.AddWithValue("@userHeight", user.Height);
 					cmd.Parameters.AddWithValue("@userCurrentWeight", user.CurrentWeight);
 					cmd.Parameters.AddWithValue("@userDesiredWeight", user.DesiredWeight);
