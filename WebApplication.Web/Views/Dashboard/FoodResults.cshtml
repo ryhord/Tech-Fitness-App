@@ -1,0 +1,15 @@
+﻿@model SearchResults
+@{
+    ViewData["Title"] = "FoodResults";
+}
+
+<h2>Food Results</h2>
+
+@foreach (var item in Model.FoodSearchResults)
+{ 
+    <div>
+        <img src="@item.PhotoUrl" />
+        <p>@item.Name</p>
+        <form></form>
+    </div>
+}
