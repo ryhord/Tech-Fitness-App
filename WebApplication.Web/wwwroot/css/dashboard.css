@@ -166,3 +166,29 @@ ul#dashboard li > a:hover {
     padding-left: 3rem;
     margin-left: -10rem;
 }
+
+/*********************/
+/** Mobile / Tablet **/
+/*********************/
+@media only screen and (max-width: 991px) {
+    li#home a, #dashboard-welcome {
+        font-size: 1.8rem;
+    }
+
+    footer {
+        padding-right: 2rem;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        position: fixed;
+    }
+
+    p#copyright {
+        text-align: left;
+        text-shadow: 
+            -1px -1px 0 #fff, 
+            1px -1px 0 #fff, 
+            -1px 1px 0 #fff, 
+            1px 1px 0 #fff;
+    }
+}

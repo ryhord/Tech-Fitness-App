@@ -41,7 +41,7 @@ header, #subheading {
     li#home a {
         color: #fff;
         font-family: 'Lora';
-        font-size: 1.7rem;
+        font-size: 1.8rem;
         padding-right: 0rem;
         padding-left: 0rem;
         margin-left: 0rem;
@@ -61,6 +61,15 @@ header, #subheading {
 
     nav > ul > li > a {
         font-size: 1.7rem;
+    }
+
+    p#copyright {
+        text-align: left;
+        text-shadow: 
+            -1px -1px 0 #fff,
+            1px -1px 0 #fff, 
+            -1px 1px 0 #fff, 
+            1px 1px 0 #fff;
     }
 }
 
@@ -117,6 +126,15 @@ h3#subheading {
     grid-area: subheading;
     font-size: 3rem;
     padding: 2rem;
+}
+
+p#copyright {
+    text-align: left;
+    text-shadow: 
+        -1px -1px 0 #fff, 
+        1px -1px 0 #fff, 
+        -1px 1px 0 #fff, 
+        1px 1px 0 #fff;
 }
 
 /*********************/
