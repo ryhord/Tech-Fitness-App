@@ -75,7 +75,7 @@ a:before {
     width: 100%;
     height: 2px;
     bottom: -2px;
-    left: 0;
+    left: auto;
     background-color: #5083e0;
     visibility: hidden;
     -webkit-transform: scaleX(0);
@@ -103,6 +103,38 @@ div > a.dropdown-item {
 div > a:hover {
     color: #5083e0;
 }
+
+/*********************/
+/** Button Effects  **/
+/*********************/
+#logout-button:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
+#logout-button:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #5083e0;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+    margin: 5px 0 0;
+}
+
+#logout-button {
+    position: relative;
+    color: #5083e0;
+    text-decoration: none;
+}
+
 /*********************/
 /* Navigation Effects*/
 /*********************/
@@ -124,7 +156,7 @@ ul#dashboard li > a:hover {
 
 
 /*********************/
-/* */
+/****  TFP Logo   ****/
 /*********************/
 #home {
     color: #fff;
