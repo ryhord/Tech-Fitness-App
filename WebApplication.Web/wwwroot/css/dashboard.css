@@ -18,7 +18,7 @@ ul#default-navigation li > a {
 }
 
 ul#dashboard {
-    color: #fff;
+    color: #5083e0;
     background-color: #5bc0de;
     display: flex;
     justify-content: space-between;
@@ -30,11 +30,6 @@ ul#dashboard {
 
 ul#dashboard li > a {
     color: #fff;
-}
-
-#logout-button {
-    color: #337ab7;
-    margin: 1rem;
 }
 
 /*********************/
@@ -49,6 +44,19 @@ ul#dashboard li > a {
 #navbarDropdown a.dropdown-item {
     padding: 1px 1rem;
     width: 100%;
+    font-size: 2rem;
+    text-align: center;
+    color: #5083e0;
+}
+
+button#logout-button {
+    background: none !important;
+    color: #5083e0;
+    margin: 1rem;
+    border: none;
+    padding: 0 !important;
+    font: inherit;
+    cursor: pointer;
     font-size: 2rem;
 }
 
