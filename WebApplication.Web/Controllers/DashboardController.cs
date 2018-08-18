@@ -32,7 +32,7 @@ namespace WebApplication.Web.Controllers
 		
 
 		[HttpGet]
-		public IActionResult AddFood()
+		public IActionResult SearchForFood()
 		{
 			return View();
 		}
@@ -85,5 +85,8 @@ namespace WebApplication.Web.Controllers
 			foodItem.foods[0].Imgurl = imgurl;
 			return View(foodItem);
 		}
+
+		//[HttpPost]
+		//public IActionResult 
 	}	
 }
