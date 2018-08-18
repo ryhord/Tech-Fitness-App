@@ -1,0 +1,52 @@
+/**********************/
+/* Default Nav / Dash */
+/**********************/
+ul#dashboard {
+    color: #fff;
+    background-color: #5bc0de;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration-style: initial;
+    position: relative;
+    font-family: 'Montserrat';
+}
+
+#navbarDropdown {
+    font-size: 3.2rem;
+    background-color: #5bc0de;
+    color: #fff;
+}
+
+
+/*********************/
+/* Navigation Effects*/
+/*********************/
+ul#default-navigation li > a:focus {
+    background-color: #5bc0de;
+}
+
+ul#default-navigation li > a:hover {
+    background-color: #5bc0de;
+}
+
+ul#dashboard li > a:focus {
+    background-color: #5bc0de;
+}
+
+ul#dashboard li > a:hover {
+    background-color: #5bc0de;
+}
+
+
+/*********************/
+/* */
+/*********************/
+#home {
+    color: #fff;
+    font-family: 'Lora';
+    font-size: 3.5rem;
+    padding-right: 8rem;
+    padding-left: 3rem;
+    margin-left: -10rem;
+}

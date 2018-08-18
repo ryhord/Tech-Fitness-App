@@ -96,15 +96,6 @@ ul#navigation {
     position: relative;
 }
 
-#home {
-    color: #fff;
-    font-family: 'Lora';
-    font-size: 3.5rem;
-    padding-right: 8rem;
-    padding-left: 3rem;
-    margin-left: -10rem;
-}
-
 div.wrapper {
     margin: 18rem;
     display: grid;
@@ -136,17 +127,17 @@ a#homeLogin {
     padding: 1.5rem;
 }
 
-    a#homeLogin:focus {
-        text-decoration: none;
-        background-color: #4ca4bf;
-        color: #23527c;
-    }
+a#homeLogin:focus {
+    text-decoration: none;
+    background-color: #4ca4bf;
+    color: #23527c;
+}
 
-    a#homeLogin:hover {
-        text-decoration: none;
-        background-color: #4ca4bf;
-        color: #23527c;
-    }
+a#homeLogin:hover {
+    text-decoration: none;
+    background-color: #4ca4bf;
+    color: #23527c;
+}
 
 a#homeRegister:focus {
     text-decoration: none;
