@@ -1,6 +1,22 @@
 /**********************/
 /* Default Nav / Dash */
 /**********************/
+ul#default-navigation {
+    color: #fff;
+    background-color: #5bc0de;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration-style: initial;
+    position: relative;
+    font-family: 'Montserrat';
+    font-size: 3.2rem;
+}
+
+ul#default-navigation li > a {
+    color: #fff;
+}
+
 ul#dashboard {
     color: #fff;
     background-color: #5bc0de;
@@ -10,6 +26,10 @@ ul#dashboard {
     text-decoration-style: initial;
     position: relative;
     font-family: 'Montserrat';
+}
+
+ul#dashboard li > a {
+    color: #fff;
 }
 
 #navbarDropdown {
