@@ -27,7 +27,7 @@ body {
 /*******************/
 /* Labels and Info */
 /*******************/
-div > text {
+div > text, label {
     font-size: 1.8rem;
 }
 
