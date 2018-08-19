@@ -29,7 +29,7 @@ namespace WebApplication.Web.Controllers
 			}
 			return RedirectToAction("Index", "Home");
 		}
-		
+
 		[HttpGet]
 		public IActionResult AddFood()
 		{
@@ -83,6 +83,18 @@ namespace WebApplication.Web.Controllers
 			foodItem.foods[0].Name = name;
 			foodItem.foods[0].Imgurl = imgurl;
 			return View(foodItem);
+		}
+
+		[HttpGet]
+		public IActionResult RecentFoods()
+		{
+			return View();
+		}
+
+		[HttpGet]
+		public IActionResult QuickMeals()
+		{
+			return View();
 		}
 	}	
 }

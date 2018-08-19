@@ -1,0 +1,25 @@
+﻿
+div.wrapper {
+    display: grid;
+}
+
+div#dashboardControlPanel {
+    grid-area: sidebar;
+    background-color: #eeeeef;
+}
+
+div#userInfo {
+    grid-area: window;
+}
+
+
+div.wrapper {
+    /*Define the number of columns */
+    grid-template-columns: 1fr 4fr;
+    /*create spacing between cells*/
+    grid-gap: 15px;
+    /*Define the number of columns */
+    grid-template-areas: 'sidebar  window window window window'
+}
+
+
