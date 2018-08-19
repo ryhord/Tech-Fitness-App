@@ -64,6 +64,8 @@ header, #subheading {
     }
 
     p#copyright {
+        font-weight: 700;
+        padding: 0.5rem;
         text-align: left;
         text-shadow: 
             -1px -1px 0 #fff,

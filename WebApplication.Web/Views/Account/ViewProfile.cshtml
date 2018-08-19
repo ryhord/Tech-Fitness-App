@@ -3,63 +3,64 @@
     ViewData["Title"] = "ViewProfile";
 }
 
+<link rel="stylesheet" href="~/css/site.css" />
 <link rel="stylesheet" href="~/css/profile.css" />
 <div>
     <div class="user-profile">
-        <h2>ViewProfile</h2>
-
-        <text>Username: </text>
-        <text>@Model.Username</text>
-
+        <h2>My Profile</h2>
+        <div class="profile-content">
+            <text>Username: </text>
+            <text>@Model.Username</text>
+        </div>
         <br />
-
-        <text>Email: </text>
-        <text>@Model.Email</text>
-
+        <div class="profile-content">
+            <text>Email: </text>
+            <text>@Model.Email</text>
+        </div>
         <br />
-
-        <text>First Name: </text>
-        <text>@Model.FirstName</text>
-
+        <div class="profile-content">
+            <text>First Name: </text>
+            <text>@Model.FirstName</text>
+        </div>
         <br />
-
-        <text>Last Name: </text>
-        <text>@Model.LastName</text>
-
+        <div class="profile-content">
+            <text>Last Name: </text>
+            <text>@Model.LastName</text>
+        </div>
         <br />
-
-        <text>Date of Birth: </text>
-        <text>@Model.BirthDate.ToShortDateString()</text>
-
+        <div class="profile-content">
+            <text>Date of Birth: </text>
+            <text>@Model.BirthDate.ToShortDateString()</text>
+        </div>
         <br />
-
-        <text>Age: </text>
-        <text>@Model.Age</text>
-
+        <div class="profile-content">
+            <text>Age: </text>
+            <text>@Model.Age</text>
+        </div>
         <br />
-
-        <text>Height (inches): </text>
-        <text>@Model.Height</text>
-
+        <div class="profile-content">
+            <text>Height (inches): </text>
+            <text>@Model.Height</text>
+        </div>
         <br />
-
-        <text>Current Weight (lbs.): </text>
-        <text>@Model.CurrentWeight</text>
-
+        <div class="profile-content">
+            <text>Current Weight (lbs.): </text>
+            <text>@Model.CurrentWeight</text>
+        </div>
         <br />
-
-        <text>Desired Weight (lbs.): </text>
-        <text>@Model.DesiredWeight</text>
-
+        <div class="profile-content">
+            <text>Desired Weight (lbs.): </text>
+            <text>@Model.DesiredWeight</text>
+        </div>
         <br />
-
-        <text>Recommended Daily Caloric Intake: </text>
-        <text>@Model.RecommendedDailyCaloricIntake</text>
-
+        <div class="profile-content">
+            <text>Recommended Daily Calories: </text>
+            <text>@Model.RecommendedDailyCaloricIntake</text>
+        </div>
         <br />
 
         <form asp-controller="Account" asp-action="EditProfile" method="get">
-            <button type="submit" value="submit" class="btn">Edit Profile</button>
+            <button type="submit" value="submit" class="btn btn-info">Edit Profile</button>
         </form>
     </div>
 </div>
