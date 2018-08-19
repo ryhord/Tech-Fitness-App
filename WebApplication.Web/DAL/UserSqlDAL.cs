@@ -213,6 +213,5 @@ namespace WebApplication.Web.DAL
 			return user;
 		}
 
-		public User SaveFoodToUser() { }
 	}
 }
