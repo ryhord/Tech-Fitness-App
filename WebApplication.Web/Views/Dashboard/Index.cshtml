@@ -57,9 +57,16 @@
     </ul>
     <div>
     
-    <div id="userOverview">
-        Find JS for user Overview
-    </div>
+        <div id="userOverview">
+            <!-- Find JS for user Overview -->
+            <div id="userDailyFoodsDisplay">
+                @*
+                @foreach(var item in Model.UserFoodLog)
+                {
+                    <p>@item.foods[0].Name</p>
+                }*@
+            </div>
+        </div>
     <div id="mealManager">
         <div>Add A Food</div>
         <div>Log Meals</div>

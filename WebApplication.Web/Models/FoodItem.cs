@@ -47,6 +47,8 @@ namespace WebApplication.Web.Models
 			public object sub_recipe { get; set; }
 			public string Name { get; set; }
 			public string Imgurl { get; set; }
+			public float NumOfServings { get; set; }
+			public string MealClassification { get; set; }
 		}
 
 		public class Metadata
