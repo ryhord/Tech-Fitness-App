@@ -1,3 +1,6 @@
+/********************/
+/* Background Image */
+/********************/
 body {
     background: url("../images/edit_view_profile.jpg");
     background-attachment: fixed;
@@ -7,6 +10,9 @@ body {
     font-family: 'Montserrat';
 }
 
+/*****************/
+/** Positioning **/
+/*****************/
 .user-profile {
     width: 40%;
     margin: 0 auto;
@@ -18,10 +24,24 @@ body {
     margin-top: 2rem;
 }
 
+/*******************/
+/* Labels and Info */
+/*******************/
 div > text {
     font-size: 1.8rem;
 }
 
 div > text:first-child {
     font-weight: 700;
+}
+
+p#copyright {
+    font-weight: 700;
+    padding: 0.5rem;
+    text-align: left;
+    text-shadow: 
+        -1px -1px 0 #fff, 
+         1px -1px 0 #fff, 
+        -1px 1px 0 #fff, 
+         1px 1px 0 #fff;
 }
