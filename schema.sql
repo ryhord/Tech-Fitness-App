@@ -50,9 +50,23 @@ CREATE TABLE users (
 CREATE TABLE foods (
 	foodId integer							IDENTITY(1,1),
 	foodName varchar(50)					not null,
-	servingSize varchar(50)					not null,
-	calories integer						not null,
+	servingQuantity float					not null,
+	servingUnit varchar(50)					not null,
+	servingWeightGrams float				not null,
+	calories float							not null,
+	totalFat float							not null,
+	saturatedFat float						not null,
+	cholesterol float						not null,
+	sodium		float						not null,
+	totalCarbohydrate float					not null,
+	dietaryFiber	float					not null,
+	sugars float							not null,
+	protein float							not null,
+	potassium float							not null,
 	foodGroup varchar(50)					not null,
+	Name varchar(200)						not null,
+	Imgurl text								not null,
+	mealClassification text					not null,
 
 	CONSTRAINT pk_foods PRIMARY KEY (foodId)
 );
