@@ -7,12 +7,19 @@ namespace WebApplication.Web.DAL
 {
     interface IApiDAL
     {
-		// GET - search for foods
+		/// <summary>
+		/// Searches Nutritionix API for the food specified by the endpoint property of the ApiDal instance.
+		/// </summary>
+		/// <returns>Json response data as a string.</returns>
+		string searchForFood();
 
-		// POST - 
+		/// <summary>
+		/// Gets the nutrition information for the specified food name.
+		/// </summary>
+		/// <param name="foodName"></param>
+		/// <returns>Json response data as a string</returns>
+		string getNutritionInfo(string foodName);
+ 
 
-
-		// UPDATE
-		// DELETE
 	}
 }

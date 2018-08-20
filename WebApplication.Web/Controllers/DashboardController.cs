@@ -12,8 +12,8 @@ using Newtonsoft.Json;
 
 namespace WebApplication.Web.Controllers
 {
-    public class DashboardController : Controller
-    {
+	public class DashboardController : Controller
+	{
 		private readonly IAuthProvider authProvider;
 		public DashboardController(IAuthProvider authProvider)
 		{
@@ -21,17 +21,18 @@ namespace WebApplication.Web.Controllers
 		}
 
 		public IActionResult Index()
-        {
+		{
 			var user = authProvider.GetCurrentUser();
 			if (user != null)
-			{ 
+			{
 				return View(user);
 			}
 			return RedirectToAction("Index", "Home");
 		}
 
+
 		[HttpGet]
-		public IActionResult AddFood()
+		public IActionResult SearchForFood()
 		{
 			return View();
 		}
@@ -50,7 +51,7 @@ namespace WebApplication.Web.Controllers
 			var commonResults = jobj.common;
 
 			SearchResults res = new SearchResults();
-			
+
 
 			foreach (var i in brandedResults)
 			{
@@ -75,7 +76,7 @@ namespace WebApplication.Web.Controllers
 		public IActionResult ViewFoodDetail(string name, string imgurl)
 		{
 			//FoodPreview foodPreview = new FoodPreview();
-			
+
 			ApiDAL api = new ApiDAL();
 			api.endpoint = "https://trackapi.nutritionix.com/v2/natural/nutrients/";
 			string jsonNutrition = api.getNutritionInfo(name);
@@ -85,16 +86,19 @@ namespace WebApplication.Web.Controllers
 			return View(foodItem);
 		}
 
-		[HttpGet]
-		public IActionResult RecentFoods()
-		{
-			return View();
-		}
+		//[HttpPost]
+		//public IActionResult AddFoodEditDetails()
+		//{
+		
+		//}
 
-		[HttpGet]
-		public IActionResult QuickMeals()
+		[HttpPost]
+		public IActionResult SaveFood(FoodItem foodItem)
 		{
-			return View();
+			//Get user
+			// with session username
+			User user = authProvider.GetCurrentUser();
+			return RedirectToAction("Index", "Dashboard");
 		}
 	}	
 }

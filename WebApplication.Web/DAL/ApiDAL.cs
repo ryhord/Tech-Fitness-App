@@ -20,7 +20,7 @@ namespace WebApplication.Web.DAL
 		DELETE
 	}
 
-	public class ApiDAL
+	public class ApiDAL : IApiDAL
     {
 
 		public string endpoint { get; set; }

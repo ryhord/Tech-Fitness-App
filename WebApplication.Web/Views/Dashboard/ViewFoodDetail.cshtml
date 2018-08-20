@@ -5,4 +5,31 @@
 
 <h2>Nutrition Details for @Model.foods[0].Name</h2>
 <img src="@Model.foods[0].Imgurl" />
-@*<img src="@Model.PhotoUrl" />*@
+<p>Per @Model.foods[0].serving_unit</p>
+<p><strong>Calories: </strong>@Model.foods[0].nf_calories</p>
+<p><strong>Total Fat: </strong>@Model.foods[0].nf_total_fat</p>
+<p><strong>Saturated Fat: </strong>@Model.foods[0].nf_saturated_fat</p>
+<p><strong>Carbohydrates: </strong>@Model.foods[0].nf_total_carbohydrate</p>
+<p><strong>Protein: </strong>@Model.foods[0].nf_protein</p>
+<p><strong>Sugars: </strong>@Model.foods[0].nf_sugars</p>
+<p><strong>Dietary Fiber: </strong>@Model.foods[0].nf_dietary_fiber</p>
+<p><strong>Cholesterol: </strong>@Model.foods[0].nf_cholesterol</p>
+<p><strong>Sodium: </strong>@Model.foods[0].nf_sodium</p>
+<br />
+<p><strong>Serving Quantity: </strong>@Model.foods[0].serving_qty</p>
+
+
+<form asp-controller="Dashboard" asp-action="SaveFood" method="post">
+    <label asp-for="foods[0].MealClassification">Meal Classification</label>
+    <select>          
+        <option name="MealClassification" value="breakfast">Breakfast</option>
+        <option name="MealClassification" value="lunch">Lunch</option>
+        <option name="MealClassification" value="dinner">Dinner</option>
+        <option name="MealClassification" value="snack">Snack</option>
+        <option name="MealClassification" value="desert">Desert</option>
+    </select>
+
+    <input type="hidden" name="name" value="@Model.foods[0].Name" asp-for="@Model.foods[0].Name"/>
+    <input type="hidden" name="name" value="" />
+    <button>Add Food</button>
+</form>
