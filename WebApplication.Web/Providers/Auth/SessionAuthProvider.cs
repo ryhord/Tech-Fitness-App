@@ -106,14 +106,26 @@ namespace WebApplication.Web.Providers.Auth
             return null;
         }
 
-        /// <summary>
-        /// Creates a new user and saves their username in session.
-        /// </summary>
-        /// <param name="username"></param>
-        /// <param name="password"></param>
-        /// <param name="role"></param>
-        /// <returns></returns>
-        public void Register(RegisterViewModel rvm)
+		public User GetCurrentUserId()
+		{
+			var username = Session.GetString(SessionKey);
+
+			if (!String.IsNullOrEmpty(username))
+			{
+				var userId = userDAL.GetUser(username);
+			}
+
+			return null;
+		}
+
+		/// <summary>
+		/// Creates a new user and saves their username in session.
+		/// </summary>
+		/// <param name="username"></param>
+		/// <param name="password"></param>
+		/// <param name="role"></param>
+		/// <returns></returns>
+		public void Register(RegisterViewModel rvm)
         {
             var hashProvider = new HashProvider();
             var passwordHash = hashProvider.HashPassword(rvm.Password);

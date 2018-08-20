@@ -1,0 +1,12 @@
+﻿#userInfo {
+    display: grid;
+    grid-template-areas: 
+        'overview overview'
+        'column1 column2';
+    grid-template-columns: 1fr 1fr;
+}
+
+#overview {
+    grid-area: overview;
+}
+

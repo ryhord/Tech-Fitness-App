@@ -25,11 +25,11 @@ namespace WebApplication.Web.Controllers
 		public IActionResult Index()
         {
 			var user = authProvider.GetCurrentUser();
-			var userFoods = 
+			var userFoods = dal.GetUserFoods(user.Id);
 			if (user != null)
-			{ 
-				Tuple<User, IList<UserFood> > data = new Tuple<User, IList<UserFood>>()
-				return View(user);
+			{
+				Tuple<User, IList<UserFood>> data = new Tuple<User, IList<UserFood>>(user, userFoods);
+				return View(data);
 			}
 			return RedirectToAction("Index", "Home");
 		}
