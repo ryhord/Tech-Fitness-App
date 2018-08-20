@@ -1,20 +1,12 @@
-﻿@model User
-@{
-    ViewData["Title"] = "Index";
-}
-
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
 <head>
     <link rel="stylesheet" href="~/css/UserDashboard.css" />
 </head>
-
 <div class="wrapper">
-
     @await Component.InvokeAsync("DashboardNavigation")
-
     <div id="userInfo">
-        <h2>Overview</h2>
+        <h2>Quick Meals</h2>
     </div>
 </div>
-
-
-
