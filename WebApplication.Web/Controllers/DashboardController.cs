@@ -45,10 +45,10 @@ namespace WebApplication.Web.Controllers
 			string jsonRes = api.searchForFood();
 
 
-			JsonResponseModel jobj = JsonConvert.DeserializeObject<JsonResponseModel>(jsonRes);
+			JsonResponseModel jsonObj = JsonConvert.DeserializeObject<JsonResponseModel>(jsonRes);
 
-			var brandedResults = jobj.branded;
-			var commonResults = jobj.common;
+			var brandedResults = jsonObj.branded;
+			var commonResults = jsonObj.common;
 
 			SearchResults res = new SearchResults();
 
@@ -58,6 +58,8 @@ namespace WebApplication.Web.Controllers
 				FoodPreview preview = new FoodPreview();
 				preview.Name = i.food_name;
 				preview.PhotoUrl = i.photo.thumb;
+				preview.ServingQuantity = i.serving_qty;
+				preview.ServingUnit = i.serving_unit;
 				res.FoodSearchResults.Add(preview);
 			}
 
@@ -66,6 +68,8 @@ namespace WebApplication.Web.Controllers
 				FoodPreview preview = new FoodPreview();
 				preview.Name = i.food_name;
 				preview.PhotoUrl = i.photo.thumb;
+				preview.ServingQuantity = i.serving_qty;
+				preview.ServingUnit = i.serving_unit;
 				res.FoodSearchResults.Add(preview);
 			}
 
@@ -73,7 +77,7 @@ namespace WebApplication.Web.Controllers
 		}
 
 		[HttpGet]
-		public IActionResult ViewFoodDetail(string name, string imgurl)
+		public IActionResult ViewFoodDetail(string name, string imgurl, string serving_unit, float serving_qty)
 		{
 			//FoodPreview foodPreview = new FoodPreview();
 
@@ -83,6 +87,8 @@ namespace WebApplication.Web.Controllers
 			FoodItem foodItem = JsonConvert.DeserializeObject<FoodItem>(jsonNutrition);
 			foodItem.foods[0].Name = name;
 			foodItem.foods[0].Imgurl = imgurl;
+			foodItem.foods[0].serving_qty = serving_qty;
+			foodItem.foods[0].serving_unit = serving_unit;
 			return View(foodItem);
 		}
 
