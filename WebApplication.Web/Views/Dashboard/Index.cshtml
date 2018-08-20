@@ -4,6 +4,14 @@
     var user = Model.Item1;
     var userFoods = Model.Item2;
     float totalConsumedCalories = 0;
+
+    foreach (var userFood in userFoods)
+    {
+        if (userFood.DateOfEntry.Equals(DateTime.Today))
+        {
+            totalConsumedCalories += (userFood.CaloriesPerServing * userFood.NumberOfServings);
+        }
+    }
 }
 
 <head>
@@ -21,18 +29,9 @@
 
         <div id="todayDashboard">
             <div>
-
-                @foreach (var userFood in userFoods)
-                {
-                    if (userFood.DateOfEntry.Equals(DateTime.Today))
-                    {
                 <div>
-                    Total Calories Consumed Today: @(totalConsumedCalories += (userFood.CaloriesPerServing * userFood.NumberOfServings))
+                    Total Calories Consumed Today: @totalConsumedCalories
                 </div>
-                    }
-                }
-               
-
             </div>
             <div>
                 <h2>Breakfast</h2>
@@ -62,8 +61,6 @@
 
                     </tbody>
                 </table>
-
-
             </div>
             <div>
                 <h2>Lunch</h2>
