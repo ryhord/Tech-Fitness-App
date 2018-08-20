@@ -3,6 +3,7 @@
     ViewData["Title"] = "Index";
     var user = Model.Item1;
     var userFoods = Model.Item2;
+    float totalConsumedCalories = 0;
 }
 
 <head>
@@ -20,7 +21,18 @@
 
         <div id="todayDashboard">
             <div>
-                Total Calories @user.RecommendedDailyCaloricIntake
+
+                @foreach (var userFood in userFoods)
+                {
+                    if (userFood.DateOfEntry.Equals(DateTime.Today))
+                    {
+                <div>
+                    Total Calories Consumed Today: @(totalConsumedCalories += (userFood.CaloriesPerServing * userFood.NumberOfServings))
+                </div>
+                    }
+                }
+               
+
             </div>
             <div>
                 <h2>Breakfast</h2>
