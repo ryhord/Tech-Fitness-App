@@ -1,6 +1,8 @@
-﻿@model User
+﻿@model Tuple<User, IList<UserFood>>
 @{
     ViewData["Title"] = "Index";
+    var user = Model.Item1;
+    var userFoods = Model.Item2;
 }
 
 <head>
@@ -13,6 +15,50 @@
 
     <div id="userInfo">
         <h2>Overview</h2>
+        <div>
+            Total Calories @user.RecommendedDailyCaloricIntake
+        </div>
+        <div>
+            <h2>Breakfast</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Food Item</th>
+                        <th>Number of Servings</th>
+                        <th>Calorie Count</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+
+                    @foreach (var userFood in userFoods)
+
+                    {
+                        @if (userFood.MealId == 1 && user.Id == userFood.UserId)
+                        {
+                            <tr>
+                                <td>@userFood.FoodName</td>
+                                <td>@userFood.NumberOfServings</td>
+                                <td>@(userFood.CaloriesPerServing * userFood.NumberOfServings)</td>
+                            </tr>
+                        }
+                    }
+
+                </tbody>
+            </table>
+
+
+        </div>
+        <div>
+            <h2>Lunch</h2>
+        </div>
+        <div>
+            <h2>Dinner</h2>
+        </div>
+        <div>
+            <h2>Snack</h2>
+        </div>
+
     </div>
 </div>
 

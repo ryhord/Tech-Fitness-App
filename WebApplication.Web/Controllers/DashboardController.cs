@@ -15,16 +15,20 @@ namespace WebApplication.Web.Controllers
     public class DashboardController : Controller
     {
 		private readonly IAuthProvider authProvider;
-		public DashboardController(IAuthProvider authProvider)
+		private readonly IUsersFoodsDAL dal;
+		public DashboardController(IAuthProvider authProvider, IUsersFoodsDAL dal)
 		{
 			this.authProvider = authProvider;
+			this.dal = dal;
 		}
 
 		public IActionResult Index()
         {
 			var user = authProvider.GetCurrentUser();
+			var userFoods = 
 			if (user != null)
 			{ 
+				Tuple<User, IList<UserFood> > data = new Tuple<User, IList<UserFood>>()
 				return View(user);
 			}
 			return RedirectToAction("Index", "Home");

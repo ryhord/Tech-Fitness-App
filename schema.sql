@@ -70,7 +70,9 @@ CREATE TABLE users_foods (
 	dateOfEntry date						not null,
 	mealId integer							not null,
 	numberOfServings decimal				not null,
-	foodId integer							not null,
+	servingSize decimal						not null,
+	servingUnit varchar(20)					not null,
+	foodName varchar(50)					not null,
 
 	CONSTRAINT pk_users_foods PRIMARY KEY (rowId),
     CONSTRAINT fk_users_foods_userId FOREIGN KEY (userId) REFERENCES users(userId),
