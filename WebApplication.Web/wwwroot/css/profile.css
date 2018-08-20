@@ -1,0 +1,47 @@
+/********************/
+/* Background Image */
+/********************/
+body {
+    background: url("../images/edit_view_profile.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: rgba(255, 255, 255, 0.4);
+    background-blend-mode: lighten;
+    font-family: 'Montserrat';
+}
+
+/*****************/
+/** Positioning **/
+/*****************/
+.user-profile {
+    width: 40%;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 4rem;
+}
+
+.profile-content {
+    margin-top: 2rem;
+}
+
+/*******************/
+/* Labels and Info */
+/*******************/
+div > text, label {
+    font-size: 1.8rem;
+}
+
+div > text:first-child {
+    font-weight: 700;
+}
+
+p#copyright {
+    font-weight: 700;
+    padding: 0.5rem;
+    text-align: left;
+    text-shadow: 
+        -1px -1px 0 #fff, 
+         1px -1px 0 #fff, 
+        -1px 1px 0 #fff, 
+         1px 1px 0 #fff;
+}

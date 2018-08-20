@@ -8,12 +8,19 @@
 body {
     background-attachment: fixed;
 }
-#container {
+#login-container {
     width: 33%;
     margin: 0 auto;
     margin-top: 10%;
     background-color: rgba(255, 255, 255, 0.4);
+    padding: 4rem;
 }
+
+#login-button {
+    background-color: #5bc0de;
+    color: #fff;
+}
+
 .form-field{
     margin-bottom: 20px;
 }
