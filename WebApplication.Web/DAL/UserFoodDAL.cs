@@ -7,7 +7,7 @@ using WebApplication.Web.Models;
 
 namespace WebApplication.Web.DAL
 {
-    public class UserFoodDAL
+    public class UserFoodDAL : IUserFoodDAL
     {
 		private readonly string connectionString;
 
