@@ -47,6 +47,38 @@ namespace WebApplication.Web.DAL
 			}
 		}
 
+		public IList<UserFood> GetRecentFoods(int userId)
+		{
+			List<UserFood> recentUserFoods = new List<UserFood>();
+
+			try
+			{
+				using (SqlConnection conn = new SqlConnection(connectionString))
+				{
+					conn.Open();
+					SqlCommand cmd = new SqlCommand("SELECT TOP 10 * FROM users_foods INNER JOIN foods ON users_foods.foodName = foods.foodName WHERE users_foods.userId = @userId ORDER BY dateOfEntry;", conn);
+					cmd.Parameters.AddWithValue("@userId", userId);
+
+					SqlDataReader reader = cmd.ExecuteReader();
+
+					while (reader.Read())
+					{
+						UserFood userFood = new UserFood();
+						userFood = MapRowToUser(reader);
+
+						recentUserFoods.Add(userFood);
+					}
+				}
+
+				return recentUserFoods;
+			}
+			catch (SqlException ex)
+			{
+				throw ex;
+			}
+
+		}
+
 		private UserFood MapRowToUser(SqlDataReader reader)
 		{
 

@@ -10,5 +10,8 @@ namespace WebApplication.Web.DAL
     {
 		IList<UserFood> GetUserFoods(int userId);
 
-    }
+		IList<UserFood> GetRecentFoods(int userId);
+
+
+	}
 }

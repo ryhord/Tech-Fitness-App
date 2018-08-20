@@ -92,7 +92,11 @@ namespace WebApplication.Web.Controllers
 		[HttpGet]
 		public IActionResult RecentFoods()
 		{
-			return View();
+			var user = authProvider.GetCurrentUser();
+			IList<UserFood> recentUserFoods = new List<UserFood>();
+			recentUserFoods = dal.GetRecentFoods(user.Id);
+			
+			return View(recentUserFoods);
 		}
 
 		[HttpGet]
