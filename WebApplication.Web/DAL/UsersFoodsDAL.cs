@@ -56,9 +56,10 @@ namespace WebApplication.Web.DAL
 			userFood.UserId = Convert.ToInt32(reader["userId"]);
 			userFood.DateOfEntry = Convert.ToDateTime(reader["dateOfEntry"]);
 			userFood.MealId = Convert.ToInt32(reader["mealId"]);
+			userFood.CaloriesPerServing = (float)Convert.ToDecimal(reader["caloriesPerServing"]);
 			userFood.NumberOfServings = (float)Convert.ToDecimal(reader["numberOfServings"]);
 			userFood.FoodName = Convert.ToString(reader["foodName"]);
-			userFood.ServingSize = (float)Convert.ToDecimal(reader["servingSize"]);
+			userFood.ServingQuantity = (float)Convert.ToDecimal(reader["servingQuantity"]);
 			userFood.ServingUnit = Convert.ToString(reader["servingUnit"]);
 
 			return userFood;

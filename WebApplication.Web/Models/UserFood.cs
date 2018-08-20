@@ -13,7 +13,7 @@ namespace WebApplication.Web.Models
 		public int MealId { get; set; }
 		public float CaloriesPerServing { get; set; }
 		public float NumberOfServings { get; set; }
-		public float ServingSize { get; set; }
+		public float ServingQuantity { get; set; }
 		public string ServingUnit { get; set; }
 		public string FoodName { get; set; }
 	}
