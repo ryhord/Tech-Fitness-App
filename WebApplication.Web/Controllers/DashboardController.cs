@@ -98,7 +98,6 @@ namespace WebApplication.Web.Controllers
 			//Get user
 			// with session username
 			User user = authProvider.GetCurrentUser();
-			user.UserFoodLog.Add(foodItem);
 			return RedirectToAction("Index", "Dashboard");
 		}
 	}	

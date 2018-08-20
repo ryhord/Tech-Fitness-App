@@ -20,6 +20,11 @@ namespace WebApplication.Web.DAL
 		{
 			try
 			{
+
+				//// PROPERLY CONFIGURE DEP INJ
+				//// PASS THE FOOD PREVIEW SERVING INFO THROUGH
+
+
 				using (SqlConnection conn = new SqlConnection(connectionString))
 				{
 					conn.Open();
@@ -62,7 +67,6 @@ namespace WebApplication.Web.DAL
 					newUserFood.Parameters.AddWithValue("@numberOfServings", userFood.NumberOfServings);
 					newUserFood.Parameters.AddWithValue("@servingSize", userFood.ServingSize);
 					newUserFood.Parameters.AddWithValue("@servingUnit", userFood.ServingUnit);
-
 
 					cmd.ExecuteNonQuery();
 
