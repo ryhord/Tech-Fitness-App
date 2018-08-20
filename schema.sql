@@ -51,25 +51,25 @@ CREATE TABLE users (
 
 CREATE TABLE foods (
 	foodId integer							IDENTITY(1,1),
-	foodName varchar(50)					not null,
-	servingQuantity float					not null,
-	servingUnit varchar(50)					not null,
-	calories float							not null,
-	totalFat float							not null,
-	saturatedFat float						not null,
-	cholesterol float						not null,
-	sodium		float						not null,
-	totalCarbohydrate float					not null,
-	dietaryFiber	float					not null,
-	sugars float							not null,
-	protein float							not null,
-	potassium float							not null,
+	foodName varchar(50)					,
+	servingQuantity float					,
+	servingUnit varchar(50)					,
+	calories float							,
+	totalFat float							,
+	saturatedFat float						,
+	cholesterol float						,
+	sodium		float						,
+	totalCarbohydrate float					,
+	dietaryFiber	float					,
+	sugars float							,
+	protein float							,
+	potassium float							,
 	--foodGroup varchar(50)					not null,
-	Name varchar(200)						not null,
-	imgurl text								not null,
+	--Name varchar(200)						not null,
+	imgurl text								,
 	--mealClassification text				not null,
 
-	CONSTRAINT pk_foods PRIMARY KEY (Name)
+	CONSTRAINT pk_foods PRIMARY KEY (foodId)
 );
 
 
@@ -83,18 +83,19 @@ CREATE TABLE meals (
 
 CREATE TABLE users_foods (
 rowId integer				IDENTITY(1,1),
-userId integer				not null,
-dateOfEntry date			not null,
-mealId integer				not null,
-caloriesPerServing float	not null,
-numberOfServings decimal	not null,
-servingQuantity decimal		not null,
-servingUnit varchar(20)		not null,
-foodName varchar(200)		not null,
+userId integer				,
+dateOfEntry date			,
+mealId integer				,
+caloriesPerServing float	,
+numberOfServings decimal	,
+servingQuantity decimal		,
+servingUnit varchar(20)		,
+foodId integer				,
+foodName varchar(200)		,
 
 CONSTRAINT pk_users_foods PRIMARY KEY (rowId),
 CONSTRAINT fk_users_foods_userId FOREIGN KEY (userId) REFERENCES users(userId),
-CONSTRAINT fk_users_foods_foodName FOREIGN KEY (foodName) REFERENCES foods(Name),
+CONSTRAINT fk_users_foods_foodId FOREIGN KEY (foodId) REFERENCES foods(foodId),
 --CONSTRAINT fk_users_foods_mealId FOREIGN KEY (mealId) REFERENCES meals(mealId)
 );
 

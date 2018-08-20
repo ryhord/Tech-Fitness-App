@@ -27,7 +27,7 @@ namespace WebApplication.Web.Models
 		public float? nf_dietary_fiber { get; set; }
 		public float? nf_sugars { get; set; }
 		public float? nf_protein { get; set; }
-		public object nf_potassium { get; set; }
+		public float? nf_potassium { get; set; }
 		public object nf_p { get; set; }
 		public Full_Nutrients[] full_nutrients { get; set; }
 		public object nix_brand_name { get; set; }
