@@ -16,7 +16,7 @@ namespace WebApplication.Web.DAL
 			this.connectionString = connectionString;
 		}
 
-		public User SaveItemToUserFoodLog(User user, Food food)
+		public User SaveItemToUserFoodLog(User user, Food food, int mealId, int numberOfServings)
 		{
 			try
 			{
@@ -56,7 +56,6 @@ namespace WebApplication.Web.DAL
 						newFood.Parameters.AddWithValue("@protein", food.nf_protein);
 						newFood.Parameters.AddWithValue("@potassium", food.nf_potassium);
 						newFood.Parameters.AddWithValue("@imgurl", food.Imgurl);
-						//newFood.Parameters.AddWithValue("@mealClassification", foodItem.foods[0].Name);
 
 						var rowsAffected = newFood.ExecuteNonQuery();
 
@@ -67,13 +66,17 @@ namespace WebApplication.Web.DAL
 					userFood.UserId = user.Id;
 					userFood.DateOfEntry = DateTime.Now;
 					userFood.CaloriesPerServing = (float)food.nf_calories;
-					userFood.MealId = 1; //This is a placeholder for now
-					userFood.NumberOfServings = 1; // This needs to be user entered
+					userFood.MealId = mealId;
+					userFood.NumberOfServings = numberOfServings;
 					userFood.ServingQuantity = food.serving_qty;
 					userFood.ServingUnit = food.serving_unit;
 					userFood.FoodName = food.Name;
 
-					SqlCommand newUserFood = new SqlCommand($"INSERT INTO users_foods (userId, dateOfEntry, mealId, caloriesPerServing, numberOfServings, servingQuantity, servingUnit, foodId, foodName) VALUES (@userId, @dateOfEntry, @mealId, @caloriesPerServing, @numberOfServings, @servingQuantity, @servingUnit, @foodId, @foodName);", conn);
+					conn.Close();
+					conn.Open();
+
+					// foodId was previous in this string if it needs to be added back
+					SqlCommand newUserFood = new SqlCommand($"INSERT INTO users_foods (userId, dateOfEntry, mealId, caloriesPerServing, numberOfServings, servingQuantity, servingUnit, foodName) VALUES (@userId, @dateOfEntry, @mealId, @caloriesPerServing, @numberOfServings, @servingQuantity, @servingUnit, @foodName);", conn);
 					newUserFood.Parameters.AddWithValue("@userId", userFood.UserId);
 					newUserFood.Parameters.AddWithValue("@dateOfEntry", userFood.DateOfEntry);
 					newUserFood.Parameters.AddWithValue("@mealId", userFood.MealId);
@@ -81,10 +84,27 @@ namespace WebApplication.Web.DAL
 					newUserFood.Parameters.AddWithValue("@numberOfServings", userFood.NumberOfServings);
 					newUserFood.Parameters.AddWithValue("@servingQuantity", userFood.ServingQuantity);
 					newUserFood.Parameters.AddWithValue("@servingUnit", userFood.ServingUnit);
-					newUserFood.Parameters.AddWithValue("@foodId", 1);
+					//newUserFood.Parameters.AddWithValue("@foodId", foodId);
 					newUserFood.Parameters.AddWithValue("@foodName", userFood.FoodName);
 
 					var rowsAffected2 = newUserFood.ExecuteNonQuery();
+
+					//conn.Close();
+					//conn.Open();
+
+					//SqlCommand getFoodId = new SqlCommand($"SELECT foods.foodId FROM foods INNER JOIN users_foods ON foods.foodName = users_foods.foodName WHERE foods.foodName = @foodName", conn);
+					//getFoodId.Parameters.AddWithValue("@foodName", userFood.FoodName);
+
+					//SqlDataReader reader = getFoodId.ExecuteReader();
+					//int foodId = 0;
+					//if (reader.Read())
+					//{
+					//	foodId = Convert.ToInt32(reader["foodId"]);
+					//}
+
+
+
+
 
 					return user;
 				}

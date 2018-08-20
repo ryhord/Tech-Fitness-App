@@ -14,6 +14,6 @@ namespace WebApplication.Web.DAL
 		/// <param name="user"></param>
 		/// <param name="foodItem"></param>
 		/// <returns>User</returns>
-		User SaveItemToUserFoodLog(User user, Food food);
+		User SaveItemToUserFoodLog(User user, Food food, int mealId, int numberOfServings);
 	}
 }

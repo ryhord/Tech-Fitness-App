@@ -101,11 +101,11 @@ namespace WebApplication.Web.Controllers
 		//}
 
 		[HttpPost]
-		public IActionResult SaveFood(Food foodItem)
+		public IActionResult SaveFood(Food foodItem, int mealId, int numberOfServings)
 		{
 			User user = authProvider.GetCurrentUser();
-			dal.SaveItemToUserFoodLog(user, foodItem);
-
+			dal.SaveItemToUserFoodLog(user, foodItem, mealId, numberOfServings);
+		
 			return RedirectToAction("Index", "Dashboard");
 		}
 	}	

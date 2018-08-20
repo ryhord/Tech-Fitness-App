@@ -17,15 +17,31 @@
 <p><strong>Sodium: </strong>@Model.foods[0].nf_sodium</p>
 <br />
 
-<form asp-controller="Dashboard" asp-action="SaveFood" method="post">
-    @*<label asp-for="foods[0].MealClassification">Meal Classification</label>
+<form asp-controller="Dashboard" asp-action="SaveFood" asp-route-mealId="mealId" asp-route-numberOfServings="numberOfServings" method="post">
+    <label>Meal Classification</label>
+    <select>
+        <option name="mealId" value="1">Breakfast</option>
+        <option name="mealId" value="2">Lunch</option>
+        <option name="mealId" value="3">Dinner</option>
+        <option name="mealId" value="4">Snack</option>
+        <option name="mealId" value="5">Dessert</option>
+    </select>
+
+    <div>
+        <label>Number of Servings: </label>
         <select>
-            <option name="MealClassification" value="breakfast">Breakfast</option>
-            <option name="MealClassification" value="lunch">Lunch</option>
-            <option name="MealClassification" value="dinner">Dinner</option>
-            <option name="MealClassification" value="snack">Snack</option>
-            <option name="MealClassification" value="desert">Desert</option>
-        </select>*@
+            <option name="numberOfServings" value="1">1</option>
+            <option name="numberOfServings" value="2">2</option>
+            <option name="numberOfServings" value="3">3</option>
+            <option name="numberOfServings" value="4">4</option>
+            <option name="numberOfServings" value="5">5</option>
+            <option name="numberOfServings" value="6">6</option>
+            <option name="numberOfServings" value="7">7</option>
+            <option name="numberOfServings" value="8">8</option>
+            <option name="numberOfServings" value="9">9</option>
+            <option name="numberOfServings" value="10">10</option>
+        </select>
+    </div>
 
     <input name="name" type="hidden" value="@Model.foods[0].Name" />
     <input name="imgurl" type="hidden" value="@Model.foods[0].Imgurl" />

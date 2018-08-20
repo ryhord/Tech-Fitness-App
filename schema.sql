@@ -51,7 +51,7 @@ CREATE TABLE users (
 
 CREATE TABLE foods (
 	foodId integer							IDENTITY(1,1),
-	foodName varchar(50)					,
+	foodName varchar(200)					,
 	servingQuantity float					,
 	servingUnit varchar(50)					,
 	calories float							,
@@ -64,12 +64,10 @@ CREATE TABLE foods (
 	sugars float							,
 	protein float							,
 	potassium float							,
-	--foodGroup varchar(50)					not null,
-	--Name varchar(200)						not null,
 	imgurl text								,
-	--mealClassification text				not null,
+	
 
-	CONSTRAINT pk_foods PRIMARY KEY (foodId)
+	CONSTRAINT pk_foods PRIMARY KEY (foodName)
 );
 
 
@@ -90,12 +88,13 @@ caloriesPerServing float	,
 numberOfServings decimal	,
 servingQuantity decimal		,
 servingUnit varchar(20)		,
-foodId integer				,
+--foodId integer				,
 foodName varchar(200)		,
+mealClassification int		,
 
 CONSTRAINT pk_users_foods PRIMARY KEY (rowId),
 CONSTRAINT fk_users_foods_userId FOREIGN KEY (userId) REFERENCES users(userId),
-CONSTRAINT fk_users_foods_foodId FOREIGN KEY (foodId) REFERENCES foods(foodId),
+CONSTRAINT fk_users_foods_foodName FOREIGN KEY (foodName) REFERENCES foods(foodName),
 --CONSTRAINT fk_users_foods_mealId FOREIGN KEY (mealId) REFERENCES meals(mealId)
 );
 
