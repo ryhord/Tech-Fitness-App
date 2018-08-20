@@ -2,36 +2,69 @@
 @{
     ViewData["Title"] = "FoodResults";
 }
+<head>
+    <link rel="stylesheet" href="~/css/UserDashboard.css" />
+</head>
 
-<h2>Food Results</h2>
-
-@if (Model.FoodSearchResults.Count == 0)
-{
-    <p>No foods found</p>
-}
-else
-{
-    @foreach (var item in Model.FoodSearchResults)
-    {
-        <div>
-            <img src="@item.PhotoUrl" />
-            <p>@item.Name</p>
-            @*<a asp-controller="Dashboard" asp-action="ViewFoodDetail" asp-route-name="@item.Name">View Details</a>*@
-            <form asp-controller="Dashboard" asp-action="ViewFoodDetail" method="get">
-                <input type="hidden" name="name" value="@item.Name" />
-                <input type="hidden" name="imgurl" value="@item.PhotoUrl" />
-                <button type="submit">View Details</button>
-            </form>
-        </div>
+<style>
+    .flex-container {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
     }
 
+    .flex-container > div {
+        width: 33%;
+        height: auto;
+        text-align: center;
+        margin: 0px 0px 35px 0px;
+    }
+
+    #resultImage{
+        width: 200px;
+        height: auto;
+    }
+</style>
+
+<div class="wrapper">
+
+    @await Component.InvokeAsync("DashboardNavigation")
+
+    <div class="column" id="userInfo">
+
+        <h2>Food Results</h2>
+        <div class="flex-container">
+            @if (Model.FoodSearchResults.Count == 0)
+            {
+                <p>No foods found</p>
+            }
+            else
+            {
+                @foreach (var item in Model.FoodSearchResults)
+                {
+                    <div>
+                        <img id="resultImage" src="@item.PhotoUrl" />
+                        <p>@item.Name</p>
+                        @*<a asp-controller="Dashboard" asp-action="ViewFoodDetail" asp-route-name="@item.Name">View Details</a>*@
+                        <form asp-controller="Dashboard" asp-action="ViewFoodDetail" method="get">
+                            <input type="hidden" name="name" value="@item.Name" />
+                            <input type="hidden" name="imgurl" value="@item.PhotoUrl" />
+                            <button type="submit">View Details</button>
+                            <button>Add</button>
+                        </form>
+                    </div>
+                }
 
 
 
-    @*<label asp-for="Name"></label>
-    <input type="text" asp-for="Name" />*@
 
-    @*<button type="submit" value="Submit">Search</button>*@
+                @*<label asp-for="Name"></label>
+            <input type="text" asp-for="Name" />*@
 
-}
+                @*<button type="submit" value="Submit">Search</button>*@
+
+            }
+        </div>
+    </div>
+    </div>
 
