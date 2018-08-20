@@ -103,5 +103,7 @@ namespace WebApplication.Web.Models
         /// The user's role.
         /// </summary>
         public string Role { get; set; }
+
+		public List<FoodItem> UserFoodLog { get; set; }
     }
 }

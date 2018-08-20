@@ -20,18 +20,19 @@ else
             <form asp-controller="Dashboard" asp-action="ViewFoodDetail" method="get">
                 <input type="hidden" name="name" value="@item.Name" />
                 <input type="hidden" name="imgurl" value="@item.PhotoUrl" />
+                <input type="hidden" name="serving_unit" value="@item.ServingUnit" />
+                <input type="hidden" name="serving_qty" value="@item.ServingQuantity" />
                 <button type="submit">View Details</button>
+            </form>
+            <form asp-controller="Dashboard" asp-action="SaveFood" method="post">
+                <input type="hidden" name="name" value="@item.Name" />
+                <input type="hidden" name="imgurl" value="@item.PhotoUrl" />
+                <input type="hidden" name="serving_unit" value="@item.ServingUnit" />
+                <input type="hidden" name="serving_qty" value="@item.ServingQuantity" />
+                <button type="submit">Add Food</button>
             </form>
         </div>
     }
-
-
-
-
-    @*<label asp-for="Name"></label>
-    <input type="text" asp-for="Name" />*@
-
-    @*<button type="submit" value="Submit">Search</button>*@
 
 }
 

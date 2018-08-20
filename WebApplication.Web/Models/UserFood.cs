@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace WebApplication.Web.Models
 {
-	public class UserFood
-	{
+    public class UserFood
+    {
 		public int RowId { get; set; }
 		public int UserId { get; set; }
 		public DateTime DateOfEntry { get; set; }
@@ -17,5 +17,4 @@ namespace WebApplication.Web.Models
 		public string ServingUnit { get; set; }
 		public string FoodName { get; set; }
 	}
-		
 }

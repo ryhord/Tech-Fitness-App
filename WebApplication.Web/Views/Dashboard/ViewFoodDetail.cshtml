@@ -5,4 +5,41 @@
 
 <h2>Nutrition Details for @Model.foods[0].Name</h2>
 <img src="@Model.foods[0].Imgurl" />
-@*<img src="@Model.PhotoUrl" />*@
+<p>@Model.foods[0].serving_qty @Model.foods[0].serving_unit per serving</p>
+<p><strong>Calories: </strong>@Model.foods[0].nf_calories</p>
+<p><strong>Total Fat: </strong>@Model.foods[0].nf_total_fat</p>
+<p><strong>Saturated Fat: </strong>@Model.foods[0].nf_saturated_fat</p>
+<p><strong>Carbohydrates: </strong>@Model.foods[0].nf_total_carbohydrate</p>
+<p><strong>Protein: </strong>@Model.foods[0].nf_protein</p>
+<p><strong>Sugars: </strong>@Model.foods[0].nf_sugars</p>
+<p><strong>Dietary Fiber: </strong>@Model.foods[0].nf_dietary_fiber</p>
+<p><strong>Cholesterol: </strong>@Model.foods[0].nf_cholesterol</p>
+<p><strong>Sodium: </strong>@Model.foods[0].nf_sodium</p>
+<br />
+
+<form asp-controller="Dashboard" asp-action="SaveFood" method="post">
+    @*<label asp-for="foods[0].MealClassification">Meal Classification</label>
+        <select>
+            <option name="MealClassification" value="breakfast">Breakfast</option>
+            <option name="MealClassification" value="lunch">Lunch</option>
+            <option name="MealClassification" value="dinner">Dinner</option>
+            <option name="MealClassification" value="snack">Snack</option>
+            <option name="MealClassification" value="desert">Desert</option>
+        </select>*@
+
+    <input name="name" type="hidden" value="@Model.foods[0].Name" />
+    <input name="imgurl" type="hidden" value="@Model.foods[0].Imgurl" />
+    <input name="serving_qty" type="hidden" value="@Model.foods[0].serving_qty" />
+    <input name="serving_unit" type="hidden" value="@Model.foods[0].serving_unit" />
+    <input name="nf_calories" type="hidden" value="@Model.foods[0].nf_calories" />
+    <input name="nf_total_fat" type="hidden" value="@Model.foods[0].nf_total_fat" />
+    <input name="nf_saturated_fat" type="hidden" value="@Model.foods[0].nf_saturated_fat" />
+    <input name="nf_total_carbohydrate" type="hidden" value="@Model.foods[0].nf_total_carbohydrate" />
+    <input name="nf_protein" type="hidden" value="@Model.foods[0].nf_protein" />
+    <input name="nf_sugars" type="hidden" value="@Model.foods[0].nf_sugars" />
+    <input name="nf_dietary_fiber" type="hidden" value="@Model.foods[0].nf_dietary_fiber" />
+    <input name="nf_cholesterol" type="hidden" value="@Model.foods[0].nf_cholesterol" />
+    <input name="nf_sodium" type="hidden" value="@Model.foods[0].nf_sodium" />
+
+    <button type="submit" value="submit">Add Food</button>
+</form>
