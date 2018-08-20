@@ -15,9 +15,11 @@ namespace WebApplication.Web.Controllers
 	public class DashboardController : Controller
 	{
 		private readonly IAuthProvider authProvider;
-		public DashboardController(IAuthProvider authProvider)
+		private readonly IUserFoodDAL dal;
+		public DashboardController(IAuthProvider authProvider, IUserFoodDAL dal)
 		{
 			this.authProvider = authProvider;
+			this.dal = dal;
 		}
 
 		public IActionResult Index()
@@ -99,11 +101,11 @@ namespace WebApplication.Web.Controllers
 		//}
 
 		[HttpPost]
-		public IActionResult SaveFood(FoodItem foodItem)
+		public IActionResult SaveFood(Food foodItem)
 		{
-			//Get user
-			// with session username
 			User user = authProvider.GetCurrentUser();
+			dal.SaveItemToUserFoodLog(user, foodItem);
+
 			return RedirectToAction("Index", "Dashboard");
 		}
 	}	

@@ -16,7 +16,7 @@ namespace WebApplication.Web.DAL
 			this.connectionString = connectionString;
 		}
 
-		public User SaveItemToUserFoodLog(User user, FoodItem foodItem)
+		public User SaveItemToUserFoodLog(User user, Food food)
 		{
 			try
 			{
@@ -29,22 +29,60 @@ namespace WebApplication.Web.DAL
 				{
 					conn.Open();
 
-					SqlCommand cmd = new SqlCommand( "SELECT * FROM foods WHERE foodName = @foodName", conn);
-					cmd.Parameters.AddWithValue("@foodName", foodItem.foods[0].Name);
+					SqlCommand cmd = new SqlCommand( "SELECT * FROM foods WHERE Name = @name", conn);
+					cmd.Parameters.AddWithValue("@name", food.Name);
 
 					var resultReturned = cmd.ExecuteReader();
 
 					// Check if food is in already in food table -- by name
-					if (!resultReturned.Read())
+					if (!resultReturned.HasRows)
 					{
 						// add the food to the table
-
+						conn.Close();
 						conn.Open();
-						SqlCommand newFood = new SqlCommand($"INSERT INTO foods (foodName, servingSize, calories, foodGroup) VALUES (@foodName, @servingSize, @calories, @foodGroup);", conn);
-						newFood.Parameters.AddWithValue("@foodName", foodItem.foods[0].Name);
-						newFood.Parameters.AddWithValue("@servingSize", foodItem.foods[0].Name); //not right
-						newFood.Parameters.AddWithValue("@calories", foodItem.foods[0].nf_calories);
-						newFood.Parameters.AddWithValue("@foodGroup", foodItem.foods[0].Name); // not right
+						SqlCommand newFood = new SqlCommand(//$" SET IDENTITY_INSERT foods ON " +
+							$"INSERT INTO foods (foodName, " +
+																				$"servingQuantity, " +
+																				$"servingUnit, " +
+																				$"calories, totalFat, " +
+																				 $"saturatedFat, cholesterol, " +
+																				 $"sodium, totalCarbohydrate, " +
+																				 $"dietaryFiber, " +
+																				 $"sugars, " +
+																				 $"protein, " +
+																				 $"potassium, " +
+																				 $"imgurl, " +
+																				$"mealClassification) " +
+															$"VALUES (@foodName, " +
+																				$"@servingQuantity, " +
+																				$"@servingUnit, " +
+																			   $"@calories," +
+																			   $"@totalFat, " +
+																			   $"@saturatedFat, " +
+																			   $"@cholesterol, " +
+																			   $"@sodium, " +
+																			   $"@totalCarbohydrate, " +
+																			   $"@dietaryFiber, " +
+																			   $"@sugars," +
+																			   $"@protein, " +
+																			   $"@potassium, " +
+																			   $"@imgurl, " +
+																			   $"@mealClassification);", conn);
+						newFood.Parameters.AddWithValue("@foodName", food.Name);
+						newFood.Parameters.AddWithValue("@servingQuantity", food.serving_qty);
+						newFood.Parameters.AddWithValue("@servingUnit", food.serving_unit);
+						newFood.Parameters.AddWithValue("@calories", food.nf_calories);
+						newFood.Parameters.AddWithValue("@totalFat", food.nf_total_fat);
+						newFood.Parameters.AddWithValue("@saturatedFat", food.nf_saturated_fat);
+						newFood.Parameters.AddWithValue("@cholesterol", food.nf_cholesterol);
+						newFood.Parameters.AddWithValue("@sodium", food.nf_sodium);
+						newFood.Parameters.AddWithValue("@totalCarbohydrate", food.nf_total_carbohydrate);
+						newFood.Parameters.AddWithValue("@dietaryFiber", food.nf_dietary_fiber);
+						newFood.Parameters.AddWithValue("@sugars", food.nf_sugars);
+						newFood.Parameters.AddWithValue("@protein", food.nf_protein);
+						newFood.Parameters.AddWithValue("@potassium", food.nf_potassium);
+						newFood.Parameters.AddWithValue("@imgurl", food.Imgurl);
+						//newFood.Parameters.AddWithValue("@mealClassification", foodItem.foods[0].Name);
 
 						cmd.ExecuteNonQuery();
 
@@ -54,18 +92,19 @@ namespace WebApplication.Web.DAL
 					UserFood userFood = new UserFood();
 					userFood.UserId = user.Id;
 					userFood.DateOfEntry = DateTime.Now;
-					userFood.CaloriesPerServing = (float)foodItem.foods[0].nf_calories;
+					userFood.CaloriesPerServing = (float)food.nf_calories;
 					userFood.MealId = 1; //This is a placeholder for now
 					userFood.NumberOfServings = 1; // This needs to be user entered
-					userFood.ServingSize = 1; // this neeeds to be retrieved/passed from the initial search results
-					userFood.ServingUnit = "g"; // this neeeds to be retrieved/passed from the initial search results
+					userFood.ServingQuantity = food.serving_qty;
+					userFood.ServingUnit = food.serving_unit;
 
-					SqlCommand newUserFood = new SqlCommand($"INSERT INTO users_foods (userId, dateOfEntry, mealId, numberOfServings, servingSize, servingUnit) VALUES (@foodName, @servingSize, @calories, @foodGroup, @servingSize, @servingUnit);", conn);
+					SqlCommand newUserFood = new SqlCommand($"INSERT INTO users_foods (userId, dateOfEntry, mealId, caloriesPerServing, numberOfServings, servingQuantity, servingUnit) VALUES (@userId, @dateOfEntry, @mealId, @caloriesPerServing, @numberOfServings, @servingQuantity, @servingUnit);", conn);
 					newUserFood.Parameters.AddWithValue("@userId", userFood.UserId);
 					newUserFood.Parameters.AddWithValue("@dateOfEntry", userFood.DateOfEntry);
 					newUserFood.Parameters.AddWithValue("@mealId", userFood.MealId);
+					newUserFood.Parameters.AddWithValue("@caloriesPerServing", userFood.CaloriesPerServing);
 					newUserFood.Parameters.AddWithValue("@numberOfServings", userFood.NumberOfServings);
-					newUserFood.Parameters.AddWithValue("@servingSize", userFood.ServingSize);
+					newUserFood.Parameters.AddWithValue("@servingQuantity", userFood.ServingQuantity);
 					newUserFood.Parameters.AddWithValue("@servingUnit", userFood.ServingUnit);
 
 					cmd.ExecuteNonQuery();

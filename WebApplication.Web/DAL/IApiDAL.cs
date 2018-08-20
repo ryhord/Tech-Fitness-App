@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WebApplication.Web.DAL
 {
-    interface IApiDAL
+    public interface IApiDAL
     {
 		/// <summary>
 		/// Searches Nutritionix API for the food specified by the endpoint property of the ApiDal instance.
