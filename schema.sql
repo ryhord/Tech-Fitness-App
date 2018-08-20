@@ -54,7 +54,7 @@ CREATE TABLE foods (
 	calories integer						not null,
 	foodGroup varchar(50)					not null,
 
-	CONSTRAINT pk_foods PRIMARY KEY (foodId)
+	CONSTRAINT pk_foodName PRIMARY KEY (foodName)
 );
 
 CREATE TABLE meals (
@@ -69,13 +69,16 @@ CREATE TABLE users_foods (
 	userId integer							not null,
 	dateOfEntry date						not null,
 	mealId integer							not null,
+	caloriesPerServing float				not null,
 	numberOfServings decimal				not null,
-	foodId integer							not null,
+	servingQuantity decimal					not null,
+	servingUnit varchar(20)					not null,
+	foodName varchar(50)					not null,
 
 	CONSTRAINT pk_users_foods PRIMARY KEY (rowId),
     CONSTRAINT fk_users_foods_userId FOREIGN KEY (userId) REFERENCES users(userId),
-	CONSTRAINT fk_users_foods_foodId FOREIGN KEY (foodId) REFERENCES foods(foodId),
-	CONSTRAINT fk_users_foods_mealId FOREIGN KEY (mealId) REFERENCES meals(mealId)
+	CONSTRAINT fk_users_foods_foodId FOREIGN KEY (foodName) REFERENCES foods(foodName),
+	--CONSTRAINT fk_users_foods_mealId FOREIGN KEY (mealId) REFERENCES meals(mealId)
 );
 
 CREATE TABLE dailyWeight (
@@ -88,7 +91,7 @@ CREATE TABLE dailyWeight (
 	CONSTRAINT fk_dailyWeight_users FOREIGN KEY (userId) REFERENCES users(userId)
 );
 
-CREATE TABLE quickMeals (
+/*CREATE TABLE quickMeals (
 	rowId integer							IDENTITY(1,1),
 	quickMealId integer						not null,
 	userId integer							not null,
@@ -99,6 +102,6 @@ CREATE TABLE quickMeals (
 	CONSTRAINT pk_quickMeals PRIMARY KEY (rowId),
 	CONSTRAINT fk_quickMeals_userId FOREIGN KEY (userId) REFERENCES users(userId),
 	CONSTRAINT fk_quickMeals_foodId FOREIGN KEY (foodId) REFERENCES foods(foodId),
-);
+);*/
 
 COMMIT TRANSACTION;
