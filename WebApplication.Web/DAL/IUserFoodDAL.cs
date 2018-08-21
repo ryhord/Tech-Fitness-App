@@ -23,6 +23,11 @@ namespace WebApplication.Web.DAL
 		/// <returns></returns>
 		IList<UserFood> GetUserFoods(int userId);
 
+		/// <summary>
+		/// Collects top 10 recently entered foods.
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <returns></returns>
 		IList<UserFood> GetRecentFoods(int userId);
 	}
 }
