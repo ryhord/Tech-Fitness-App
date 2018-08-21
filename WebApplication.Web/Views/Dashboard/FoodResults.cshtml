@@ -47,7 +47,6 @@
                     <div>
                         <img id="resultImage" src="@item.PhotoUrl" />
                         <p>@item.Name</p>
-                        @*<a asp-controller="Dashboard" asp-action="ViewFoodDetail" asp-route-name="@item.Name">View Details</a>*@
                         <form asp-controller="Dashboard" asp-action="ViewFoodDetail" method="get">
                             <input type="hidden" name="name" value="@item.Name" />
                             <input type="hidden" name="imgurl" value="@item.PhotoUrl" />
@@ -60,6 +59,8 @@
                             <input type="hidden" name="imgurl" value="@item.PhotoUrl" />
                             <input type="hidden" name="serving_unit" value="@item.ServingUnit" />
                             <input type="hidden" name="serving_qty" value="@item.ServingQuantity" />
+                            <input type="hidden" name="numberOfServings" value="1" />
+                            <input type="hidden" name="mealId" value="1" />
                             <button type="submit">Add Food</button>
                         </form>
                     </div>

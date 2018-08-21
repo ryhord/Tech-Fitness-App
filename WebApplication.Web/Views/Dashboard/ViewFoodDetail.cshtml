@@ -20,27 +20,27 @@
 
 <form asp-controller="Dashboard" asp-action="SaveFood" asp-route-mealId="mealId" asp-route-numberOfServings="numberOfServings" method="post">
     <label>Meal Classification</label>
-    <select>
-        <option name="mealId" value="1">Breakfast</option>
-        <option name="mealId" value="2">Lunch</option>
-        <option name="mealId" value="3">Dinner</option>
-        <option name="mealId" value="4">Snack</option>
-        <option name="mealId" value="5">Dessert</option>
+    <select name="mealId">
+        <option value="1">Breakfast</option>
+        <option value="2">Lunch</option>
+        <option value="3">Dinner</option>
+        <option value="4">Snack</option>
+        <option value="5">Dessert</option>
     </select>
 
     <div>
         <label>Number of Servings: </label>
-        <select>
-            <option name="numberOfServings" value="1">1</option>
-            <option name="numberOfServings" value="2">2</option>
-            <option name="numberOfServings" value="3">3</option>
-            <option name="numberOfServings" value="4">4</option>
-            <option name="numberOfServings" value="5">5</option>
-            <option name="numberOfServings" value="6">6</option>
-            <option name="numberOfServings" value="7">7</option>
-            <option name="numberOfServings" value="8">8</option>
-            <option name="numberOfServings" value="9">9</option>
-            <option name="numberOfServings" value="10">10</option>
+        <select name="numberOfServings">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
         </select>
     </div>
 

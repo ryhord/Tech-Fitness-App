@@ -52,7 +52,6 @@ namespace WebApplication.Web.DAL
 				}
 				
 				//Process the response stream
-
 				using(Stream responseStream = response.GetResponseStream())
 				{
 					if(responseStream != null)
@@ -62,11 +61,10 @@ namespace WebApplication.Web.DAL
 							strResponseValue = reader.ReadToEnd();
 						}
 					}
-				} // End of using ResponseStream
+				} 
 
 				return strResponseValue;
-			}// end of using response
-
+			}
 		}
 
 		public string getNutritionInfo(string foodName)
@@ -85,10 +83,13 @@ namespace WebApplication.Web.DAL
 			byte[] byteArray = Encoding.UTF8.GetBytes(body);
 
 			request.ContentLength = byteArray.Length;
+			
 			// Get the request stream.  
 			Stream dataStream = request.GetRequestStream();
+			
 			// Write the data to the request stream.  
 			dataStream.Write(byteArray, 0, byteArray.Length);
+			
 			// Close the Stream object.  
 			dataStream.Close();
 			using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
@@ -97,8 +98,6 @@ namespace WebApplication.Web.DAL
 				{
 					throw new ApplicationException("Error code: " + response.StatusCode.ToString());
 				}
-
-				//Process the response stream
 
 				using (Stream responseStream = response.GetResponseStream())
 				{
@@ -109,13 +108,10 @@ namespace WebApplication.Web.DAL
 							strResponseValue = reader.ReadToEnd();
 						}
 					}
-				} // End of using ResponseStream
+				}
 
 				return strResponseValue;
-			}// end of using response
-
+			}
 		}
 	}
-
-
 }
