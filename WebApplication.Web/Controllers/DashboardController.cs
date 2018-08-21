@@ -24,12 +24,14 @@ namespace WebApplication.Web.Controllers
 
 		public IActionResult Index()
 		{
-			var user = authProvider.GetCurrentUser();
-			if (user != null)
-			{
-				return View(user);
-			}
-			return RedirectToAction("Index", "Home");
+				var user = authProvider.GetCurrentUser();
+				var userFoods = dal.GetUserFoods(user.Id);
+				if (user != null)
+				{
+					Tuple<User, IList<UserFood>> data = new Tuple<User, IList<UserFood>>(user, userFoods);
+					return View(data);
+				}
+				return RedirectToAction("Index", "Home");
 		}
 
 
@@ -97,8 +99,14 @@ namespace WebApplication.Web.Controllers
 		//[HttpPost]
 		//public IActionResult AddFoodEditDetails()
 		//{
-		
+
 		//}
+
+		[HttpGet]
+		public IActionResult RecentFoods()
+		{
+			return View();
+		}
 
 		[HttpPost]
 		public IActionResult SaveFood(Food foodItem, int mealId, int numberOfServings)

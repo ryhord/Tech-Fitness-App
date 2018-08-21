@@ -15,5 +15,12 @@ namespace WebApplication.Web.DAL
 		/// <param name="foodItem"></param>
 		/// <returns>User</returns>
 		User SaveItemToUserFoodLog(User user, Food food, int mealId, int numberOfServings);
+
+		/// <summary>
+		/// Retrieves all food entries for a user.
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		IList<UserFood> GetUserFoods(int userId);
 	}
 }
