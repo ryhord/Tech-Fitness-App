@@ -1,12 +1,44 @@
-﻿#userInfo {
+﻿/******************/
+/* Main Window    */
+/* w/Meals, Goals */
+/******************/
+#userInfo {
     display: grid;
     grid-template-areas: 
         'overview overview'
         'column1 column2';
     grid-template-columns: 1fr 1fr;
+
+    /**********************************
+        This is to eliminate whitespace
+        from the grid's edges.
+    ************************************/
+    
+    gap: 0rem;
+    text-align: left;
+    margin-right: -5rem;
+    margin-left: -1.5rem;
+
+    /********************
+        Background Image
+    *********************/
+    background: url('../images/dashboard.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: rgba(255, 255, 255, 0.4);
+    background-blend-mode: lighten;
 }
 
 #overview {
     grid-area: overview;
+    font-size: 4rem;
 }
 
+
+#targetDashboard {
+    text-align: right;
+}
+
+.table {
+    text-align: center;
+}

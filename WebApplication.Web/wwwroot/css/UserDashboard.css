@@ -22,6 +22,8 @@ div#userInfo {
 div#dashboardControlPanel {
     grid-area: sidebar;
     border-right: 3px solid #5b68de;
+    font-size: 1.75rem;
+    padding-top: 4rem;
 }
 
 div#dashboardControlPanel > div > a:hover {
