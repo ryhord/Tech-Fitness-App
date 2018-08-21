@@ -15,7 +15,7 @@ namespace WebApplication.Web.DAL
 		/// </summary>
 		/// <param name="user"></param>
 		/// <param name="name"></param>
-		void SaveItemToUserFoodLog(User user, string name, string imgurl, string serving_unit, float serving_qty);
+		void SaveItemToUserFoodLog(int userId, Food food);
 
 		/// <summary>
 		/// Saves a foodItem to the foods table and users_foods table 
@@ -23,7 +23,7 @@ namespace WebApplication.Web.DAL
 		/// <param name="user"></param>
 		/// <param name="foodItem"></param>
 		/// <returns>User</returns>
-		User SaveItemToUserFoodLog(User user, Food food, int mealId, int numberOfServings);
+		void SaveItemToUserFoodLog(int userId, Food food, int mealId, int numberOfServings);
 
 		/// <summary>
 		/// Retrieves all food entries for a user.

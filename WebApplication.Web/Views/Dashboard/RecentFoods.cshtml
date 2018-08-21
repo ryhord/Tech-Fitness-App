@@ -1,7 +1,4 @@
 ﻿@model IList<UserFood>
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
 <head>
     <link rel="stylesheet" href="~/css/UserDashboard.css" />
 </head>
@@ -23,39 +20,53 @@
             <tbody>
                 @foreach (var foodItem in Model)
                 {
-                <tr>
-                    <td>@foodItem.FoodName</td>
-                    <td>@foodItem.DateOfEntry.ToShortDateString()</td>
+                    <tr>
+                        <td>@foodItem.FoodName</td>
+                        <td>@foodItem.DateOfEntry.ToShortDateString()</td>
 
-                    @if (foodItem.MealId == 1)
-                    {
-                        <td>Breakfast</td>
-                    }
-                    @if (foodItem.MealId == 2)
-                    {
-                        <td>Lunch</td>
-                    }
-                    @if (foodItem.MealId == 3)
-                    {
-                        <td>Dinner</td>
-                    }
-                    @if (foodItem.MealId == 4)
-                    {
-                        <td>Snack</td>
-                    }
-                    @if (foodItem.MealId == 5)
-                    {
-                        <td>Dessert</td>
-                    }
-                    <td><button class="btn">Edit</button></td>
-                    <td><button class="btn">Add</button></td>
-                    <td><button class="btn">Delete</button></td>
-
-                </tr>
+                        @if (foodItem.MealId == 1)
+                        {
+                            <td>Breakfast</td>
+                        }
+                        @if (foodItem.MealId == 2)
+                        {
+                            <td>Lunch</td>
+                        }
+                        @if (foodItem.MealId == 3)
+                        {
+                            <td>Dinner</td>
+                        }
+                        @if (foodItem.MealId == 4)
+                        {
+                            <td>Snack</td>
+                        }
+                        @if (foodItem.MealId == 5)
+                        {
+                            <td>Dessert</td>
+                        }
+                        <td>
+                            <form>
+                                <button class="btn">Edit</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form asp-controller="Dashboard" asp-action="SaveFood" method="post">
+                                <input type="hidden" name="name" value="@foodItem.FoodName" />
+                                <input type="hidden" name="serving_unit" value="@foodItem.ServingUnit" />
+                                <input type="hidden" name="serving_qty" value="@foodItem.ServingQuantity" />
+                                <input type="hidden" name="mealId" value="@foodItem.MealId" />
+                                <input type="hidden" name="numberOfServings" value="@foodItem.NumberOfServings" />
+                                <button class="btn" type="submit">Add</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form>
+                                <button class="btn">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
 
                 }
-
-
             </tbody>
         </table>
     </div>

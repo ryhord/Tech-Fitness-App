@@ -17,7 +17,7 @@ namespace WebApplication.Web.DAL
 			this.connectionString = connectionString;
 		}
 
-		public User SaveItemToUserFoodLog(User user, Food food, int mealId, int numberOfServings)
+		public void SaveItemToUserFoodLog(int userId, Food food, int mealId, int numberOfServings)
 		{
 			try
 			{
@@ -34,7 +34,7 @@ namespace WebApplication.Web.DAL
 					{
 						conn.Close();
 						conn.Open();
-						SqlCommand newFood = new SqlCommand($"INSERT INTO foods(foodName, servingQuantity, servingUnit, calories, totalFat, saturatedFat, cholesterol, sodium, totalCarbohydrate, dietaryFiber, sugars, protein, potassium, imgurl) VALUES(@foodName, @servingQuantity, @servingUnit, @calories, @totalFat, @saturatedFat, @cholesterol, @sodium, @totalCarbohydrate, @dietaryFiber, @sugars, @protein, @potassium, @imgurl); ", conn);
+						SqlCommand newFood = new SqlCommand($"INSERT INTO foods(foodName, servingQuantity, servingUnit, calories, totalFat, saturatedFat, cholesterol, sodium, totalCarbohydrate, dietaryFiber, sugars, protein, potassium) VALUES(@foodName, @servingQuantity, @servingUnit, @calories, @totalFat, @saturatedFat, @cholesterol, @sodium, @totalCarbohydrate, @dietaryFiber, @sugars, @protein, @potassium); ", conn);
 						newFood.Parameters.AddWithValue("@foodName", food.Name);
 						newFood.Parameters.AddWithValue("@servingQuantity", food.serving_qty);
 						newFood.Parameters.AddWithValue("@servingUnit", food.serving_unit);
@@ -48,14 +48,13 @@ namespace WebApplication.Web.DAL
 						newFood.Parameters.AddWithValue("@sugars", food.nf_sugars);
 						newFood.Parameters.AddWithValue("@protein", food.nf_protein);
 						newFood.Parameters.AddWithValue("@potassium", food.nf_potassium);
-						newFood.Parameters.AddWithValue("@imgurl", food.Imgurl);
 
 						var rowsAffected = newFood.ExecuteNonQuery();
 
 					}
 
 					UserFood userFood = new UserFood();
-					userFood.UserId = user.Id;
+					userFood.UserId = userId;
 					userFood.DateOfEntry = DateTime.Now;
 					userFood.CaloriesPerServing = (float)food.nf_calories;
 					userFood.MealId = mealId;
@@ -78,8 +77,6 @@ namespace WebApplication.Web.DAL
 					newUserFood.Parameters.AddWithValue("@foodName", userFood.FoodName);
 
 					var rowsAffected2 = newUserFood.ExecuteNonQuery();
-
-					return user;
 				}
 			}
 			catch (SqlException ex)
@@ -88,17 +85,9 @@ namespace WebApplication.Web.DAL
 			}
 		}
 
-		public void SaveItemToUserFoodLog(User user, string name, string imgurl, string serving_unit, float serving_qty)
+		public void SaveItemToUserFoodLog(int userId, Food food)
 		{
-			ApiDAL api = new ApiDAL();
-			string jsonNutrition = api.getNutritionInfo(name);
-			FoodItem foodItem = JsonConvert.DeserializeObject<FoodItem>(jsonNutrition);
-			Food theFood = foodItem.foods[0];
-			theFood.Name = name;
-			theFood.Imgurl = imgurl;
-			theFood.serving_unit = serving_unit;
-			theFood.serving_qty = serving_qty;
-			SaveItemToUserFoodLog(user, theFood, 0, 1);
+			SaveItemToUserFoodLog(userId, food, 0, 1);
 		}
 
 		public IList<UserFood> GetUserFoods(int userId)

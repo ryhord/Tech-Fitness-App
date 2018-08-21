@@ -109,16 +109,26 @@ namespace WebApplication.Web.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult SaveFood(Food foodItem, int mealId, int numberOfServings)
+		public IActionResult SaveFood(string name, string serving_unit, float serving_qty, int mealId, int numberOfServings)
 		{
 			User user = authProvider.GetCurrentUser();
+			int userId = user.Id;
+
+			ApiDAL api = new ApiDAL();
+			string jsonNutrition = api.getNutritionInfo(name);
+			FoodItem foodItem = JsonConvert.DeserializeObject<FoodItem>(jsonNutrition);
+			Food food = foodItem.foods[0];
+			food.Name = name;
+			food.serving_unit = serving_unit;
+			food.serving_qty = serving_qty;
+
 			if (mealId == 0)
 			{
-				dal.SaveItemToUserFoodLog(user, foodItem.Name, foodItem.Imgurl, foodItem.serving_unit, foodItem.serving_qty);
+				dal.SaveItemToUserFoodLog(userId, food);
 			}
 			else
 			{
-				dal.SaveItemToUserFoodLog(user, foodItem, mealId, numberOfServings);
+				dal.SaveItemToUserFoodLog(userId, food, mealId, numberOfServings);
 			}
 			
 		

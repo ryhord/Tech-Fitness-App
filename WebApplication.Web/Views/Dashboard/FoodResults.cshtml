@@ -56,11 +56,8 @@
                         </form>
                         <form asp-controller="Dashboard" asp-action="SaveFood" method="post">
                             <input type="hidden" name="name" value="@item.Name" />
-                            <input type="hidden" name="imgurl" value="@item.PhotoUrl" />
                             <input type="hidden" name="serving_unit" value="@item.ServingUnit" />
                             <input type="hidden" name="serving_qty" value="@item.ServingQuantity" />
-                            @*<input type="hidden" name="numberOfServings" value="1" />
-        <input type="hidden" name="mealId" value="0" />*@
                             <button type="submit">Add Food</button>
                         </form>
                     </div>
