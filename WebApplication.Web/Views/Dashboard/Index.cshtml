@@ -35,6 +35,7 @@
                     Total Calories Consumed Today: @totalConsumedCalories
                 </div>
             </div>
+            @*Show breakfast Table*@
             <div>
                 <h2>Breakfast</h2>
                 <table class="table">
@@ -66,6 +67,7 @@
 
 
             </div>
+            @*Show Lunch Table*@
             <div>
                 <h2>Lunch</h2>
                 <table class="table">
@@ -95,6 +97,7 @@
                     </tbody>
                 </table>
             </div>
+            @*Show Dinner Table*@
             <div>
                 <h2>Dinner</h2>
                 <table class="table">
@@ -123,6 +126,7 @@
                     </tbody>
                 </table>
             </div>
+            @*Show Snack Table*@
             <div>
                 <h2>Snack</h2>
                 <table class="table">
@@ -152,6 +156,7 @@
                     </tbody>
                 </table>
             </div>
+            @*Show Dessert Table*@
             <div>
                 <h2>Dessert</h2>
                 <table class="table">
@@ -182,6 +187,37 @@
                 </table>
 
             </div>
+            @*Show Other Foods Table*@
+            <div>
+                <h2>Other Foods</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Food Item</th>
+                            <th>Number of Servings</th>
+                            <th>Calorie Count</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+
+                        @foreach (var userFood in userFoods)
+
+                        {
+                            @if (userFood.MealId == 0 && user.Id == userFood.UserId)
+                            {
+                                <tr>
+                                    <td>@userFood.FoodName</td>
+                                    <td>@userFood.NumberOfServings</td>
+                                    <td>@(userFood.CaloriesPerServing * userFood.NumberOfServings)</td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+
+            </div>
         </div>
         <div id="targetDashboard">
             <div>
@@ -194,3 +230,4 @@
 
     </div>
 </div>
+s
