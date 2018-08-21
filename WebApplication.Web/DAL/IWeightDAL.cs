@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApplication.Web.Models;
 
 namespace WebApplication.Web.DAL
 {
     public interface IWeightDAL
     {
-		IList<int> GetWeights(DateTime startDate, DateTime endDate);
+		IList<UserWeight> GetWeights(User user, DateTime startDate, DateTime endDate);
 	}
 }

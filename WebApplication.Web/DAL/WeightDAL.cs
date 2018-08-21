@@ -16,9 +16,9 @@ namespace WebApplication.Web.DAL
 			this.connectionString = connectionString;
 		}
 
-		public IList<int> GetWeights(User user, DateTime startDate, DateTime endDate)
+		public IList<UserWeight> GetWeights(User user, DateTime startDate, DateTime endDate)
 		{
-			List<int> weightsList = new List<int>();
+			List<UserWeight> weightsList = new List<UserWeight>();
 
             try
             {
@@ -36,6 +36,16 @@ namespace WebApplication.Web.DAL
                     cmd.Parameters.AddWithValue("@userId", user.Id);
                     cmd.Parameters.AddWithValue("@startDate", startDate.ToShortDateString());
                     cmd.Parameters.AddWithValue("@endDate", endDate.ToShortDateString());
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        UserWeight userWeight = new UserWeight();
+
+                        userWeight.UserId = Convert.ToInt32(reader["userId"]);
+                        userWeight.TodaysWeight = Convert.ToInt32(reader["todaysWeight"]);
+                        userWeight.DateOfEntry = Convert.ToDateTime(reader["dateOfEntry"]);
+                    }
 
                 }
             }
