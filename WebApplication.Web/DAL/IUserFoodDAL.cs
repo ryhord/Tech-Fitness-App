@@ -22,5 +22,7 @@ namespace WebApplication.Web.DAL
 		/// <param name="userId"></param>
 		/// <returns></returns>
 		IList<UserFood> GetUserFoods(int userId);
+
+		IList<UserFood> GetRecentFoods(int userId);
 	}
 }

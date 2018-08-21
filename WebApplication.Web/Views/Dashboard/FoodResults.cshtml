@@ -13,39 +13,7 @@
         justify-content: space-around;
     }
 
-<<<<<<< HEAD
-@if (Model.FoodSearchResults.Count == 0)
-{
-    <p>No foods found</p>
-}
-else
-{
-    @foreach (var item in Model.FoodSearchResults)
-    {
-        <div>
-            <img src="@item.PhotoUrl" />
-            <p>@item.Name</p>
-            @*<a asp-controller="Dashboard" asp-action="ViewFoodDetail" asp-route-name="@item.Name">View Details</a>*@
-            <form asp-controller="Dashboard" asp-action="ViewFoodDetail" method="get">
-                <input type="hidden" name="name" value="@item.Name" />
-                <input type="hidden" name="imgurl" value="@item.PhotoUrl" />
-                <input type="hidden" name="serving_unit" value="@item.ServingUnit" />
-                <input type="hidden" name="serving_qty" value="@item.ServingQuantity" />
-                <button type="submit">View Details</button>
-            </form>
-            <form asp-controller="Dashboard" asp-action="SaveFood" method="post">
-                <input type="hidden" name="name" value="@item.Name" />
-                <input type="hidden" name="imgurl" value="@item.PhotoUrl" />
-                <input type="hidden" name="serving_unit" value="@item.ServingUnit" />
-                <input type="hidden" name="serving_qty" value="@item.ServingQuantity" />
-                <button type="submit">Add Food</button>
-            </form>
-        </div>
-    }
-
-}
-=======
-    .flex-container > div {
+        .flex-container > div {
         width: 33%;
         height: auto;
         text-align: center;
@@ -56,6 +24,7 @@ else
         width: 200px;
         height: auto;
     }
+
 </style>
 
 <div class="wrapper">
@@ -74,6 +43,7 @@ else
             {
                 @foreach (var item in Model.FoodSearchResults)
                 {
+
                     <div>
                         <img id="resultImage" src="@item.PhotoUrl" />
                         <p>@item.Name</p>
@@ -81,23 +51,22 @@ else
                         <form asp-controller="Dashboard" asp-action="ViewFoodDetail" method="get">
                             <input type="hidden" name="name" value="@item.Name" />
                             <input type="hidden" name="imgurl" value="@item.PhotoUrl" />
+                            <input type="hidden" name="serving_unit" value="@item.ServingUnit" />
+                            <input type="hidden" name="serving_qty" value="@item.ServingQuantity" />
                             <button type="submit">View Details</button>
-                            <button>Add</button>
+                        </form>
+                        <form asp-controller="Dashboard" asp-action="SaveFood" method="post">
+                            <input type="hidden" name="name" value="@item.Name" />
+                            <input type="hidden" name="imgurl" value="@item.PhotoUrl" />
+                            <input type="hidden" name="serving_unit" value="@item.ServingUnit" />
+                            <input type="hidden" name="serving_qty" value="@item.ServingQuantity" />
+                            <button type="submit">Add Food</button>
                         </form>
                     </div>
                 }
-
-
-
-
-                @*<label asp-for="Name"></label>
-            <input type="text" asp-for="Name" />*@
-
-                @*<button type="submit" value="Submit">Search</button>*@
-
             }
         </div>
     </div>
     </div>
->>>>>>> remotes/origin/RecentFoods08/20/18
+
 
