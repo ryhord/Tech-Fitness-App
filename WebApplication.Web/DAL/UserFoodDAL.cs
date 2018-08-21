@@ -127,7 +127,7 @@ namespace WebApplication.Web.DAL
 				using (SqlConnection conn = new SqlConnection(connectionString))
 				{
 					conn.Open();
-					SqlCommand cmd = new SqlCommand("SELECT TOP 10 * FROM users_foods INNER JOIN foods ON users_foods.foodName = foods.foodName WHERE users_foods.userId = @userId ORDER BY dateOfEntry;", conn);
+					SqlCommand cmd = new SqlCommand("SELECT TOP 10 * FROM users_foods INNER JOIN foods ON users_foods.foodName = foods.foodName WHERE users_foods.userId = @userId ORDER BY dateOfEntry DESC;", conn);
 					cmd.Parameters.AddWithValue("@userId", userId);
 
 					SqlDataReader reader = cmd.ExecuteReader();
