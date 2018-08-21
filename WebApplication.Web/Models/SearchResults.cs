@@ -12,9 +12,12 @@ namespace WebApplication.Web.Models
 			FoodSearchResults = new List<FoodPreview>();
 		}
 
+		
 		/// <summary>
 		/// List of the foods found in the search.
 		/// </summary>
 		public List<FoodPreview> FoodSearchResults { get; set; }
+
+		public string Name { get; set; }
     }
 }

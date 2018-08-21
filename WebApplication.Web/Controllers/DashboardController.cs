@@ -55,6 +55,7 @@ namespace WebApplication.Web.Controllers
 			var commonResults = jsonObj.common;
 
 			SearchResults res = new SearchResults();
+			res.Name = foodSearch.Name;
 
 
 			foreach (var i in brandedResults)
