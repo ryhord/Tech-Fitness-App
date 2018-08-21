@@ -16,10 +16,12 @@ namespace WebApplication.Web.Controllers
 	{
 		private readonly IAuthProvider authProvider;
 		private readonly IUserFoodDAL dal;
-		public DashboardController(IAuthProvider authProvider, IUserFoodDAL dal)
+		private readonly IWeightDAL weightDal;
+		public DashboardController(IAuthProvider authProvider, IUserFoodDAL dal, IWeightDAL weightDal)
 		{
 			this.authProvider = authProvider;
 			this.dal = dal;
+			this.weightDal = weightDal;
 		}
 
 		public IActionResult Index()
@@ -124,5 +126,12 @@ namespace WebApplication.Web.Controllers
 		
 			return RedirectToAction("Index", "Dashboard");
 		}
+
+		public IActionResult GetWeights(DateTime startDate, DateTime endDate)
+		{
+			User user = authProvider.GetCurrentUser();
+
+		}
+
 	}	
 }

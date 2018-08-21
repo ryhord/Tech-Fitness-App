@@ -49,8 +49,9 @@ namespace WebApplication.Web
             services.AddTransient<IAuthProvider, SessionAuthProvider>();
             services.AddTransient<IUserDAL>(m => new UserSqlDAL(@"Data Source=.\SQLEXPRESS;Initial Catalog=HealthTrackDB;Integrated Security=True"));
 			services.AddTransient<IUserFoodDAL>(m => new UserFoodDAL(@"Data Source=.\SQLEXPRESS;Initial Catalog=HealthTrackDB;Integrated Security=True"));
+			services.AddTransient<IWeightDAL>(m => new WeightDAL(@"Data Source=.\SQLEXPRESS;Initial Catalog=HealthTrackDB;Integrated Security=True"));
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
