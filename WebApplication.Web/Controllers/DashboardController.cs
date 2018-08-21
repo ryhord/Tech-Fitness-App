@@ -83,7 +83,6 @@ namespace WebApplication.Web.Controllers
 		public IActionResult ViewFoodDetail(string name, string imgurl, string serving_unit, float serving_qty)
 		{
 			ApiDAL api = new ApiDAL();
-			api.endpoint = "https://trackapi.nutritionix.com/v2/natural/nutrients/";
 			string jsonNutrition = api.getNutritionInfo(name);
 			FoodItem foodItem = JsonConvert.DeserializeObject<FoodItem>(jsonNutrition);
 			foodItem.foods[0].Name = name;
