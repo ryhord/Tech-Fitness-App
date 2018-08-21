@@ -89,23 +89,6 @@ namespace WebApplication.Web.DAL
 
 					var rowsAffected2 = newUserFood.ExecuteNonQuery();
 
-					//conn.Close();
-					//conn.Open();
-
-					//SqlCommand getFoodId = new SqlCommand($"SELECT foods.foodId FROM foods INNER JOIN users_foods ON foods.foodName = users_foods.foodName WHERE foods.foodName = @foodName", conn);
-					//getFoodId.Parameters.AddWithValue("@foodName", userFood.FoodName);
-
-					//SqlDataReader reader = getFoodId.ExecuteReader();
-					//int foodId = 0;
-					//if (reader.Read())
-					//{
-					//	foodId = Convert.ToInt32(reader["foodId"]);
-					//}
-
-
-
-
-
 					return user;
 				}
 			}
