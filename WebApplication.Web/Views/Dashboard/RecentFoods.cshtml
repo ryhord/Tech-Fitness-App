@@ -1,4 +1,4 @@
-﻿
+﻿@model IList<UserFood>
 @*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -9,5 +9,54 @@
     @await Component.InvokeAsync("DashboardNavigation")
     <div id="userInfo">
         <h2>Recent Foods</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Meal</th>
+                    <th>Edit</th>
+                    <th>Add</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var foodItem in Model)
+                {
+                <tr>
+                    <td>@foodItem.FoodName</td>
+                    <td>@foodItem.DateOfEntry.ToShortDateString()</td>
+
+                    @if (foodItem.MealId == 1)
+                    {
+                        <td>Breakfast</td>
+                    }
+                    @if (foodItem.MealId == 2)
+                    {
+                        <td>Lunch</td>
+                    }
+                    @if (foodItem.MealId == 3)
+                    {
+                        <td>Dinner</td>
+                    }
+                    @if (foodItem.MealId == 4)
+                    {
+                        <td>Snack</td>
+                    }
+                    @if (foodItem.MealId == 5)
+                    {
+                        <td>Dessert</td>
+                    }
+                    <td><button class="btn">Edit</button></td>
+                    <td><button class="btn">Add</button></td>
+                    <td><button class="btn">Delete</button></td>
+
+                </tr>
+
+                }
+
+
+            </tbody>
+        </table>
     </div>
 </div>
