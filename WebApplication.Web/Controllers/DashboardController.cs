@@ -127,10 +127,11 @@ namespace WebApplication.Web.Controllers
 			return RedirectToAction("Index", "Dashboard");
 		}
 
-		public IActionResult GetWeights(DateTime startDate, DateTime endDate)
+		public IActionResult DisplayWeights(DateTime startDate, DateTime endDate)
 		{
 			User user = authProvider.GetCurrentUser();
-
+            IList<UserWeight> userWeights = weightDal.GetWeights(user, startDate, endDate);
+            return View(userWeights);
 		}
 
 	}	

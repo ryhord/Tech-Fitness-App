@@ -45,6 +45,8 @@ namespace WebApplication.Web.DAL
                         userWeight.UserId = Convert.ToInt32(reader["userId"]);
                         userWeight.TodaysWeight = Convert.ToInt32(reader["todaysWeight"]);
                         userWeight.DateOfEntry = Convert.ToDateTime(reader["dateOfEntry"]);
+
+                        weightsList.Add(userWeight);
                     }
 
                 }
