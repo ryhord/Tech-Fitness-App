@@ -71,6 +71,7 @@ namespace WebApplication.Web.DAL
 		public string getNutritionInfo(string foodName)
 		{
 			string strResponseValue = string.Empty;
+			endpoint = "https://trackapi.nutritionix.com/v2/natural/nutrients/";
 			httpMethod = httpVerb.POST;
 			HttpWebRequest request = (HttpWebRequest)WebRequest.Create(endpoint);
 

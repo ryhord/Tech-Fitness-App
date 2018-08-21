@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using WebApplication.Web.Models;
 
 namespace WebApplication.Web.DAL
@@ -87,11 +88,18 @@ namespace WebApplication.Web.DAL
 			}
 		}
 
-		//public User SaveItemToUserFoodLog(User user, )
-		//{
-
-		//	return user;
-		//}
+		public void SaveItemToUserFoodLog(User user, string name, string imgurl, string serving_unit, float serving_qty)
+		{
+			ApiDAL api = new ApiDAL();
+			string jsonNutrition = api.getNutritionInfo(name);
+			FoodItem foodItem = JsonConvert.DeserializeObject<FoodItem>(jsonNutrition);
+			Food theFood = foodItem.foods[0];
+			theFood.Name = name;
+			theFood.Imgurl = imgurl;
+			theFood.serving_unit = serving_unit;
+			theFood.serving_qty = serving_qty;
+			SaveItemToUserFoodLog(user, theFood, 0, 1);
+		}
 
 		public IList<UserFood> GetUserFoods(int userId)
 		{
