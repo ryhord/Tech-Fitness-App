@@ -78,6 +78,17 @@ namespace WebApplication.Web.Models
 		/// </summary>
 		public int DesiredWeight { get; set; }
 
+		public double BMI
+		{
+			get
+			{
+				double bmi = 0;
+				bmi = Math.Round((703 * CurrentWeight) / (Math.Pow(Height, 2.0)),1);
+				return bmi;
+
+			}
+		}
+
 		/// <summary>
 		/// The recommended number of calories the user should consume daily.
 		/// </summary>
