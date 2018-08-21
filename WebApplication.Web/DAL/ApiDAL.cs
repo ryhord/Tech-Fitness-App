@@ -32,9 +32,10 @@ namespace WebApplication.Web.DAL
 			httpMethod = httpVerb.GET;
 		}
 
-		public string searchForFood()
+		public string searchForFood(string query)
 		{
 			string strResponseValue = string.Empty;
+			endpoint = "https://trackapi.nutritionix.com/v2/search/instant?query=" + query;
 			httpMethod = httpVerb.GET;
 			HttpWebRequest request = (HttpWebRequest)WebRequest.Create(endpoint);
 

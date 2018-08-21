@@ -11,7 +11,7 @@ namespace WebApplication.Web.DAL
 		/// Searches Nutritionix API for the food specified by the endpoint property of the ApiDal instance.
 		/// </summary>
 		/// <returns>Json response data as a string.</returns>
-		string searchForFood();
+		string searchForFood(string query);
 
 		/// <summary>
 		/// Gets the nutrition information for the specified food name.

@@ -87,6 +87,12 @@ namespace WebApplication.Web.DAL
 			}
 		}
 
+		//public User SaveItemToUserFoodLog(User user, )
+		//{
+
+		//	return user;
+		//}
+
 		public IList<UserFood> GetUserFoods(int userId)
 		{
 			List<UserFood> userFoods = new List<UserFood>();

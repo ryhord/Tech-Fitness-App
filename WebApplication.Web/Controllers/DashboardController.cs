@@ -45,8 +45,7 @@ namespace WebApplication.Web.Controllers
 		public IActionResult FoodResults(FoodPreview foodSearch)
 		{
 			ApiDAL api = new ApiDAL();
-			api.endpoint = "https://trackapi.nutritionix.com/v2/search/instant?query=" + foodSearch.Name;
-			string jsonRes = api.searchForFood();
+			string jsonRes = api.searchForFood(foodSearch.Name);
 
 
 			JsonResponseModel jsonObj = JsonConvert.DeserializeObject<JsonResponseModel>(jsonRes);
