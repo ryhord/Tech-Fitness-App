@@ -8,6 +8,15 @@ namespace WebApplication.Web.DAL
 {
     public interface IUserFoodDAL
     {
+		
+
+		/// <summary>
+		/// Makes a call to the API with name provided before saving foodItem to foods table and users_foods table.
+		/// </summary>
+		/// <param name="user"></param>
+		/// <param name="name"></param>
+		void SaveItemToUserFoodLog(User user, string name, string imgurl, string serving_unit, float serving_qty);
+
 		/// <summary>
 		/// Saves a foodItem to the foods table and users_foods table 
 		/// </summary>

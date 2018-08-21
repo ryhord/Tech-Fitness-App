@@ -112,7 +112,15 @@ namespace WebApplication.Web.Controllers
 		public IActionResult SaveFood(Food foodItem, int mealId, int numberOfServings)
 		{
 			User user = authProvider.GetCurrentUser();
-			dal.SaveItemToUserFoodLog(user, foodItem, mealId, numberOfServings);
+			if (mealId == 0)
+			{
+				dal.SaveItemToUserFoodLog(user, foodItem.Name, foodItem.Imgurl, foodItem.serving_unit, foodItem.serving_qty);
+			}
+			else
+			{
+				dal.SaveItemToUserFoodLog(user, foodItem, mealId, numberOfServings);
+			}
+			
 		
 			return RedirectToAction("Index", "Dashboard");
 		}
