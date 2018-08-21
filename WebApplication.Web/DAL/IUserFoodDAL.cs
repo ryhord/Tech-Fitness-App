@@ -29,5 +29,7 @@ namespace WebApplication.Web.DAL
 		/// <param name="userId"></param>
 		/// <returns></returns>
 		IList<UserFood> GetRecentFoods(int userId);
+
+		void DeleteFoodItem(User user, int userId, int rowId);
 	}
 }

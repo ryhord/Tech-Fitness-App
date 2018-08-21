@@ -60,7 +60,13 @@
                                     <td>@userFood.NumberOfServings</td>
                                     <td>@(userFood.CaloriesPerServing * userFood.NumberOfServings)</td>
                                     <td><button class="btn">Edit</button></td>
-                                    <td><button class="btn">Delete</button></td>
+                                    <td>
+                                        <form asp-controller="Dashboard" asp-action="DeleteFoodItem" method="get">
+                                            <input type="hidden" name="rowId" value="@userFood.RowId" />
+                                            <input type="hidden" name="userId" value="@userFood.UserId" />
+                                            <button class="btn" value="submit" type="submit">Delete</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             }
                         }
@@ -93,7 +99,13 @@
                                     <td>@userFood.NumberOfServings</td>
                                     <td>@(userFood.CaloriesPerServing * userFood.NumberOfServings)</td>
                                     <td><button class="btn">Edit</button></td>
-                                    <td><button class="btn">Delete</button></td>
+                                    <td>
+                                        <form asp-controller="Dashboard" asp-action="DeleteFoodItem" method="get">
+                                            <input type="hidden" name="rowId" value="@userFood.RowId" />
+                                            <input type="hidden" name="userId" value="@userFood.UserId" />
+                                            <button class="btn" value="submit" type="submit">Delete</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             }
                         }
@@ -124,7 +136,13 @@
                                     <td>@userFood.NumberOfServings</td>
                                     <td>@(userFood.CaloriesPerServing * userFood.NumberOfServings)</td>
                                     <td><button class="btn">Edit</button></td>
-                                    <td><button class="btn">Delete</button></td>
+                                    <td>
+                                        <form asp-controller="Dashboard" asp-action="DeleteFoodItem" method="get">
+                                            <input type="hidden" name="rowId" value="@userFood.RowId" />
+                                            <input type="hidden" name="userId" value="@userFood.UserId" />
+                                            <button class="btn" value="submit" type="submit">Delete</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             }
                         }
@@ -155,7 +173,13 @@
                                     <td>@userFood.NumberOfServings</td>
                                     <td>@(userFood.CaloriesPerServing * userFood.NumberOfServings)</td>
                                     <td><button class="btn">Edit</button></td>
-                                    <td><button class="btn">Delete</button></td>
+                                    <td>
+                                        <form asp-controller="Dashboard" asp-action="DeleteFoodItem" method="get">
+                                            <input type="hidden" name="rowId" value="@userFood.RowId" />
+                                            <input type="hidden" name="userId" value="@userFood.UserId" />
+                                            <button class="btn" value="submit" type="submit">Delete</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             }
                         }
@@ -188,7 +212,13 @@
                                     <td>@userFood.NumberOfServings</td>
                                     <td>@(userFood.CaloriesPerServing * userFood.NumberOfServings)</td>
                                     <td><button class="btn">Edit</button></td>
-                                    <td><button class="btn">Delete</button></td>
+                                    <td>
+                                        <form asp-controller="Dashboard" asp-action="DeleteFoodItem" method="get">
+                                            <input type="hidden" name="rowId" value="@userFood.RowId" />
+                                            <input type="hidden" name="userId" value="@userFood.UserId" />
+                                            <button class="btn" value="submit" type="submit">Delete</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             }
                         }
@@ -223,7 +253,13 @@
                                     <td>@userFood.NumberOfServings</td>
                                     <td>@(userFood.CaloriesPerServing * userFood.NumberOfServings)</td>
                                     <td><button class="btn">Edit</button></td>
-                                    <td><button class="btn">Delete</button></td>
+                                    <td>
+                                        <form asp-controller="Dashboard" asp-action="DeleteFoodItem" method="get">
+                                            <input type="hidden" name="rowId" value="@userFood.RowId" />
+                                            <input type="hidden" name="userId" value="@userFood.UserId" />
+                                            <button class="btn" value="submit" type="submit">Delete</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             }
                         }

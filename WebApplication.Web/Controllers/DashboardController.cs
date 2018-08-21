@@ -119,5 +119,15 @@ namespace WebApplication.Web.Controllers
 		
 			return RedirectToAction("Index", "Dashboard");
 		}
+
+
+		[HttpGet]
+		public IActionResult DeleteFoodItem(User user, int userId, int rowId)
+		{
+			user = authProvider.GetCurrentUser();
+			dal.DeleteFoodItem(user, userId, rowId);
+
+			return RedirectToAction("Index", "Dashboard");
+		}
 	}	
 }
