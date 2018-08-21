@@ -16,8 +16,17 @@ namespace WebApplication.Web.DAL
 			this.connectionString = connectionString;
 		}
 
-		public IList<UserWeight> GetWeights(User user, DateTime startDate, DateTime endDate)
+		public IList<UserWeight> GetWeights(User user, DateTime? startDate, DateTime? endDate)
 		{
+			if (startDate == null)
+			{
+				startDate = DateTime.Today;
+			}
+			if (endDate == null)
+			{
+				endDate = DateTime.Today;
+			}
+
 			List<UserWeight> weightsList = new List<UserWeight>();
 
             try
@@ -30,12 +39,12 @@ namespace WebApplication.Web.DAL
                         "SELECT * FROM users " +
                         "INNER JOIN dailyWeight ON users.userId = dailyWeight.userId " +
                         "WHERE users.userId = @userId " +
-                        "AND dailyWeight.dateOfEntry > @startDate " +
-                        "AND dailyWeight.dateOfEntry < @endDate;");
+                        "AND dailyWeight.dateOfEntry >= @startDate " +
+                        "AND dailyWeight.dateOfEntry <= @endDate;", conn);
 
                     cmd.Parameters.AddWithValue("@userId", user.Id);
-                    cmd.Parameters.AddWithValue("@startDate", startDate.ToShortDateString());
-                    cmd.Parameters.AddWithValue("@endDate", endDate.ToShortDateString());
+                    cmd.Parameters.AddWithValue("@startDate", startDate);
+                    cmd.Parameters.AddWithValue("@endDate", endDate);
 
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())

@@ -17,6 +17,7 @@ namespace WebApplication.Web.Controllers
 		private readonly IAuthProvider authProvider;
 		private readonly IUserFoodDAL dal;
 		private readonly IWeightDAL weightDal;
+		
 		public DashboardController(IAuthProvider authProvider, IUserFoodDAL dal, IWeightDAL weightDal)
 		{
 			this.authProvider = authProvider;
@@ -24,16 +25,18 @@ namespace WebApplication.Web.Controllers
 			this.weightDal = weightDal;
 		}
 
-		public IActionResult Index()
+		public IActionResult Index(DateTime? startDate, DateTime? endDate)
 		{
-				var user = authProvider.GetCurrentUser();
-				var userFoods = dal.GetUserFoods(user.Id);
-				if (user != null)
-				{
-					Tuple<User, IList<UserFood>> data = new Tuple<User, IList<UserFood>>(user, userFoods);
-					return View(data);
-				}
-				return RedirectToAction("Index", "Home");
+			var user = authProvider.GetCurrentUser();
+			var userFoods = dal.GetUserFoods(user.Id);
+			var userWeights = weightDal.GetWeights(user, startDate, endDate);
+			
+			if (user != null)
+			{
+				Tuple<User, IList<UserFood>, IList<UserWeight>> data = new Tuple<User, IList<UserFood>, IList<UserWeight>>(user, userFoods, userWeights);
+				return View(data);
+			}
+			return RedirectToAction("Index", "Home");
 		}
 
 
@@ -106,7 +109,7 @@ namespace WebApplication.Web.Controllers
 			var user = authProvider.GetCurrentUser();
 			IList<UserFood> recentUserFoods = new List<UserFood>();
 			recentUserFoods = dal.GetRecentFoods(user.Id);
-			
+
 			return View(recentUserFoods);
 		}
 
@@ -122,17 +125,17 @@ namespace WebApplication.Web.Controllers
 			{
 				dal.SaveItemToUserFoodLog(user, foodItem, mealId, numberOfServings);
 			}
-			
-		
+
+
 			return RedirectToAction("Index", "Dashboard");
 		}
 
-		public IActionResult DisplayWeights(DateTime startDate, DateTime endDate)
-		{
-			User user = authProvider.GetCurrentUser();
-            IList<UserWeight> userWeights = weightDal.GetWeights(user, startDate, endDate);
-            return View(userWeights);
-		}
+		//public IActionResult DisplayWeights(DateTime startDate, DateTime endDate)
+		//{
+		//	User user = authProvider.GetCurrentUser();
+		//	IList<UserWeight> userWeights = weightDal.GetWeights(user, startDate, endDate);
+		//	return View(userWeights);
+		//}
 
-	}	
+	}
 }
