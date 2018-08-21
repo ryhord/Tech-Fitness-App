@@ -17,7 +17,7 @@ namespace WebApplication.Web.DAL
 			this.connectionString = connectionString;
 		}
 
-		public User SaveItemToUserFoodLog(User user, Food food, int mealId, int numberOfServings)
+		public void SaveItemToUserFoodLog(int userId, Food food, int mealId, int numberOfServings)
 		{
 			try
 			{
@@ -55,7 +55,7 @@ namespace WebApplication.Web.DAL
 					}
 
 					UserFood userFood = new UserFood();
-					userFood.UserId = user.Id;
+					userFood.UserId = userId;
 					userFood.DateOfEntry = DateTime.Now;
 					userFood.CaloriesPerServing = (float)food.nf_calories;
 					userFood.MealId = mealId;
@@ -78,8 +78,6 @@ namespace WebApplication.Web.DAL
 					newUserFood.Parameters.AddWithValue("@foodName", userFood.FoodName);
 
 					var rowsAffected2 = newUserFood.ExecuteNonQuery();
-
-					return user;
 				}
 			}
 			catch (SqlException ex)
@@ -88,7 +86,7 @@ namespace WebApplication.Web.DAL
 			}
 		}
 
-		public void SaveItemToUserFoodLog(User user, string name, string imgurl, string serving_unit, float serving_qty)
+		public void SaveItemToUserFoodLog(int userId, string name, string imgurl, string serving_unit, float serving_qty)
 		{
 			ApiDAL api = new ApiDAL();
 			string jsonNutrition = api.getNutritionInfo(name);
@@ -98,7 +96,7 @@ namespace WebApplication.Web.DAL
 			theFood.Imgurl = imgurl;
 			theFood.serving_unit = serving_unit;
 			theFood.serving_qty = serving_qty;
-			SaveItemToUserFoodLog(user, theFood, 0, 1);
+			SaveItemToUserFoodLog(userId, theFood, 0, 1);
 		}
 
 		public IList<UserFood> GetUserFoods(int userId)
