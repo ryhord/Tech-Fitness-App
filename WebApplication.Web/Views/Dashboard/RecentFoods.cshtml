@@ -50,8 +50,13 @@
                             </form>
                         </td>
                         <td>
-                            <form>
-                                <button class="btn" type="submit" asp-controller="Dashboard" asp-action="SaveFood">Add</button>
+                            <form asp-controller="Dashboard" asp-action="SaveFood" method="post">
+                                <input type="hidden" name="name" value="@foodItem.FoodName" />
+                                <input type="hidden" name="serving_unit" value="@foodItem.ServingUnit" />
+                                <input type="hidden" name="serving_qty" value="@foodItem.ServingQuantity" />
+                                <input type="hidden" name="mealId" value="@foodItem.MealId" />
+                                <input type="hidden" name="numberOfServings" value="@foodItem.NumberOfServings" />
+                                <button class="btn" type="submit">Add</button>
                             </form>
                         </td>
                         <td>
@@ -62,10 +67,6 @@
                     </tr>
 
                 }
-                <input type="hidden" name="" value="" />
-                <!-- int userId, string name, string imgurl, string serving_unit, float serving_qty -->
-
-
             </tbody>
         </table>
     </div>
