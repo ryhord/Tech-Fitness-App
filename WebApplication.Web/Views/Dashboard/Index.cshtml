@@ -75,8 +75,8 @@
                                         </form>
                                     </td>
                                 </tr>
-                            }
-                        }
+}
+}
 
                     </tbody>
                 </table>
@@ -120,8 +120,8 @@
                                         </form>
                                     </td>
                                 </tr>
-                            }
-                        }
+}
+}
                     </tbody>
                 </table>
             </div>
@@ -163,8 +163,8 @@
                                         </form>
                                     </td>
                                 </tr>
-                            }
-                        }
+}
+}
 
                     </tbody>
                 </table>
@@ -206,8 +206,8 @@
                                         </form>
                                     </td>
                                 </tr>
-                            }
-                        }
+}
+}
                     </tbody>
                 </table>
             </div>
@@ -251,8 +251,8 @@
                                         </form>
                                     </td>
                                 </tr>
-                            }
-                        }
+}
+}
 
                     </tbody>
                 </table>
@@ -298,7 +298,7 @@
                                         </form>
                                     </td>
                                 </tr>
-                            }
+                             }
                         }
 
                     </tbody>
@@ -308,40 +308,68 @@
         </div>
         <div id="targetDashboard">
             <div id="targetOpacity">
-                <div>
-                    <h2>Current Weight: @user.CurrentWeight lbs.</h2>
-                </div>
-                <div>
-                    <h2>Goal Weight: @user.DesiredWeight lbs.</h2>
-                </div>
-                <div id="bmi">
-                    <h2>Current BMI: @user.BMI</h2>
-                    <table class="table" id="bmiTable">
-                        <thead>
-                            <tr>
-                                <th>Underweight</th>
-                                <th>Normal</th>
-                                <th>Overweight</th>
-                                <th>Obese</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>< 18.5</td>
-                                <td>18.5 - 24.9</td>
-                                <td>25 - 29.9</td>
-                                <td>30 ></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div>
+                <h2>Current Weight: @user.CurrentWeight lbs.</h2>
+                @Html.ValidationMessage("log-your-weight")
+                @*@if(Validation.IsValid())*@
             </div>
+
+
+            <!-- if userWeight exists for date.today, render the edit button-->
+            @if (userWeights[0].DateOfEntry == DateTime.Today && userWeights[0].TodaysWeight != 0)
+            {
+                <form asp-controller="Dashboard" asp-action="LogWeight" method="post">
+                    <span>
+                        <div class="register-field">
+                            <button class="btn btn-info" value="submit" type="submit">Edit Today's Weight</button>
+                        </div>
+                    </span>
+                </form>
+
+            }
+            else
+            {
+                <form asp-controller="Dashboard" asp-action="LogWeight" method="post">
+                    <input name="weight" type="number" autocomplete="off" value="@user.CurrentWeight" />
+                    <span>
+                        <div class="register-field">
+                            <button class="btn btn-info" value="submit" type="submit">Add Today's Weight</button>
+                        </div>
+                    </span>
+                </form>
+            }
+
+            <div>
+                <h2>Goal Weight: @user.DesiredWeight lbs.</h2>
+            </div>
+            <div id="bmi">
+                <h2>Current BMI: @user.BMI</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Underweight</th>
+                            <th>Normal</th>
+                            <th>Overweight</th>
+                            <th>Obese</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>< 18.5</td>
+                            <td>18.5 - 24.9</td>
+                            <td>25 - 29.9</td>
+                            <td>> 30</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
             <form asp-controller="Dashboard" asp-action="Index">
                 <label>
                     Start Date
                 </label>
 
-                <input name="startDate" type="date" placeholder="@DateTime.Today.AddDays(-1).ToShortDateString()"/>
+                <input name="startDate" type="date" value="@DateTime.Today.AddDays(-1).ToShortDateString()" />
 
                 <br />
 
@@ -367,15 +395,15 @@
                     @foreach (var userWeight in userWeights)
 
                     {
-                            <tr>
-                                <td>@userWeight.DateOfEntry.ToShortDateString()</td>
-                                <td>@userWeight.TodaysWeight lbs.</td>
-                            </tr>
+                        <tr>
+                            <td>@userWeight.DateOfEntry.ToShortDateString()</td>
+                            <td>@userWeight.TodaysWeight lbs.</td>
+                        </tr>
                     }
 
                 </tbody>
             </table>
         </div>
 
-    </div>
+</div>
 </div>
