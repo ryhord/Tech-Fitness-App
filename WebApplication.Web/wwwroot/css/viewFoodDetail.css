@@ -1,0 +1,10 @@
+#foodDetailFlexbox {
+    display: flex;
+    justify-content: space-evenly;
+    flex-flow: row wrap;
+    padding: 4rem;
+}
+
+img {
+    max-height: 30rem;
+}
