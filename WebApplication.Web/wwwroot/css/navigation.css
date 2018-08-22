@@ -1,6 +1,7 @@
 /**********************/
 /* Default Nav / Dash */
 /**********************/
+
 ul#default-navigation {
     color: #fff;
     background-color: #5bc0de;
@@ -28,9 +29,9 @@ ul#dashboard {
     font-family: 'Montserrat';
 }
 
-ul#dashboard li > a {
-    color: #fff;
-}
+    ul#dashboard li > a {
+        color: #fff;
+    }
 
 /*********************/
 /*** Dropdown Menu ***/
@@ -185,10 +186,6 @@ ul#dashboard li > a:hover {
 
     p#copyright {
         text-align: left;
-        text-shadow: 
-            -1px -1px 0 #fff, 
-            1px -1px 0 #fff, 
-            -1px 1px 0 #fff, 
-            1px 1px 0 #fff;
+        text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
     }
 }
