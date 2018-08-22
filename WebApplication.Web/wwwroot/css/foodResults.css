@@ -1,3 +1,6 @@
+/****************************/
+/* Search Results Container */
+/****************************/
 .flex-container {
     display: flex;
     flex-flow: row wrap;
@@ -14,4 +17,50 @@ margin: 0px 0px 35px 0px;
 #resultImage{
     width: 200px;
     height: auto;
+}
+
+/***** Background Image *****/
+.flex-container {
+    background: url("../images/food_result.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: rgba(255, 255, 255, 0.4);
+    background-blend-mode: lighten;
+}
+
+
+/******************/
+/* Flexbox Sizing */
+/******************/
+
+/*
+    Make each container's size
+    relative to the others.
+*/
+.flex-container > div {
+    flex: 1 0 33%;
+}
+
+.flex-container > div > img {
+    vertical-align: super;
+}
+
+/* Add spacing between the buttons */
+.flex-container > div > form > button {
+    margin: 0.5rem;
+}
+
+/*************************/
+/* Mobile Search Results */
+/*************************/
+@media only screen and (max-width: 991px) {
+    #resultImage {
+        padding: 3rem;
+    }
+
+    p#copyright {
+        width: 20%;
+        padding-left: 1rem;
+    }
+
 }
