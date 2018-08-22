@@ -69,8 +69,8 @@
                                         </form>
                                     </td>
                                 </tr>
-                            }
-                        }
+}
+}
 
                     </tbody>
                 </table>
@@ -108,8 +108,8 @@
                                         </form>
                                     </td>
                                 </tr>
-                            }
-                        }
+}
+}
                     </tbody>
                 </table>
             </div>
@@ -145,8 +145,8 @@
                                         </form>
                                     </td>
                                 </tr>
-                            }
-                        }
+}
+}
 
                     </tbody>
                 </table>
@@ -182,8 +182,8 @@
                                         </form>
                                     </td>
                                 </tr>
-                            }
-                        }
+}
+}
                     </tbody>
                 </table>
             </div>
@@ -221,8 +221,8 @@
                                         </form>
                                     </td>
                                 </tr>
-                            }
-                        }
+}
+}
 
                     </tbody>
                 </table>
@@ -262,7 +262,7 @@
                                         </form>
                                     </td>
                                 </tr>
-                            }
+                             }
                         }
 
                     </tbody>
@@ -278,89 +278,105 @@
             </div>
 
 
+            <!-- if userWeight exists for date.today, render the edit button-->
+            @if (userWeights[0].DateOfEntry == DateTime.Today && userWeights[0].TodaysWeight != 0)
+            {
+                <form asp-controller="Dashboard" asp-action="LogWeight" method="post">
+                    <span>
+                        <div class="register-field">
+                            <button class="btn btn-info" value="submit" type="submit">Edit Today's Weight</button>
+                        </div>
+                    </span>
+                </form>
 
-            <form asp-controller="Dashboard" asp-action="LogWeight" method="post">
-                <input name="weight" type="number" autocomplete="off" value="@user.CurrentWeight" />
-                <span><div class="register-field">
-                    <button class="btn btn-info" value="submit" type="submit">Add/Edit Today's Weight</button>
-                </div></span>
+            }
+            else
+            {
+                <form asp-controller="Dashboard" asp-action="LogWeight" method="post">
+                    <input name="weight" type="number" autocomplete="off" value="@user.CurrentWeight" />
+                    <span>
+                        <div class="register-field">
+                            <button class="btn btn-info" value="submit" type="submit">Add Today's Weight</button>
+                        </div>
+                    </span>
+                </form>
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div>
+                <h2>Goal Weight: @user.DesiredWeight lbs.</h2>
+            </div>
+            <div id="bmi">
+                <h2>Current BMI: @user.BMI</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Underweight</th>
+                            <th>Normal</th>
+                            <th>Overweight</th>
+                            <th>Obese</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>< 18.5</td>
+                            <td>18.5 - 24.9</td>
+                            <td>25 - 29.9</td>
+                            <td>> 30</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <form asp-controller="Dashboard" asp-action="Index">
+                <label>
+                    Start Date
+                </label>
+
+                <input name="startDate" type="date" value="@DateTime.Today.AddDays(-1).ToShortDateString()" />
+
+                <label>
+                    End Date
+                </label>
+
+                <input name="endDate" type="date" value="@DateTime.Today.ToShortDateString()" />
+                <button type="submit" class="btn btn-info" value="submit">
+                    Submit
+                </button>
             </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div>
-            <h2>Goal Weight: @user.DesiredWeight lbs.</h2>
-        </div>
-        <div id="bmi">
-            <h2>Current BMI: @user.BMI</h2>
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Underweight</th>
-                        <th>Normal</th>
-                        <th>Overweight</th>
-                        <th>Obese</th>
+                        <th>Date</th>
+                        <th>Weight</th>
                     </tr>
+
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>< 18.5</td>
-                        <td>18.5 - 24.9</td>
-                        <td>25 - 29.9</td>
-                        <td>> 30</td>
-                    </tr>
+
+                    @foreach (var userWeight in userWeights)
+
+                    {
+                        <tr>
+                            <td>@userWeight.DateOfEntry.ToShortDateString()</td>
+                            <td>@userWeight.TodaysWeight lbs.</td>
+                        </tr>
+                    }
+
                 </tbody>
             </table>
         </div>
-        <form asp-controller="Dashboard" asp-action="Index">
-            <label>
-                Start Date
-            </label>
-
-            <input name="startDate" type="date" value="@DateTime.Today.AddDays(-1).ToShortDateString()" />
-
-            <label>
-                End Date
-            </label>
-
-            <input name="endDate" type="date" value="@DateTime.Today.ToShortDateString()" />
-            <button type="submit" class="btn btn-info" value="submit">
-                Submit
-            </button>
-        </form>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Weight</th>
-                </tr>
-
-            </thead>
-            <tbody>
-
-                @foreach (var userWeight in userWeights)
-
-                {
-                    <tr>
-                        <td>@userWeight.DateOfEntry.ToShortDateString()</td>
-                        <td>@userWeight.TodaysWeight lbs.</td>
-                    </tr>
-                }
-
-            </tbody>
-        </table>
-    </div>
 
 </div>
 </div>

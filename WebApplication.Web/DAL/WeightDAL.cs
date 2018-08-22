@@ -40,7 +40,8 @@ namespace WebApplication.Web.DAL
 						"INNER JOIN dailyWeight ON users.userId = dailyWeight.userId " +
 						"WHERE users.userId = @userId " +
 						"AND dailyWeight.dateOfEntry >= @startDate " +
-						"AND dailyWeight.dateOfEntry <= @endDate;", conn);
+						"AND dailyWeight.dateOfEntry <= @endDate " +
+						"ORDER BY dailyWeight.dateOfEntry DESC;", conn);
 
 					cmd.Parameters.AddWithValue("@userId", user.Id);
 					cmd.Parameters.AddWithValue("@startDate", startDate);
