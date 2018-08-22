@@ -46,9 +46,9 @@ namespace WebApplication.Web.Controllers
 				var weightData = new List<int>();
 				var dateData = new List<DateTime>();
 
-				foreach (var weight in userWeights)
+				foreach (var item in userWeights)
 				{
-					weightData.Add(weight.TodaysWeight);
+					weightData.Add(item.TodaysWeight);
 				}
 
 				foreach (var date in userWeights)
