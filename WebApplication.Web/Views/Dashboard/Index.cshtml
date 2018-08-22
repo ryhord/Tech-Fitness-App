@@ -307,12 +307,14 @@
 
                 <input name="startDate" type="date" placeholder="@DateTime.Today.AddDays(-1).ToShortDateString()"/>
 
+                <br />
+
                 <label>
                     End Date
                 </label>
 
                 <input name="endDate" type="date" placeholder="@DateTime.Today.ToShortDateString()"/>
-                <button type="submit" class="btn btn-info" value="submit">
+                <button id="submitDateRange" type="submit" class="btn btn-info" value="submit">
                     Submit
                 </button>
             </form>
