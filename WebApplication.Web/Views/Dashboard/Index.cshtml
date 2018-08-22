@@ -5,6 +5,20 @@
     var userFoods = Model.Item2;
     var userWeights = Model.Item3;
     float totalConsumedCalories = 0;
+    //var weightData = new List<int>();
+    //var dateData = new List<DateTime>();
+
+    //foreach (var weight in userWeights)
+    //{
+    //    weightData.Add(weight.TodaysWeight);
+    //}
+
+    //foreach (var date in userWeights)
+    //{
+    //    dateData.Add(date.DateOfEntry);
+    //}
+
+
 
     foreach (var userFood in userFoods)
     {
@@ -13,6 +27,8 @@
             totalConsumedCalories += (userFood.CaloriesPerServing * userFood.NumberOfServings);
         }
     }
+
+
 }
 
 
@@ -22,6 +38,7 @@
     <link rel="stylesheet" href="~/css/DashboardOverview.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js" type="text/javascript"></script>
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    
 </head>
 
 <div class="wrapper">
@@ -416,16 +433,23 @@
     </div>
 </div>
 <script>
+    
+    var userWeight = @Html.Raw(Json.Serialize(ViewBag.AllUserWeights));
+    var userDate = @Html.Raw(Json.Serialize(ViewBag.AllUserDates));
+
     var ctx = document.getElementById("userChart");
     var lineChart = new Chart(ctx, {
         type: 'line',
-        data: [{
-            x: 10,
-            y: 20
-        }, {
-            x: 15,
-            y: 10
-        }],
-        //options: options
+        data: {
+            labels: userDate,
+            datasets: [{
+                label: "Weight Progress",
+                data: userWeight,
+                backgroundColor: [],
+                borderWidth: 1,
+
+            }]
+
+        }
     });
 </script>
