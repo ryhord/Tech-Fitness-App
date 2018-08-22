@@ -4,6 +4,7 @@
 }
 <head>
     <link rel="stylesheet" href="~/css/UserDashboard.css" />
+    <link rel="stylesheet" href="~/css/search.css" />
 </head>
 <style>
     
@@ -12,12 +13,11 @@
  
         @await Component.InvokeAsync("DashboardNavigation")
  
-    <div id="userInfo">
-        <h2>Search For A Food to Add</h2>
+    <div id="foodSearch">
+        <h2>Search For Food</h2>
         <form asp-controller="Dashboard" asp-action="FoodResults" method="get">
-            <label asp-for="Name"></label>
             <input type="text" asp-for="Name" autocomplete="off" />
-            <button type="submit" value="Submit">Search</button>
+            <button class="btn btn-info" type="submit" value="Submit">Search</button>
         </form>
     </div>
 </div>

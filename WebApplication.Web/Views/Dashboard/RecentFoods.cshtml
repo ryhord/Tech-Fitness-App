@@ -1,11 +1,11 @@
 ﻿@model IList<UserFood>
 <head>
     <link rel="stylesheet" href="~/css/UserDashboard.css" />
-
+    <link rel="stylesheet" href="~/css/recentFoods.css" />
 </head>
 <div class="wrapper">
     @await Component.InvokeAsync("DashboardNavigation")
-    <div id="userInfo">
+    <div id="recentFoods">
         <h2>Recent Foods</h2>
         <table class="table">
             <thead>
