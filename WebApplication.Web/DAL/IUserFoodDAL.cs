@@ -40,5 +40,6 @@ namespace WebApplication.Web.DAL
 		IList<UserFood> GetRecentFoods(int userId);
 
 		void DeleteFoodItem(User user, int userId, int rowId);
+		void UpdateFood(User user, int userId, int rowId, int mealId, int numberOfServings);
 	}
 }
