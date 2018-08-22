@@ -20,6 +20,8 @@
 <head>
     <link rel="stylesheet" href="~/css/UserDashboard.css" />
     <link rel="stylesheet" href="~/css/DashboardOverview.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 
 <div class="wrapper">
@@ -335,7 +337,26 @@
 
                 </tbody>
             </table>
+
+            <div id="chartContainer">
+                <canvas id="userChart" width="500" height="300"></canvas>
+            </div>
         </div>
 
     </div>
 </div>
+<script>
+    var ctx = document.getElementById("userChart");
+    var lineChart = new Chart(ctx, {
+        type: 'line',
+        data: [{
+            x: 10,
+            y: 20
+        }, {
+            x: 15,
+            y: 10
+        }],
+        //options: options
+    });
+</script>
+
