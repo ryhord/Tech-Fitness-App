@@ -34,11 +34,34 @@
     font-size: 4rem;
 }
 
+#todaysCalories {
+    font-size: 2.5rem;
+}
 
+/****************/
+/** User Goals **/
+/****************/
 #targetDashboard {
     text-align: right;
 }
 
-.table {
+.table{
     text-align: center;
+    background-color: rgba(255, 255, 255, 0.4);
+    background-blend-mode: lighten;
+}
+
+#targetOpacity {
+    background-color: rgba(255, 255, 255, 0.4);
+    background-blend-mode: lighten;
+}
+
+/*
+    This is to prevent a double
+    overlay of opacity for this
+    particular table.
+ */
+#bmiTable {
+    background-color: rgba(255, 255, 255, 0.0);
+    background-blend-mode: lighten;
 }
