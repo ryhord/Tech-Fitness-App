@@ -8,6 +8,7 @@ using WebApplication.Web.DAL;
 using WebApplication.Web.Models;
 using System.Text;
 using Newtonsoft.Json;
+using WebApplication.Web.Extensions;
 
 
 namespace WebApplication.Web.Controllers
@@ -18,6 +19,7 @@ namespace WebApplication.Web.Controllers
 		private readonly IUserFoodDAL dal;
 		private readonly IWeightDAL weightDal;
 		private readonly IUserDAL userDal;
+		private const string Session_Key = "Date_Range";
 		
 		public DashboardController(IAuthProvider authProvider, IUserFoodDAL dal, IWeightDAL weightDal, IUserDAL userDal)
 		{
@@ -31,7 +33,9 @@ namespace WebApplication.Web.Controllers
 		{
 			var user = authProvider.GetCurrentUser();
 			var userFoods = dal.GetUserFoods(user.Id);
-			var userWeights = weightDal.GetWeights(user, startDate, endDate);
+			
+			SavedDates dates = GetActiveSavedDates(startDate, endDate);
+			var userWeights = weightDal.GetWeights(user, dates.StartDate, dates.EndDate);
 
 			var weightIsLogged = weightDal.GetTodaysWeight(user);
 			if (!weightIsLogged)
@@ -192,6 +196,28 @@ namespace WebApplication.Web.Controllers
 			user.CurrentWeight = weight;
 			userDal.UpdateUser(user);
 			return RedirectToAction("Index", "Dashboard");
+		}
+
+		private SavedDates GetActiveSavedDates(DateTime? startDate, DateTime? endDate)
+		{
+			SavedDates dates = HttpContext.Session.Get<SavedDates>(Session_Key);
+
+			// See if the user has a cart in session
+			if (dates == null)
+			{
+				dates = new SavedDates();
+				dates.StartDate = DateTime.Today.AddDays(-10);
+				dates.EndDate = DateTime.Today;
+				HttpContext.Session.Set(Session_Key, dates);
+			}
+			else if (startDate != null && endDate != null)
+			{
+				dates.StartDate = (DateTime)startDate;
+				dates.EndDate = (DateTime)endDate;
+				HttpContext.Session.Set(Session_Key, dates);
+			}
+
+			return dates;
 		}
 	}	
 }
