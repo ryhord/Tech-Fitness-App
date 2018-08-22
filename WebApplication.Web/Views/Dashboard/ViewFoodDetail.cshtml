@@ -2,27 +2,29 @@
 @{
     ViewData["Title"] = "ViewFoodDetail";
 }
-
+<head>
+    <link rel="stylesheet" href="~/css/viewFoodDetail.css" />
+</head>
 <h2>Nutrition Details for @Model.foods[0].Name</h2>
 <div id="foodDetailFlexbox">
     <div>
         <img src="@Model.foods[0].Imgurl" />
     </div>
-    <div>
+    <article id="firstDetails">
         <p>@Model.foods[0].serving_qty @Model.foods[0].serving_unit per serving</p>
         <p><strong>Calories: </strong>@Model.foods[0].nf_calories</p>
         <p><strong>Total Fat: </strong>@Model.foods[0].nf_total_fat</p>
         <p><strong>Saturated Fat: </strong>@Model.foods[0].nf_saturated_fat</p>
         <p><strong>Carbohydrates: </strong>@Model.foods[0].nf_total_carbohydrate</p>
-    </div>
-    <div>
+    </article>
+    <article id="secondDetails">
         <p><strong>Protein: </strong>@Model.foods[0].nf_protein</p>
         <p><strong>Sugars: </strong>@Model.foods[0].nf_sugars</p>
         <p><strong>Dietary Fiber: </strong>@Model.foods[0].nf_dietary_fiber</p>
         <p><strong>Cholesterol: </strong>@Model.foods[0].nf_cholesterol</p>
         <p><strong>Sodium: </strong>@Model.foods[0].nf_sodium</p>
         <p><strong>Potassium: </strong>@Model.foods[0].nf_potassium</p>
-    </div>
+    </article>
 </div>
 
 

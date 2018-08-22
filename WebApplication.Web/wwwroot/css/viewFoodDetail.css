@@ -1,3 +1,23 @@
+h2 {
+    font-weight: 700;
+    letter-spacing: 0.3rem;
+}
+
+/********************/
+/* Background Image */
+/********************/
+.container.body-content {
+    background: url("../images/view_food_detail.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: rgba(255, 255, 255, 0.4);
+    background-blend-mode: lighten;
+    font-family: 'Montserrat';
+}
+
+/********************/
+/*** Main Flexbox ***/
+/********************/
 #foodDetailFlexbox {
     display: flex;
     justify-content: space-evenly;
@@ -7,4 +27,24 @@
 
 img {
     max-height: 30rem;
+}
+
+/********************/
+/** Nutrition Info **/
+/****   Opacity  ****/
+/********************/
+#foodDetailFlexbox article {
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 4rem;
+}
+
+
+
+#firstDetails {
+    font-size: 2.5rem;
+}
+
+#secondDetails {
+    font-size: 2rem;
 }
