@@ -34,8 +34,29 @@ namespace WebApplication.Web.Controllers
 			if (user != null)
 			{
 				Tuple<User, IList<UserFood>, IList<UserWeight>> data = new Tuple<User, IList<UserFood>, IList<UserWeight>>(user, userFoods, userWeights);
+
+				var weightData = new List<int>();
+				var dateData = new List<DateTime>();
+
+				foreach (var weight in userWeights)
+				{
+					weightData.Add(weight.TodaysWeight);
+				}
+
+				foreach (var date in userWeights)
+				{
+					dateData.Add(date.DateOfEntry);
+				}
+
+				ViewBag.AllUserWeights = weightData;
+				ViewBag.AllUserDates = dateData;
+
 				return View(data);
 			}
+
+			//Viewbag for chart data
+
+
 			return RedirectToAction("Index", "Home");
 		}
 
