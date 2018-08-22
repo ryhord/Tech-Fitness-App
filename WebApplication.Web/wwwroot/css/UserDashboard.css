@@ -1,25 +1,76 @@
-﻿
+﻿/******************/
+/* Dashboard Grid */
+/******************/
 div.wrapper {
     display: grid;
-}
-
-div#dashboardControlPanel {
-    grid-area: sidebar;
-    background-color: #eeeeef;
-}
-
-div#userInfo {
-    grid-area: window;
-}
-
-
-div.wrapper {
     /*Define the number of columns */
     grid-template-columns: 1fr 4fr;
     /*create spacing between cells*/
     grid-gap: 15px;
     /*Define the number of columns */
-    grid-template-areas: 'sidebar  window window window window'
+    grid-template-areas: 
+    'sidebar  window window window window'
+}
+
+div#userInfo {
+    grid-area: window;
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+
+/******************/
+/* Control Panel  */
+/******************/
+div#dashboardControlPanel {
+    grid-area: sidebar;
+    border-right: 3px solid #5b68de;
+    font-size: 1.75rem;
+    padding-top: 4rem;
+}
+
+div#dashboardControlPanel > div > a:hover {
+    text-decoration: none;
+}
+
+/*************************/
+/* Sidebar Logout Button */
+/*************************/
+div > div > form > button#controlPanelLogout {
+    background: none;
+    color: #5083e0;
+    margin: 1rem;
+    border: none;
+    padding: 0 !important;
+    cursor: pointer;
+    font-size: 2rem;
 }
 
 
+button#controlPanelLogout:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
+ 
+button#controlPanelLogout:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -2px;
+    left: auto;
+    background-color: #5083e0;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+    margin: 5px 0 0;
+}
+
+button#controlPanelLogout {
+    position: relative;
+    color: #5083e0;
+    text-decoration: none;
+}

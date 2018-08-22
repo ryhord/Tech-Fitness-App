@@ -32,8 +32,8 @@
 
         <div id="todayDashboard">
             <div>
-                <div>
-                    Total Calories Consumed Today: @totalConsumedCalories
+                <div id="todaysCalories">
+                    <h2>Total Calories Consumed Today: @totalConsumedCalories</h2>
                 </div>
             </div>
             @*Show breakfast Table*@
@@ -271,32 +271,34 @@
             </div>
         </div>
         <div id="targetDashboard">
-            <div>
-                <h2>Current Weight: @user.CurrentWeight lbs.</h2>
-            </div>
-            <div>
-                <h2>Goal Weight: @user.DesiredWeight lbs.</h2>
-            </div>
-            <div id="bmi">
-                <h2>Current BMI: @user.BMI</h2>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Underweight</th>
-                            <th>Normal</th>
-                            <th>Overweight</th>
-                            <th>Obese</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>< 18.5</td>
-                            <td>18.5 - 24.9</td>
-                            <td>25 - 29.9</td>
-                            <td>> 30</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div id="targetOpacity">
+                <div>
+                    <h2>Current Weight: @user.CurrentWeight lbs.</h2>
+                </div>
+                <div>
+                    <h2>Goal Weight: @user.DesiredWeight lbs.</h2>
+                </div>
+                <div id="bmi">
+                    <h2>Current BMI: @user.BMI</h2>
+                    <table class="table" id="bmiTable">
+                        <thead>
+                            <tr>
+                                <th>Underweight</th>
+                                <th>Normal</th>
+                                <th>Overweight</th>
+                                <th>Obese</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>< 18.5</td>
+                                <td>18.5 - 24.9</td>
+                                <td>25 - 29.9</td>
+                                <td>30 ></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <form asp-controller="Dashboard" asp-action="Index">
                 <label>
