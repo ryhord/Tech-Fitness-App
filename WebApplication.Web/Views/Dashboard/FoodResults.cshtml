@@ -44,10 +44,12 @@
                         <button class="btn btn-info" type="submit">View Details</button>
                     </form>
                     <form asp-controller="Dashboard" asp-action="SaveFood" method="post">
+                        
+      
                         <input type="hidden" name="name" value="@item.Name" />
                         <input type="hidden" name="serving_unit" value="@item.ServingUnit" />
                         <input type="hidden" name="serving_qty" value="@item.ServingQuantity" />
-                        <button class="btn btn-info" type="submit">Add Food</button>
+                        <button class="btn btn-info search-res-add-btn" >Add Food</button>
                     </form>
                 </div>
                 }
