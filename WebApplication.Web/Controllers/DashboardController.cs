@@ -17,20 +17,28 @@ namespace WebApplication.Web.Controllers
 		private readonly IAuthProvider authProvider;
 		private readonly IUserFoodDAL dal;
 		private readonly IWeightDAL weightDal;
+		private readonly IUserDAL userDal;
 		
-		public DashboardController(IAuthProvider authProvider, IUserFoodDAL dal, IWeightDAL weightDal)
+		public DashboardController(IAuthProvider authProvider, IUserFoodDAL dal, IWeightDAL weightDal, IUserDAL userDal)
 		{
 			this.authProvider = authProvider;
 			this.dal = dal;
 			this.weightDal = weightDal;
+			this.userDal = userDal;
 		}
 
-		public IActionResult Index(DateTime? startDate, DateTime? endDate)
+		public IActionResult Index(DateTime? startDate, DateTime? endDate, int? weight)
 		{
 			var user = authProvider.GetCurrentUser();
 			var userFoods = dal.GetUserFoods(user.Id);
 			var userWeights = weightDal.GetWeights(user, startDate, endDate);
-			
+
+			var weightIsLogged = weightDal.GetTodaysWeight(user);
+			if (!weightIsLogged)
+			{
+				ModelState.AddModelError("log-your-weight", "Enter today's weight");
+			}
+
 			if (user != null)
 			{
 				Tuple<User, IList<UserFood>, IList<UserWeight>> data = new Tuple<User, IList<UserFood>, IList<UserWeight>>(user, userFoods, userWeights);
@@ -98,12 +106,6 @@ namespace WebApplication.Web.Controllers
 			return View(foodItem);
 		}
 
-		//[HttpPost]
-		//public IActionResult AddFoodEditDetails()
-		//{
-
-		//}
-
 		[HttpGet]
 		public IActionResult RecentFoods()
 		{
@@ -141,6 +143,14 @@ namespace WebApplication.Web.Controllers
 			return RedirectToAction("Index", "Dashboard");
 		}
 
+		[HttpGet]
+		public IActionResult UpdateFood(int userId, int rowId, int mealId, int numberOfServings)
+		{
+			User user = authProvider.GetCurrentUser();
+			dal.UpdateFood(user, userId, rowId, mealId, numberOfServings);
+
+			return RedirectToAction("Index", "Dashboard");
+		}
 
 		[HttpGet]
 		public IActionResult DeleteFoodItem(User user, int userId, int rowId)
@@ -148,6 +158,18 @@ namespace WebApplication.Web.Controllers
 			user = authProvider.GetCurrentUser();
 			dal.DeleteFoodItem(user, userId, rowId);
 
+			return RedirectToAction("Index", "Dashboard");
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public IActionResult LogWeight(int weight)
+		{
+			User user = authProvider.GetCurrentUser();
+
+			weightDal.EnterDailyWeight(user, weight);
+			user.CurrentWeight = weight;
+			userDal.UpdateUser(user);
 			return RedirectToAction("Index", "Dashboard");
 		}
 	}	

@@ -194,5 +194,27 @@ namespace WebApplication.Web.DAL
 
 
 		}
+
+		public void UpdateFood(User user, int userId, int rowId, int mealId, int numberOfServings)
+		{
+			try
+			{
+				using(SqlConnection conn = new SqlConnection(connectionString))
+				{
+					conn.Open();
+					SqlCommand cmd = new SqlCommand("UPDATE users_foods SET mealId = @mealId, numberOfServings = @numberOfServings  WHERE users_foods.userId = @userId AND users_foods.rowId = @rowId;", conn);
+					cmd.Parameters.AddWithValue("@userId", userId);
+					cmd.Parameters.AddWithValue("@rowId", rowId);
+					cmd.Parameters.AddWithValue("@mealId", mealId);
+					cmd.Parameters.AddWithValue("@numberOfServings", numberOfServings);
+
+					cmd.ExecuteScalar();
+				}
+			}
+			catch(SqlException ex)
+			{
+				throw ex;
+			}
+		}
 	}
 }
