@@ -98,12 +98,6 @@ namespace WebApplication.Web.Controllers
 			return View(foodItem);
 		}
 
-		//[HttpPost]
-		//public IActionResult AddFoodEditDetails()
-		//{
-
-		//}
-
 		[HttpGet]
 		public IActionResult RecentFoods()
 		{
@@ -141,6 +135,14 @@ namespace WebApplication.Web.Controllers
 			return RedirectToAction("Index", "Dashboard");
 		}
 
+		[HttpGet]
+		public IActionResult UpdateFood(int userId, int rowId, int mealId, int numberOfServings)
+		{
+			User user = authProvider.GetCurrentUser();
+			dal.UpdateFood(user, userId, rowId, mealId, numberOfServings);
+
+			return RedirectToAction("Index", "Dashboard");
+		}
 
 		[HttpGet]
 		public IActionResult DeleteFoodItem(User user, int userId, int rowId)
