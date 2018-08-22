@@ -32,6 +32,12 @@ div#dashboardControlPanel > div > a:hover {
     text-decoration: none;
 }
 
+/***** Fix window and control panel size *****/
+.container .body-content {
+    margin: 0rem;
+    width: 100%;
+}
+
 /*************************/
 /* Sidebar Logout Button */
 /*************************/
