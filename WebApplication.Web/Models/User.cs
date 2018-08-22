@@ -90,10 +90,10 @@ namespace WebApplication.Web.Models
 		}
 
 		/// <summary>
-		/// The recommended number of calories the user should consume daily.
+		/// The recommended number of calories the user should consume daily. Determined by goal set by user
 		/// </summary>
 		public int RecommendedDailyCaloricIntake { get; set; }
-
+		
 		/// <summary>
 		/// The number of consecutive meals that the user has logged.
 		/// </summary>

@@ -55,8 +55,12 @@
             </div>
             <br />
             <div class="profile-content">
-                <label asp-for="RecommendedDailyCaloricIntake">Recommended Daily Caloric Intake: </label>
-                <input type="number" asp-for="RecommendedDailyCaloricIntake" placeholder="@Model.RecommendedDailyCaloricIntake" />
+                <label asp-for="RecommendedDailyCaloricIntake">What is your goal?</label>
+                <select name="RecommendedDailyCaloricIntake">
+                    <option value="1500">Lose Weight</option>
+                    <option value="2000">Maintain Weight</option>
+                    <option value="2500">Gain Weight</option>
+                </select>
             </div>
             <br />
 
