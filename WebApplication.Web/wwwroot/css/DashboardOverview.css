@@ -51,7 +51,17 @@
     background-blend-mode: lighten;
 }
 
-#dashboardOpacity {
+#targetOpacity {
     background-color: rgba(255, 255, 255, 0.4);
+    background-blend-mode: lighten;
+}
+
+/*
+    This is to prevent a double
+    overlay of opacity for this
+    particular table.
+ */
+#bmiTable {
+    background-color: rgba(255, 255, 255, 0.0);
     background-blend-mode: lighten;
 }
