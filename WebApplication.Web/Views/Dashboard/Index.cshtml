@@ -1,22 +1,12 @@
-﻿@model Tuple<User, IList<UserFood>, IList<UserWeight>>
+﻿@model Tuple<User, IList<UserFood>, IList<UserWeight>, TodaysWeight, bool>
 @{
     ViewData["Title"] = "Index";
     var user = Model.Item1;
     var userFoods = Model.Item2;
     var userWeights = Model.Item3;
+    var todaysWeight = Model.Item4;
+    var weightIsLogged = Model.Item5;
     float totalConsumedCalories = 0;
-    //var weightData = new List<int>();
-    //var dateData = new List<DateTime>();
-
-    //foreach (var weight in userWeights)
-    //{
-    //    weightData.Add(weight.TodaysWeight);
-    //}
-
-    //foreach (var date in userWeights)
-    //{
-    //    dateData.Add(date.DateOfEntry);
-    //}
 
 
 
@@ -329,18 +319,17 @@
             <div id="targetOpacity">
             <div>
                 <h2>Current Weight: @user.CurrentWeight lbs.</h2>
-                @Html.ValidationMessage("log-your-weight")
-                @*@if(Validation.IsValid())*@
+                @*@Html.ValidationMessage("log-your-weight")*@
             </div>
 
 
             <!-- if userWeight exists for date.today, render the edit button-->
-            @if (userWeights.Count == 0 || (userWeights[userWeights.Count-1].DateOfEntry == DateTime.Today && userWeights[userWeights.Count - 1].TodaysWeight != 0))
+            @if (weightIsLogged)
             {
                 <form asp-controller="Dashboard" asp-action="LogWeight" method="post">
                     <span>
                         <div class="register-field">
-                            <button class="btn btn-info" value="submit" type="submit">Edit Today's Weight</button>
+                            <button class="btn btn-info edit-weight" value="submit" type="submit">Edit Today's Weight</button>
                         </div>
                     </span>
                 </form>

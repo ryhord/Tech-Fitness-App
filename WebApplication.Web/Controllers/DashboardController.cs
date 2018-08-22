@@ -35,6 +35,7 @@ namespace WebApplication.Web.Controllers
 			var userFoods = dal.GetUserFoods(user.Id);
 			
 			SavedDates dates = GetActiveSavedDates(startDate, endDate);
+			TodaysWeight todaysWeight = GetTodaysWeight(weight, user);
 			var userWeights = weightDal.GetWeights(user, dates.StartDate, dates.EndDate);
 
 			var weightIsLogged = weightDal.GetTodaysWeight(user);
@@ -45,7 +46,7 @@ namespace WebApplication.Web.Controllers
 
 			if (user != null)
 			{
-				Tuple<User, IList<UserFood>, IList<UserWeight>> data = new Tuple<User, IList<UserFood>, IList<UserWeight>>(user, userFoods, userWeights);
+				Tuple<User, IList<UserFood>, IList<UserWeight>, TodaysWeight, bool> data = new Tuple<User, IList<UserFood>, IList<UserWeight>, TodaysWeight, bool>(user, userFoods, userWeights, todaysWeight, weightIsLogged);
 
 				var weightData = new List<int>();
 				var dateData = new List<DateTime>();
@@ -218,6 +219,26 @@ namespace WebApplication.Web.Controllers
 			}
 
 			return dates;
+		}
+
+		private TodaysWeight GetTodaysWeight(int? weight, User user)
+		{
+			TodaysWeight todaysWeight = HttpContext.Session.Get<TodaysWeight>(Session_Key);
+
+			// See if the user has a cart in session
+			if (todaysWeight == null)
+			{
+				todaysWeight = new TodaysWeight();
+				todaysWeight.Weight = user.CurrentWeight;
+				HttpContext.Session.Set(Session_Key, todaysWeight);
+			}
+			else if (todaysWeight != null && weight != null)
+			{
+				todaysWeight.Weight = (int)weight;
+				HttpContext.Session.Set(Session_Key, todaysWeight);
+			}
+
+			return todaysWeight;
 		}
 	}	
 }
