@@ -29,34 +29,37 @@
 
 
 <br />
-<form asp-controller="Dashboard" asp-action="SaveFood" asp-route-mealId="mealId" asp-route-numberOfServings="numberOfServings" method="post">
-    <label>Meal Classification</label>
-    <select name="mealId">
-        <option value="1">Breakfast</option>
-        <option value="2">Lunch</option>
-        <option value="3">Dinner</option>
-        <option value="4">Snack</option>
-        <option value="5">Dessert</option>
-    </select>
 
-    <div>
-        <label>Number of Servings: </label>
-        <select name="numberOfServings">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
+<div id="saveFoodForm">
+    <form asp-controller="Dashboard" asp-action="SaveFood" asp-route-mealId="mealId" asp-route-numberOfServings="numberOfServings" method="post">
+        <label>Meal Classification</label>
+        <select name="mealId">
+            <option value="1">Breakfast</option>
+            <option value="2">Lunch</option>
+            <option value="3">Dinner</option>
+            <option value="4">Snack</option>
+            <option value="5">Dessert</option>
         </select>
-    </div>
 
-    <input name="name" type="hidden" value="@Model.foods[0].Name" />
-    <input name="serving_qty" type="hidden" value="@Model.foods[0].serving_qty" />
-    <input name="serving_unit" type="hidden" value="@Model.foods[0].serving_unit" />
-    <button type="submit" value="submit">Add Food</button>
-</form>
+        <div>
+            <label>Number of Servings: </label>
+            <select name="numberOfServings">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </div>
+
+        <input name="name" type="hidden" value="@Model.foods[0].Name" />
+        <input name="serving_qty" type="hidden" value="@Model.foods[0].serving_qty" />
+        <input name="serving_unit" type="hidden" value="@Model.foods[0].serving_unit" />
+        <button class="btn btn-info" type="submit" value="submit">Add Food</button>
+    </form>
+</div>
