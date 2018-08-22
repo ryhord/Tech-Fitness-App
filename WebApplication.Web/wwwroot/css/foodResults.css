@@ -1,0 +1,17 @@
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.flex-container > div {
+width: 33%;
+height: auto;
+text-align: center;
+margin: 0px 0px 35px 0px;
+}
+
+#resultImage{
+    width: 200px;
+    height: auto;
+}
