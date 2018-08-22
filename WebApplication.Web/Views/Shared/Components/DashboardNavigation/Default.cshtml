@@ -9,7 +9,7 @@
             <a asp-controller="Dashboard" asp-action="Index">Overview</a>
         </div>
         <div>
-            <a asp-controller="Dashboard" asp-action="SearchForFood">Search For And Add A Food</a>
+            <a asp-controller="Dashboard" asp-action="SearchForFood">Search / Add Foods</a>
         </div>
         <div>
             <a asp-controller="Dashboard" asp-action="RecentFoods">See Recent Foods</a>
@@ -19,7 +19,7 @@
         </div>
         <div>
             <form asp-controller="Account" asp-action="LogOff" method="post">
-                <button value="submit" type="submit">Log Off</button>
+                <button value="submit" type="submit" id="controlPanelLogout">Log Off</button>
             </form>
         </div>
     </div>
