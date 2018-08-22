@@ -208,7 +208,7 @@ namespace WebApplication.Web.DAL
 					cmd.Parameters.AddWithValue("@mealId", mealId);
 					cmd.Parameters.AddWithValue("@numberOfServings", numberOfServings);
 
-					cmd.ExecuteNonQuery();
+					cmd.ExecuteScalar();
 				}
 			}
 			catch(SqlException ex)
