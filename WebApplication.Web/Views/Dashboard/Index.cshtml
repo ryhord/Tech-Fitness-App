@@ -31,7 +31,7 @@
 
         <div id="todayDashboard">
             <div>
-                <div>
+                <div id="todaysCalories">
                     Total Calories Consumed Today: @totalConsumedCalories
                 </div>
             </div>
@@ -220,32 +220,34 @@
             </div>
         </div>
         <div id="targetDashboard">
-            <div>
-                <h2>Current Weight: @user.CurrentWeight lbs.</h2>
-            </div>
-            <div>
-                <h2>Goal Weight: @user.DesiredWeight lbs.</h2>
-            </div>
-            <div id="bmi">
-                <h2>Current BMI: @user.BMI</h2>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Underweight</th>
-                            <th>Normal</th>
-                            <th>Overweight</th>
-                            <th>Obese</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>< 18.5</td>
-                            <td>18.5 - 24.9</td>
-                            <td>25 - 29.9</td>
-                            <td>30 ></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div id="dashboardOpacity">
+                <div>
+                    <h2>Current Weight: @user.CurrentWeight lbs.</h2>
+                </div>
+                <div>
+                    <h2>Goal Weight: @user.DesiredWeight lbs.</h2>
+                </div>
+                <div id="bmi">
+                    <h2>Current BMI: @user.BMI</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Underweight</th>
+                                <th>Normal</th>
+                                <th>Overweight</th>
+                                <th>Obese</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>< 18.5</td>
+                                <td>18.5 - 24.9</td>
+                                <td>25 - 29.9</td>
+                                <td>30 ></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 

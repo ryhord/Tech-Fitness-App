@@ -16,11 +16,6 @@ div#userInfo {
     grid-area: window;
     padding-left: 4rem;
     padding-right: 4rem;
-    text-shadow: 
-       -1px -1px 0 #fff, 
-        1px -1px 0 #fff, 
-       -1px 1px 0 #fff, 
-        1px 1px 0 #fff;
 }
 
 /******************/
