@@ -1,5 +1,7 @@
 ﻿
 $(".edit-btn").click(editFood);
+$(".search-res-add-btn").click(quickAddFood);
+
 
 function editFood() {
     var parentForm = $(this).parent();
@@ -10,12 +12,9 @@ function editFood() {
     return false;
 }
 
-$(".search-res-add-btn").click(quickAddFood);
-
 function quickAddFood() {
     var parentForm = $(this).parent()
     $(this).remove();
-    //parentForm.append("<label>Number of Servings: </label><select class=\"form-control\" name=\"numberOfServings\"><option value=\"1\">1</option><option value=\"2\">2</option><option value=\"3\">3</option><option value=\"4\">4</option><option value=\"5\">5</option><option value=\"6\">6</option><option value=\"7\">7</option><option value=\"8\">8</option><option value=\"9\">9</option><option value=\"10\">10</option></select>");
     parentForm.append("<button class=\"btn btn-info search-res-add-btn\" type=\"submit\">Add Food</button></div>");
     parentForm.append("<div class=\"search-res-add-popup\"><label>Meal Classification</label><select class=\"form-control\" name=\"mealId\"><option value=\"1\">Breakfast</option><option value=\"2\">Lunch</option><option value=\"3\">Dinner</option><option value=\"4\">Snack</option><option value=\"5\">Dessert</option></select><label>Number of Servings: </label><select class=\"form-control\" name=\"numberOfServings\"><option value=\"1\">1</option><option value=\"2\">2</option><option value=\"3\">3</option><option value=\"4\">4</option><option value=\"5\">5</option><option value=\"6\">6</option><option value=\"7\">7</option><option value=\"8\">8</option><option value=\"9\">9</option><option value=\"10\">10</option></select></div>");
 
