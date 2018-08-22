@@ -41,7 +41,7 @@ namespace WebApplication.Web.DAL
 						"WHERE users.userId = @userId " +
 						"AND dailyWeight.dateOfEntry >= @startDate " +
 						"AND dailyWeight.dateOfEntry <= @endDate " +
-						"ORDER BY dailyWeight.dateOfEntry DESC;", conn);
+						"ORDER BY dailyWeight.dateOfEntry ASC;", conn);
 
 					cmd.Parameters.AddWithValue("@userId", user.Id);
 					cmd.Parameters.AddWithValue("@startDate", startDate);
