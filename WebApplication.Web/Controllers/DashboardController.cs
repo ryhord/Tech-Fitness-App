@@ -54,6 +54,7 @@ namespace WebApplication.Web.Controllers
 			var commonResults = jsonObj.common;
 
 			SearchResults res = new SearchResults();
+			res.Name = foodSearch.Name;
 
 
 			foreach (var i in brandedResults)
@@ -132,6 +133,16 @@ namespace WebApplication.Web.Controllers
 			}
 			
 		
+			return RedirectToAction("Index", "Dashboard");
+		}
+
+
+		[HttpGet]
+		public IActionResult DeleteFoodItem(User user, int userId, int rowId)
+		{
+			user = authProvider.GetCurrentUser();
+			dal.DeleteFoodItem(user, userId, rowId);
+
 			return RedirectToAction("Index", "Dashboard");
 		}
 	}	

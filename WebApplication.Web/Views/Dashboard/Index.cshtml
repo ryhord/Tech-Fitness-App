@@ -44,11 +44,12 @@
                             <th>Food Item</th>
                             <th>Number of Servings</th>
                             <th>Calorie Count</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
 
                     </thead>
                     <tbody>
-
                         @foreach (var userFood in userFoods)
 
                         {
@@ -58,14 +59,20 @@
                                     <td>@userFood.FoodName</td>
                                     <td>@userFood.NumberOfServings</td>
                                     <td>@(userFood.CaloriesPerServing * userFood.NumberOfServings)</td>
+                                    <td><button class="btn">Edit</button></td>
+                                    <td>
+                                        <form asp-controller="Dashboard" asp-action="DeleteFoodItem" method="get">
+                                            <input type="hidden" name="rowId" value="@userFood.RowId" />
+                                            <input type="hidden" name="userId" value="@userFood.UserId" />
+                                            <button class="btn" value="submit" type="submit">Delete</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             }
                         }
 
                     </tbody>
                 </table>
-
-
             </div>
             @*Show Lunch Table*@
             <div>
@@ -76,11 +83,12 @@
                             <th>Food Item</th>
                             <th>Number of Servings</th>
                             <th>Calorie Count</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
 
                     </thead>
                     <tbody>
-
                         @foreach (var userFood in userFoods)
 
                         {
@@ -90,10 +98,17 @@
                                     <td>@userFood.FoodName</td>
                                     <td>@userFood.NumberOfServings</td>
                                     <td>@(userFood.CaloriesPerServing * userFood.NumberOfServings)</td>
+                                    <td><button class="btn">Edit</button></td>
+                                    <td>
+                                        <form asp-controller="Dashboard" asp-action="DeleteFoodItem" method="get">
+                                            <input type="hidden" name="rowId" value="@userFood.RowId" />
+                                            <input type="hidden" name="userId" value="@userFood.UserId" />
+                                            <button class="btn" value="submit" type="submit">Delete</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             }
                         }
-
                     </tbody>
                 </table>
             </div>
@@ -106,10 +121,11 @@
                             <th>Food Item</th>
                             <th>Number of Servings</th>
                             <th>Calorie Count</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-
                         @foreach (var userFood in userFoods)
 
                         {
@@ -119,6 +135,14 @@
                                     <td>@userFood.FoodName</td>
                                     <td>@userFood.NumberOfServings</td>
                                     <td>@(userFood.CaloriesPerServing * userFood.NumberOfServings)</td>
+                                    <td><button class="btn">Edit</button></td>
+                                    <td>
+                                        <form asp-controller="Dashboard" asp-action="DeleteFoodItem" method="get">
+                                            <input type="hidden" name="rowId" value="@userFood.RowId" />
+                                            <input type="hidden" name="userId" value="@userFood.UserId" />
+                                            <button class="btn" value="submit" type="submit">Delete</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             }
                         }
@@ -135,13 +159,12 @@
                             <th>Food Item</th>
                             <th>Number of Servings</th>
                             <th>Calorie Count</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
-
                     </thead>
                     <tbody>
-
                         @foreach (var userFood in userFoods)
-
                         {
                             @if (userFood.MealId == 4 && user.Id == userFood.UserId)
                             {
@@ -149,10 +172,17 @@
                                     <td>@userFood.FoodName</td>
                                     <td>@userFood.NumberOfServings</td>
                                     <td>@(userFood.CaloriesPerServing * userFood.NumberOfServings)</td>
+                                    <td><button class="btn">Edit</button></td>
+                                    <td>
+                                        <form asp-controller="Dashboard" asp-action="DeleteFoodItem" method="get">
+                                            <input type="hidden" name="rowId" value="@userFood.RowId" />
+                                            <input type="hidden" name="userId" value="@userFood.UserId" />
+                                            <button class="btn" value="submit" type="submit">Delete</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             }
                         }
-
                     </tbody>
                 </table>
             </div>
@@ -165,6 +195,8 @@
                             <th>Food Item</th>
                             <th>Number of Servings</th>
                             <th>Calorie Count</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
 
                     </thead>
@@ -179,6 +211,14 @@
                                     <td>@userFood.FoodName</td>
                                     <td>@userFood.NumberOfServings</td>
                                     <td>@(userFood.CaloriesPerServing * userFood.NumberOfServings)</td>
+                                    <td><button class="btn">Edit</button></td>
+                                    <td>
+                                        <form asp-controller="Dashboard" asp-action="DeleteFoodItem" method="get">
+                                            <input type="hidden" name="rowId" value="@userFood.RowId" />
+                                            <input type="hidden" name="userId" value="@userFood.UserId" />
+                                            <button class="btn" value="submit" type="submit">Delete</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             }
                         }
@@ -196,6 +236,8 @@
                             <th>Food Item</th>
                             <th>Number of Servings</th>
                             <th>Calorie Count</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
 
                     </thead>
@@ -210,6 +252,14 @@
                                     <td>@userFood.FoodName</td>
                                     <td>@userFood.NumberOfServings</td>
                                     <td>@(userFood.CaloriesPerServing * userFood.NumberOfServings)</td>
+                                    <td><button class="btn">Edit</button></td>
+                                    <td>
+                                        <form asp-controller="Dashboard" asp-action="DeleteFoodItem" method="get">
+                                            <input type="hidden" name="rowId" value="@userFood.RowId" />
+                                            <input type="hidden" name="userId" value="@userFood.UserId" />
+                                            <button class="btn" value="submit" type="submit">Delete</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             }
                         }

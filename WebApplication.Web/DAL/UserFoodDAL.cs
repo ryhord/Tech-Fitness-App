@@ -8,8 +8,8 @@ using WebApplication.Web.Models;
 
 namespace WebApplication.Web.DAL
 {
-    public class UserFoodDAL : IUserFoodDAL
-    {
+	public class UserFoodDAL : IUserFoodDAL
+	{
 		private readonly string connectionString;
 
 		public UserFoodDAL(string connectionString)
@@ -25,11 +25,11 @@ namespace WebApplication.Web.DAL
 				{
 					conn.Open();
 
-					SqlCommand cmd = new SqlCommand( "SELECT * FROM foods WHERE foodName = @foodName;", conn);
+					SqlCommand cmd = new SqlCommand("SELECT * FROM foods WHERE foodName = @foodName;", conn);
 					cmd.Parameters.AddWithValue("@foodName", food.Name);
 
 					var resultReturned = cmd.ExecuteReader();
-					
+
 					if (!resultReturned.HasRows)
 					{
 						conn.Close();
@@ -130,7 +130,7 @@ namespace WebApplication.Web.DAL
 				using (SqlConnection conn = new SqlConnection(connectionString))
 				{
 					conn.Open();
-					SqlCommand cmd = new SqlCommand("SELECT TOP 10 * FROM users_foods INNER JOIN foods ON users_foods.foodName = foods.foodName WHERE users_foods.userId = @userId ORDER BY dateOfEntry;", conn);
+					SqlCommand cmd = new SqlCommand("SELECT TOP 10 * FROM users_foods INNER JOIN foods ON users_foods.foodName = foods.foodName WHERE users_foods.userId = @userId ORDER BY rowId DESC;", conn);
 					cmd.Parameters.AddWithValue("@userId", userId);
 
 					SqlDataReader reader = cmd.ExecuteReader();
@@ -169,6 +169,30 @@ namespace WebApplication.Web.DAL
 			userFood.ServingUnit = Convert.ToString(reader["servingUnit"]);
 
 			return userFood;
+		}
+
+		public void DeleteFoodItem(User user, int userId, int rowId)
+		{
+
+			try
+			{
+
+				using (SqlConnection conn = new SqlConnection(connectionString))
+				{
+					conn.Open();
+					SqlCommand cmd = new SqlCommand("DELETE FROM users_foods WHERE users_foods.userId = @userId AND users_foods.rowId = @rowId;", conn);
+					cmd.Parameters.AddWithValue("@userId", userId);
+					cmd.Parameters.AddWithValue("@rowId", rowId);
+
+					cmd.ExecuteScalar();
+				}
+			}
+			catch (SqlException ex)
+			{
+				throw ex;
+			}
+
+
 		}
 	}
 }
