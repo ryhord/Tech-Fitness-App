@@ -316,7 +316,7 @@
 
 
             <!-- if userWeight exists for date.today, render the edit button-->
-            @if (userWeights[0].DateOfEntry == DateTime.Today && userWeights[0].TodaysWeight != 0)
+            @if (userWeights.Count == 0 || (userWeights[0].DateOfEntry == DateTime.Today && userWeights[0].TodaysWeight != 0))
             {
                 <form asp-controller="Dashboard" asp-action="LogWeight" method="post">
                     <span>
