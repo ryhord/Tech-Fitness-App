@@ -380,7 +380,7 @@
     </div>
 </div>
 <script>
-    
+
     var userWeight = @Html.Raw(Json.Serialize(ViewBag.AllUserWeights));
     var userDate = @Html.Raw(Json.Serialize(ViewBag.AllUserDates));
 
@@ -390,10 +390,14 @@
         data: {
             labels: userDate,
             datasets: [{
-                label: "Weight Progress",
-                data: userWeight,
-                backgroundColor: [],
-                borderWidth: 1,
+
+                label: 'Weight Progress',
+                fill: false,
+                backgroundColor: ['#5bc0de'],
+                borderColor: ['#5bc0de'],
+                borderWidth: 2,
+                data: userWeight
+
 
             }]
 
