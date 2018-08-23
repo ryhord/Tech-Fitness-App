@@ -7,7 +7,7 @@ function editFood() {
     var parentForm = $(this).parent();
     $(this).remove();
     parentForm.append("<button class=\"btn update-btn\" type=\"submit\" value=\"submit\">Update</button>");
-    parentForm.append("<tr class=\"edit-meal-props\"><td class=\"spacer\"></td><td><div class=\"updateFood-properties\">" +
+    parentForm.append("<tr class=\"edit-meal-props\"></td><td><div class=\"updateFood-properties\">" +
         "<div class=\"mealClass-field\">" +
         "<label>Meal Classification</label>" +
         "<select id=\"mealUpdate\" class=\"form-control\" name =\"mealId\">" +

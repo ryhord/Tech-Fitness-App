@@ -23,7 +23,7 @@ div#userInfo {
 /******************/
 div#dashboardControlPanel {
     grid-area: sidebar;
-    border-right: 3px solid #5b68de;
+    border-right: 3px solid #5b68de; /*get rid.. add background color to nav color.. text white*/
     font-size: 1.75rem;
     padding-top: 4rem;
 }
