@@ -99,8 +99,9 @@ namespace WebApplication.Web.DAL
 				using (SqlConnection conn = new SqlConnection(connectionString))
 				{
 					conn.Open();
-					SqlCommand cmd = new SqlCommand("SELECT * FROM users_foods INNER JOIN foods ON users_foods.foodName = foods.foodName WHERE users_foods.userId = @userId;", conn);
+					SqlCommand cmd = new SqlCommand("SELECT * FROM users_foods INNER JOIN foods ON users_foods.foodName = foods.foodName WHERE users_foods.userId = @userId AND users_foods.dateOfEntry = @today;", conn);
 					cmd.Parameters.AddWithValue("@userId", userId);
+					cmd.Parameters.AddWithValue("@today", DateTime.Today.ToShortDateString());
 
 					SqlDataReader reader = cmd.ExecuteReader();
 
