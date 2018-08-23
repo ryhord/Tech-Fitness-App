@@ -1,4 +1,14 @@
-﻿/****************/
+﻿h2 {
+    font-size: 4rem;
+    text-align: center;
+}
+
+th {
+    font-size: 3rem;
+    font-weight: 400;
+}
+
+/****************/
 /** Background **/
 /****************/
 
@@ -6,14 +16,40 @@
     background: url("../images/recent_foods.jpg");
     background-attachment: fixed;
     background-size: cover;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.6);
     background-blend-mode: lighten;
+
+    /* White outline for all text */
+    text-shadow: 
+       -1px -1px 0 #fff, 
+        1px -1px 0 #fff, 
+       -1px 1px 0 #fff, 
+        1px 1px 0 #fff;
 }
 
-h2 {
-    font-size: 3rem;
-}
-
-th {
+/* 
+    Center food names
+*/
+#recentFoods .recent-food-name {
+    font-size: 2rem;
     text-align: center;
+}
+
+/** Bold the table buttons **/
+.add-recent-food {
+	font-weight: 700;
+}
+
+/*
+    Increase font size for selectable
+    options
+*/
+select {
+    font-size: 1.4rem;
+    padding: .4rem;
+}
+
+label {
+    padding-left: 2rem;
+    padding-right: 2rem;
 }

@@ -3,7 +3,6 @@ $(".edit-btn").click(editFood);
 $(".search-res-add-btn").click(quickAddFood);
 $(".edit-weight").click(editWeight);
 
-
 function editFood() {
     var parentForm = $(this).parent();
     $(this).remove();
@@ -11,7 +10,7 @@ function editFood() {
     parentForm.append("<tr class=\"edit-meal-props\"><td class=\"spacer\"></td><td><div class=\"updateFood-properties\">" +
         "<div class=\"mealClass-field\">" +
         "<label>Meal Classification</label>" +
-        "<select class=\"form-control\" name =\"mealId\">" +
+        "<select id=\"mealUpdate\" class=\"form-control\" name =\"mealId\">" +
         "<option value=\"1\">Breakfast</option>" +
         "<option value =\"2\">Lunch</option>" +
         "<option value =\"3\">Dinner</option>" +
@@ -21,7 +20,7 @@ function editFood() {
         + "</div >" +
         "<div class=\"numberOfServings-field\">" +
         "<label>Number of Servings: </label>" +
-        "<select class=\"form-control\" name=\"numberOfServings\">" +
+        "<select id=\"numOfServUpdate\" class=\"form-control\" name=\"numberOfServings\">" +
         "<option value =\"1\">1</option> " +
         "<option value =\"2\">2</option> " +
         "<option value =\"3\">3</option> " +
@@ -34,7 +33,32 @@ function editFood() {
         "<option value =\"10\">10</option>" +
         "</select >" +
         "</div></div></td></tr>");
+    addSelectedOption();
     return false;
+}
+
+function addSelectedOption() {
+    let mealSelection = document.getElementById('mealUpdate').parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.firstElementChild.innerText;
+    let mealSelectionOptions = parseInt(document.getElementById('mealUpdate').childElementCount,10);
+    let mealSelectionSelect = document.getElementById('mealUpdate');
+    let mealSelectionChild = mealSelectionSelect.firstElementChild;
+    for (let m = 0; m < mealSelectionOptions; m++) {
+        if (mealSelectionChild.innerText != mealSelection) {
+            mealSelectionChild = mealSelectionChild.nextElementSibling;
+        }
+        else {
+            break;
+        }
+    }
+    mealSelectionChild.setAttribute('selected', 'selected');
+
+    let servingSelection = parseInt(document.getElementById('numOfServUpdate').parentElement.parentElement.parentElement.firstElementChild.nextElementSibling.innerText, 10);
+    let servingDropDownSelect = document.getElementById('numOfServUpdate').firstElementChild;
+    for (let i = 1; i < servingSelection; i++) {
+        servingDropDownSelect = servingDropDownSelect.nextElementSibling;
+       
+    }
+    servingDropDownSelect.setAttribute('selected', 'selected');
 }
 
 function quickAddFood() {

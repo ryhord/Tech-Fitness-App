@@ -19,6 +19,47 @@ namespace WebApplication.Web.DAL
 
 		public void SaveItemToUserFoodLog(int userId, Food food, int mealId, int numberOfServings)
 		{
+			if (food.nf_calories == null)
+			{
+				food.nf_calories = 0;
+			}
+			if (food.nf_total_fat == null)
+			{
+				food.nf_total_fat = 0;
+			}
+			if (food.nf_cholesterol == null)
+			{
+				food.nf_cholesterol = 0;
+			}
+			if (food.nf_saturated_fat == null)
+			{
+				food.nf_saturated_fat = 0;
+			}
+			if (food.nf_sodium == null)
+			{
+				food.nf_sodium = 0;
+			}
+			if (food.nf_total_carbohydrate == null)
+			{
+				food.nf_total_carbohydrate = 0;
+			}
+			if (food.nf_dietary_fiber == null)
+			{
+				food.nf_dietary_fiber = 0;
+			}
+			if (food.nf_sugars == null)
+			{
+				food.nf_sugars = 0;
+			}
+			if (food.nf_protein == null)
+			{
+				food.nf_protein = 0;
+			}
+			if (food.nf_potassium == null)
+			{
+				food.nf_potassium = 0;
+			}
+			
 			try
 			{
 				using (SqlConnection conn = new SqlConnection(connectionString))
@@ -99,8 +140,9 @@ namespace WebApplication.Web.DAL
 				using (SqlConnection conn = new SqlConnection(connectionString))
 				{
 					conn.Open();
-					SqlCommand cmd = new SqlCommand("SELECT * FROM users_foods INNER JOIN foods ON users_foods.foodName = foods.foodName WHERE users_foods.userId = @userId;", conn);
+					SqlCommand cmd = new SqlCommand("SELECT * FROM users_foods INNER JOIN foods ON users_foods.foodName = foods.foodName WHERE users_foods.userId = @userId AND users_foods.dateOfEntry = @today;", conn);
 					cmd.Parameters.AddWithValue("@userId", userId);
+					cmd.Parameters.AddWithValue("@today", DateTime.Today.ToShortDateString());
 
 					SqlDataReader reader = cmd.ExecuteReader();
 

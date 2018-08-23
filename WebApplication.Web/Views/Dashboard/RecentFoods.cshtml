@@ -19,13 +19,13 @@
                 @foreach (var foodItem in Model)
                 {
                 <tr>
-                    <td>@foodItem.FoodName</td>
+                    <td class="recent-food-name">@foodItem.FoodName</td>
                     <td>
                         <form asp-controller="Dashboard" asp-action="SaveFood" method="post">
                             <input type="hidden" name="name" value="@foodItem.FoodName" />
                             <input type="hidden" name="serving_unit" value="@foodItem.ServingUnit" />
                             <input type="hidden" name="serving_qty" value="@foodItem.ServingQuantity" />
-                            <button class="btn" type="submit">Add</button>
+                            <button class="btn btn-info add-recent-food" type="submit">Add</button>
 
 
                             <label>Meal Type</label>
@@ -38,7 +38,7 @@
                             </select>
 
 
-                            <label>Number of Servings: </label>
+                            <label id="servingOptions">Number of Servings: </label>
                             <select name="numberOfServings">
                                 <option value="1">1</option>
                                 <option value="2">2</option>

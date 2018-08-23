@@ -18,16 +18,16 @@ namespace WebApplication.Web.Models
 		public float serving_qty { get; set; }
 		public string serving_unit { get; set; }
 		public float serving_weight_grams { get; set; }
-		public float? nf_calories { get; set; }
-		public float? nf_total_fat { get; set; }
-		public float? nf_saturated_fat { get; set; }
-		public float? nf_cholesterol { get; set; }
-		public float? nf_sodium { get; set; }
-		public float? nf_total_carbohydrate { get; set; }
-		public float? nf_dietary_fiber { get; set; }
-		public float? nf_sugars { get; set; }
-		public float? nf_protein { get; set; }
-		public float? nf_potassium { get; set; }
+		public float? nf_calories { get; set; }											
+		public float? nf_total_fat { get; set; }											
+		public float? nf_saturated_fat { get; set; }										
+		public float? nf_cholesterol { get; set; }										
+		public float? nf_sodium { get; set; }											
+		public float? nf_total_carbohydrate { get; set; }								
+		public float? nf_dietary_fiber { get; set; }										
+		public float? nf_sugars { get; set; }											
+		public float? nf_protein { get; set; }											
+		public float? nf_potassium { get; set; }											
 		public object nf_p { get; set; }
 		public Full_Nutrients[] full_nutrients { get; set; }
 		public object nix_brand_name { get; set; }

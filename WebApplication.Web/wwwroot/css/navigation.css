@@ -29,9 +29,9 @@ ul#dashboard {
     font-family: 'Montserrat';
 }
 
-    ul#dashboard li > a {
-        color: #fff;
-    }
+ul#dashboard li > a {
+    color: #fff;
+}
 
 /*********************/
 /*** Dropdown Menu ***/
