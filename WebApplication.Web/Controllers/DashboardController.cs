@@ -150,6 +150,10 @@ namespace WebApplication.Web.Controllers
 
 			ApiDAL api = new ApiDAL();
 			string jsonNutrition = api.getNutritionInfo(name);
+			if (jsonNutrition == "EXCEPTION_THROWN")
+			{
+				return RedirectToAction("FoodResults","Dashboard");
+			}
 			FoodItem foodItem = JsonConvert.DeserializeObject<FoodItem>(jsonNutrition);
 			Food food = foodItem.foods[0];
 			food.Name = name;

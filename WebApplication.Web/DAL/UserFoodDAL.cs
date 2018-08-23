@@ -19,6 +19,47 @@ namespace WebApplication.Web.DAL
 
 		public void SaveItemToUserFoodLog(int userId, Food food, int mealId, int numberOfServings)
 		{
+			if (food.nf_calories == null)
+			{
+				food.nf_calories = 0;
+			}
+			if (food.nf_total_fat == null)
+			{
+				food.nf_total_fat = 0;
+			}
+			if (food.nf_cholesterol == null)
+			{
+				food.nf_cholesterol = 0;
+			}
+			if (food.nf_saturated_fat == null)
+			{
+				food.nf_saturated_fat = 0;
+			}
+			if (food.nf_sodium == null)
+			{
+				food.nf_sodium = 0;
+			}
+			if (food.nf_total_carbohydrate == null)
+			{
+				food.nf_total_carbohydrate = 0;
+			}
+			if (food.nf_dietary_fiber == null)
+			{
+				food.nf_dietary_fiber = 0;
+			}
+			if (food.nf_sugars == null)
+			{
+				food.nf_sugars = 0;
+			}
+			if (food.nf_protein == null)
+			{
+				food.nf_protein = 0;
+			}
+			if (food.nf_potassium == null)
+			{
+				food.nf_potassium = 0;
+			}
+			
 			try
 			{
 				using (SqlConnection conn = new SqlConnection(connectionString))
