@@ -14,6 +14,26 @@ h2 {
     font-size: 3rem;
 }
 
+/**** Align food names ****/
 th {
     text-align: center;
+}
+
+#servingOptions {
+    margin-left: 5.5rem;
+}
+
+.recent-food-name {
+    text-align: center;
+}
+
+@media only screen and (min-width: 1300px) {
+    #dashboardControlPanel {
+        margin-left: -20rem;
+    }
+
+    #recentFoods {
+        margin-left: -33.33%;
+        margin-right: -33.33%;
+    }
 }
