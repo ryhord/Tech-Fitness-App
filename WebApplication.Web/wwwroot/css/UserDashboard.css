@@ -80,3 +80,29 @@ button#controlPanelLogout {
     color: #5083e0;
     text-decoration: none;
 }
+
+
+/**************
+    EDIT FOOD FORM
+***************/
+.mealClass-field > label {
+    width: 100%;
+}
+
+.numberOfServings-field > label {
+    width: 100%;
+}
+
+.quickUpdate-btn {
+}
+
+.updateFood-properties {
+    width: 100%;
+    display: flex;
+    align-content: flex-end;
+}
+
+.edit-meal-props {
+    display: flex;
+    align-content: flex-end;
+}
