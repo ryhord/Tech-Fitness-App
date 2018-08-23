@@ -98,7 +98,9 @@ namespace WebApplication.Web.DAL
 			{
 				if (response.StatusCode != HttpStatusCode.OK)
 				{
-					throw new ApplicationException("Error code: " + response.StatusCode.ToString());
+					//throw new ApplicationException("Error code: " + response.StatusCode.ToString());
+					strResponseValue = "EXCEPTION_THROWN";
+					return strResponseValue;
 				}
 
 				using (Stream responseStream = response.GetResponseStream())
