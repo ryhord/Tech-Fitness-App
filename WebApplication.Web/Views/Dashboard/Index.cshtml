@@ -42,7 +42,12 @@
         <div id="todayDashboard">
             <div>
                 <div id="todaysCalories">
-                    <h2>Total Calories Consumed Today: @totalConsumedCalories</h2>
+                    <h2>Total Calories Consumed: @totalConsumedCalories.ToString("#")</h2>
+                </div>
+            </div>
+            <div>
+                <div id="todaysCalories">
+                    <h2>Total Calories Remaining: @((user.RecommendedDailyCaloricIntake - totalConsumedCalories).ToString("#"))</h2>
                 </div>
             </div>
             @*Show breakfast Table*@
@@ -68,7 +73,7 @@
                                 <tr>
                                     <td>@userFood.FoodName</td>
                                     <td>@userFood.NumberOfServings</td>
-                                    <td>@(userFood.CaloriesPerServing * userFood.NumberOfServings)</td>
+                                    <td>@((userFood.CaloriesPerServing * userFood.NumberOfServings).ToString("#"))</td>
                                     <td>
                                         <form asp-controller="Dashboard" asp-action="UpdateFood" method="get">
                                             <input type="hidden" name="userId" value="@userFood.UserId" />
@@ -84,8 +89,8 @@
                                         </form>
                                     </td>
                                 </tr>
-}
-}
+                            }
+                        }
 
                     </tbody>
                 </table>
@@ -113,7 +118,7 @@
                                 <tr>
                                     <td>@userFood.FoodName</td>
                                     <td>@userFood.NumberOfServings</td>
-                                    <td>@(userFood.CaloriesPerServing * userFood.NumberOfServings)</td>
+                                    <td>@((userFood.CaloriesPerServing * userFood.NumberOfServings).ToString("#"))</td>
                                     <td>
                                         <form asp-controller="Dashboard" asp-action="UpdateFood" method="get">
                                             <input type="hidden" name="userId" value="@userFood.UserId" />
@@ -129,8 +134,8 @@
                                         </form>
                                     </td>
                                 </tr>
-}
-}
+                            }
+                        }
                     </tbody>
                 </table>
             </div>
@@ -156,7 +161,7 @@
                                 <tr>
                                     <td>@userFood.FoodName</td>
                                     <td>@userFood.NumberOfServings</td>
-                                    <td>@(userFood.CaloriesPerServing * userFood.NumberOfServings)</td>
+                                    <td>@((userFood.CaloriesPerServing * userFood.NumberOfServings).ToString("#"))</td>
                                     <td>
                                         <form asp-controller="Dashboard" asp-action="UpdateFood" method="get">
                                             <input type="hidden" name="userId" value="@userFood.UserId" />
@@ -172,8 +177,8 @@
                                         </form>
                                     </td>
                                 </tr>
-}
-}
+                            }
+                        }
 
                     </tbody>
                 </table>
@@ -199,7 +204,7 @@
                                 <tr>
                                     <td>@userFood.FoodName</td>
                                     <td>@userFood.NumberOfServings</td>
-                                    <td>@(userFood.CaloriesPerServing * userFood.NumberOfServings)</td>
+                                    <td>@((userFood.CaloriesPerServing * userFood.NumberOfServings).ToString("#"))</td>
                                     <td>
                                         <form asp-controller="Dashboard" asp-action="UpdateFood" method="get">
                                             <input type="hidden" name="userId" value="@userFood.UserId" />
@@ -215,8 +220,8 @@
                                         </form>
                                     </td>
                                 </tr>
-}
-}
+                            }
+                        }
                     </tbody>
                 </table>
             </div>
@@ -244,7 +249,7 @@
                                 <tr>
                                     <td>@userFood.FoodName</td>
                                     <td>@userFood.NumberOfServings</td>
-                                    <td>@(userFood.CaloriesPerServing * userFood.NumberOfServings)</td>
+                                    <td>@((userFood.CaloriesPerServing * userFood.NumberOfServings).ToString("#"))</td>
                                     <td>
                                         <form asp-controller="Dashboard" asp-action="UpdateFood" method="get">
                                             <input type="hidden" name="userId" value="@userFood.UserId" />
@@ -260,54 +265,7 @@
                                         </form>
                                     </td>
                                 </tr>
-}
-}
-
-                    </tbody>
-                </table>
-
-            </div>
-            @*Show Other Foods Table*@
-            <div>
-                <h2>Other Foods</h2>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Food Item</th>
-                            <th>Number of Servings</th>
-                            <th>Calorie Count</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
-                        </tr>
-
-                    </thead>
-                    <tbody>
-
-                        @foreach (var userFood in userFoods)
-
-                        {
-                            @if (userFood.MealId == 0 && user.Id == userFood.UserId)
-                            {
-                                <tr>
-                                    <td>@userFood.FoodName</td>
-                                    <td>@userFood.NumberOfServings</td>
-                                    <td>@(userFood.CaloriesPerServing * userFood.NumberOfServings)</td>
-                                    <td>
-                                        <form asp-controller="Dashboard" asp-action="UpdateFood" method="get">
-                                            <input type="hidden" name="userId" value="@userFood.UserId" />
-                                            <input type="hidden" name="rowId" value="@userFood.RowId" />
-                                            <button class="btn edit-btn">Edit</button>
-                                        </form>
-                                    </td>
-                                    <td>
-                                        <form asp-controller="Dashboard" asp-action="DeleteFoodItem" method="get">
-                                            <input type="hidden" name="rowId" value="@userFood.RowId" />
-                                            <input type="hidden" name="userId" value="@userFood.UserId" />
-                                            <button class="btn" value="submit" type="submit">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                             }
+                            }
                         }
 
                     </tbody>
