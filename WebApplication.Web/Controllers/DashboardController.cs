@@ -49,7 +49,7 @@ namespace WebApplication.Web.Controllers
 				Tuple<User, IList<UserFood>, IList<UserWeight>, TodaysWeight, bool> data = new Tuple<User, IList<UserFood>, IList<UserWeight>, TodaysWeight, bool>(user, userFoods, userWeights, todaysWeight, weightIsLogged);
 
 				var weightData = new List<int>();
-				var dateData = new List<DateTime>();
+				var dateData = new List<string>();
 
 				foreach (var item in userWeights)
 				{
@@ -58,7 +58,7 @@ namespace WebApplication.Web.Controllers
 
 				foreach (var date in userWeights)
 				{
-					dateData.Add(date.DateOfEntry);
+					dateData.Add(date.DateOfEntry.ToShortDateString());
 				}
 
 				ViewBag.AllUserWeights = weightData;
