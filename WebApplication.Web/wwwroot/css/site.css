@@ -23,6 +23,12 @@ header, #subheading {
     text-align: center;
 }
 
+div.body-container {
+    padding-left: 10px !important;
+    margin-left: 0px !important;
+    padding-right: 15px !important;
+    margin-right: auto !important;
+}
 /****************************/
 /** Tablet / Mobile Styles **/
 /****************************/
