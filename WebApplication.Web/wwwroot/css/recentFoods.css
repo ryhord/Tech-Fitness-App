@@ -3,6 +3,11 @@
     text-align: center;
 }
 
+th {
+    font-size: 3rem;
+    font-weight: 400;
+}
+
 /****************/
 /** Background **/
 /****************/
@@ -13,19 +18,21 @@
     background-size: cover;
     background-color: rgba(255, 255, 255, 0.6);
     background-blend-mode: lighten;
-}
 
-/* 
-    White outline for recent food names
-*/
-#recentFoods .recent-food-name {
-    font-size: 2rem;
-    text-align: center;
+    /* White outline for all text */
     text-shadow: 
        -1px -1px 0 #fff, 
         1px -1px 0 #fff, 
        -1px 1px 0 #fff, 
         1px 1px 0 #fff;
+}
+
+/* 
+    Center food names
+*/
+#recentFoods .recent-food-name {
+    font-size: 2rem;
+    text-align: center;
 }
 
 /** Bold the table buttons **/
